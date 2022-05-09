@@ -1,0 +1,14 @@
+<h2>Edita el genero musical</h2>
+<form [formGroup]="genreEditForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-3">
+        <label class="form-label">Nombre del genero musical</label>
+        <input formControlName="name" type="text" class="form-control" required>
+    </div>
+    <div class="mb-3">    
+        <label class="form-label">Autor</label>
+        <input formControlName="author" type="text" class="form-control" required>
+    </div>  
+    
+    <button type="submit" class="btn btn-primary">Update</button>        
+    
+</form>

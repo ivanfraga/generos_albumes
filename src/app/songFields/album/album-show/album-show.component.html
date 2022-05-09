@@ -1,0 +1,28 @@
+<h2>Component SHOW is good</h2>
+<div class="d-grip gap-2 mt-12">
+    <a routerLink="/albumcreate" class="btn btn-primary btn-lg btn-block" type="button">Create</a>
+</div>
+<div>
+    <h2>Albumes</h2>
+</div>
+<table class="table table-hover table-striped">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>Nombre</th>
+            <th>Year</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let album of Album">
+            <td>{{album.name}}</td>
+            <td>{{album.year}}</td>
+            <td>
+                <button routerLink="/albumedit/{{album.id}}" class="btn btn-outline-secondary">Actualizar</button>
+                <button (click)="deleteRow(album)" class="btn btn-outline-danger">Eliminar</button>
+                
+            </td>
+
+        </tr>
+    </tbody>
+</table>
