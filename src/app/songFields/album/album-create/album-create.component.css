@@ -1,0 +1,14 @@
+.add {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+.input-file {
+    display: none;
+}
+.upload {
+    height: 200px;
+    width: 200px;
+  }

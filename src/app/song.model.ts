@@ -20,3 +20,9 @@ export class Album{
     name: string;
     year: number;
 }
+export class AlbumImg{
+    id: string;
+    name: string;
+    year: number;
+    url: string;
+}
