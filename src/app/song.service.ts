@@ -196,6 +196,12 @@ export class SongService {
       
     }
   }
+
+  getAlbumImgById(id){
+    return this.speakerCollection
+      .doc(id)
+      .valueChanges()
+  }
   
 
   

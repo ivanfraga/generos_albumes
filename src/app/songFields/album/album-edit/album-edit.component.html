@@ -1,14 +1,24 @@
 <h2>Edita el album musical</h2>
-<form [formGroup]="albumEditForm" (ngSubmit)="onSubmit()" novalidate>
+<form [formGroup]="albumForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="mb-3">
-        <label class="form-label">Nombre del genero musical</label>
+        <label class="form-label">Nombre del álbum musical</label>
         <input formControlName="name" type="text" class="form-control" required>
     </div>
     <div class="mb-3">    
-        <label class="form-label">Autor</label>
+        <label class="form-label">Año</label>
         <input formControlName="year" type="number" class="form-control" required>
-    </div>  
+    </div>
+    <div class="add">
+        <input 
+            type="file"
+            #file
+            class="input-file"
+            (change)="onFilesAdded($event.target)"
+        />
+        <img (click)="addFiles()" class="upload" formControlName="url" alt="" />
+    </div>
     
-    <button type="submit" class="btn btn-primary">Update</button>        
+    <button [disabled]="!albumForm.valid" type="submit" class="btn btn-primary">Update</button>
+        
     
 </form>
