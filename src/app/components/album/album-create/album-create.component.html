@@ -1,0 +1,32 @@
+<h2>Genera un Álbum musical</h2>
+<form [formGroup]="albumForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-3">
+        <label class="form-label">Nombre del álbum</label>
+        <input formControlName="name" type="text" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Nombre del autor</label>
+        <input formControlName="author" type="text" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Año</label>
+        <input formControlName="year" type="number" class="form-control" required>
+    </div>
+    
+    <div class="add">
+        <img (click)="addFiles()" class="upload" [src]="url" alt="" width="150" />
+        <input 
+            type="file"
+            #file
+            class="input-file"
+            (change)="onFilesAdded($event.target)"     
+        />
+        
+    </div>
+
+    <button (click)="redirect()" class="btn btn-primary button" type="button">Volver a lista de álbumes</button>
+    
+    <button [disabled]="!albumForm.valid" type="submit" class="btn btn-primary button" >Save</button>
+        
+    
+</form>

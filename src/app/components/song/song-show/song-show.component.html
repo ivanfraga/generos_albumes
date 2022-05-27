@@ -1,0 +1,42 @@
+<h3>Lista de Canciones</h3>
+<hr>
+
+
+<table class="table table-hover table-striped">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Genre Name</th>
+            <th>Album Name</th>
+            <th>Year</th>
+            <th>Song</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let song of Song">
+            <td><img [src]="song.imageURL" alt="" width = 100 height = 100></td>
+            <td>{{song.song_name}}</td>
+            <td>{{song.genre_name}}</td>
+            <td>{{song.album_name}}</td>
+            <td>{{song.year}}</td>
+            <td><audio [src]="song.songURL" controls></audio></td>
+            
+            
+            <td>
+                <!--<button routerLink="/albumedit/{{album.id}}" class="btn btn-outline-secondary">Actualizar</button>-->
+                <button (click)="deleteSong(song)" class="btn btn-outline-danger" ><i class="fa-solid fa-trash"></i></button>
+                <button (click)="updateSong(song.id)" class="btn btn-outline-secondary"><i class="fa-solid fa-pen"></i></button>
+                
+            </td>
+
+        </tr>
+    </tbody>
+    
+</table>
+
+<div class="d-grid gap-2 button">
+    <button (click)="redirect()" class="btn btn-primary button" type="button">Agregar canción</button>
+    <button (click)="showAllSongs()" class="btn btn-secondary button" type="button">Mostrar todas las canciones</button>
+</div>

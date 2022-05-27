@@ -1,0 +1,24 @@
+<h2>Crea un Género musical</h2>
+<form [formGroup]="genreForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-3">
+        <label class="form-label">Nombre del género musical</label>
+        <input formControlName="name" type="text" class="form-control" required>
+    </div>
+    
+    <div class="add">
+        <img (click)="addFiles()" class="upload" [src]="url" alt="" width="150" />
+        <input 
+            type="file"
+            #file
+            class="input-file"
+            (change)="onFilesAdded($event.target)"     
+        />
+        
+    </div>
+
+    <button (click)="redirect()" class="btn btn-primary button" type="button">Volver a lista de géneros</button>
+    
+    <button [disabled]="!genreForm.valid" type="submit" class="btn btn-primary button" >Save</button>
+        
+    
+</form>

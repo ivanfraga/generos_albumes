@@ -1,0 +1,14 @@
+.add {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+.add > * {
+    margin: 10px 0;
+}
+.button{
+    
+    margin: 15px;
+}
