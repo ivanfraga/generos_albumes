@@ -1,1 +1,27 @@
-<p>song-edit works!</p>
+<h2>Actualiza la canción</h2>
+<form [formGroup]="songEditForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-3">
+        <label class="form-label">Nombre de la canción</label>
+        <input formControlName="song_name" type="text" class="form-control" required>
+    </div>
+    
+    <div class="add">
+        <label class="form-label">Cambia la canción</label>
+        <br>
+        <input 
+            type="file"
+            #file
+            class="input-file"
+            (change)="onFilesAdded($event.target)"     
+        />
+        <br>
+        <audio [src]="url" formControlName="songURL" controls></audio>
+        
+    </div>
+
+    <button (click)="redirect()" class="btn btn-primary button" type="button">Lista de albumes</button>
+    
+    <button [disabled]="!songEditForm.valid" type="submit" class="btn btn-primary button" >Save</button>
+        
+    
+</form>

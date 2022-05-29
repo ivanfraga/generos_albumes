@@ -252,20 +252,39 @@ export class SongService {
     .snapshotChanges();
   }
 
-  updateSong(song: Song, urlSong:any, filePath: any){
+  updateSong(song: Song, urlSong:any, filePath: any, id:any){
+    this.album_name= song.album_name;
     return this.songCollection
-      .doc(this.id)
+      .doc(id)
       .update({
         song_name: song.song_name,
         songURL: urlSong,
         song_reference: filePath
-    });
+    })
+    
 
   }
   deleteSong(song){
     return this.songCollection
     .doc(song.id)
     .delete();
+  }
+
+  updateSongProcess(object: any, _file: any, collection: string, isChanged:boolean, id:any){
+    if(isChanged){
+      this.filePath = collection+ "/testSongs"+ "/" + object.song_name;
+      const ref = this.storage.ref(this.filePath);
+      console.log("el path hasta aquí si sirve")
+      ref.put(_file).then(() => {
+        ref.getDownloadURL().subscribe(url => {
+          this.storage.ref(object.song_reference).delete();
+          this.updateSong(object, url, this.filePath, id)
+        })
+      });
+    }
+    else{
+      this.updateSong(object, object.songURL, object.song_reference, id)
+    }
   }
 
 

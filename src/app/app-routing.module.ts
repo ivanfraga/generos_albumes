@@ -5,6 +5,7 @@ import { AlbumShowComponent } from './components/album/album-show/album-show.com
 import { GenreCreateComponent } from './components/genre/genre-create/genre-create.component';
 import { GenreShowComponent } from './components/genre/genre-show/genre-show.component';
 import { SongCreateComponent } from './components/song/song-create/song-create.component';
+import { SongEditComponent } from './components/song/song-edit/song-edit.component';
 import { SongShowAllComponent } from './components/song/song-show-all/song-show-all.component';
 import { SongShowComponent } from './components/song/song-show/song-show.component';
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'showSong', component:SongShowComponent},
   {path: 'createSong', component:SongCreateComponent},
   {path: 'showAllSong', component:SongShowAllComponent},
+  {path: 'updateSong/:id', component:SongEditComponent},
 ];
 
 @NgModule({
