@@ -29,10 +29,10 @@ export class SongShowAllComponent implements OnInit {
   }
 
   deleteSong(song){
-    this.songService.deleteSong(song)
+    this.songService.deleteSong(song);
   }  
-  updateSong(id){
-    this.router.navigate(['/updateSong/', id])
+  updateSong(song){
+    this.songService.getSongProperties(song);
   }
 
   redirect(){

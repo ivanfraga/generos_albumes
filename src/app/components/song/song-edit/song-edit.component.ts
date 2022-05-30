@@ -12,7 +12,7 @@ import { ViewChild } from "@angular/core";
 export class SongEditComponent implements OnInit {
 
   public songEditForm: FormGroup;
-  public collectionName= "canciones"
+  public collectionName= "songs"
   isChanged = false;
   @ViewChild("file") file;
   files: Set<File> = new Set();
@@ -56,6 +56,7 @@ export class SongEditComponent implements OnInit {
         id: [this.song.id],
       })
       this.url= this.song.songURL;
+
     })
   }
 

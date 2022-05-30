@@ -29,7 +29,7 @@
             <td>
                 <!--<button routerLink="/albumedit/{{album.id}}" class="btn btn-outline-secondary">Actualizar</button>-->
                 <button (click)="deleteSong(song)" class="btn btn-outline-danger" ><i class="fa-solid fa-trash"></i></button>
-                <button (click)="updateSong(song.id)" class="btn btn-outline-secondary"><i class="fa-solid fa-pen"></i></button>
+                <button (click)="updateSong(song)" routerLink="/updateSong/{{song.id}}" class="btn btn-outline-secondary"><i class="fa-solid fa-pen"></i></button>
                 
             </td>
 

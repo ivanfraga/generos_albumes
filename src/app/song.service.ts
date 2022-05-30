@@ -24,7 +24,7 @@ export class SongService {
     this.genreList= this.genreCollection.valueChanges();
     this.albumCollection= angularFirestore.collection("albums");
     this.albumList= this.albumCollection.valueChanges();
-    this.songCollection= angularFirestore.collection("canciones");
+    this.songCollection= angularFirestore.collection("songs");
     this.songList= this.songCollection.valueChanges();
 
    }
@@ -63,6 +63,7 @@ export class SongService {
          imageURL: urlImg, 
          author: "generic", 
          image_reference: filePath });
+    //this.getGenreSongProperties(genre);
     
   }
   //función para agregar la imagen y luego crear el objeto en Firestore
@@ -171,46 +172,65 @@ export class SongService {
 
   //Song Functions
   
-  public song_object: Song;
+  //public song_object: Song;
 
   public genre_name: string;
   public album_name: string;
   public imageURL: string;
-  //public song_name: string;
+  public song_name: string;
   public year: number;
   public author: string;
-  //public songURL: string;
-  //public id_song: string;
+  public songURL: string;
+  public song_reference: string;
+  public id_song: string;
 
 
   getGenreSongProperties(genre: Genre){
-    //this.song_object.genre_name= genre.name;
     this.genre_name = genre.name;
     console.log("nombre del genero", this.genre_name);
-
   }
 
   getAlbumSongProperties(album: Album){
-    //this.song_object.genre_name= genre.name;
-    this.album_name = album.name;  
+    this.genre_name= album.genre_name;
+    this.album_name = album.name;
+    this.imageURL= album.imageURL  
     this.year= album.year;
     this.author= album.author;
     console.log(
-      "propiedades del album\n",
-      "\nalbum_name: ",
-      this.album_name,
-      "\nimageURL: ",
-      this.imageURL,
-      "\nyear: ",
-      this.year,
-      "\nauthor: ",
+      "propiedades del album\n","\nalbum_name: ",this.album_name,
+      "\nimageURL: ",this.imageURL,"\nyear: ",this.year,"\nauthor: ",
       this.author 
     );
   }
 
+  getSongProperties(song: Song){
+    this.genre_name= song.genre_name;
+    this.album_name = song.song_name;
+    this.imageURL= song.imageURL; 
+    this.song_name= song.song_name;
+    this.year= song.year;
+    this.author= song.author;
+    this.songURL= song.songURL;
+    this.song_reference= song.song_reference;
+    this.id= song.id;
+    console.log("Propiedades cancion: \n", 
+    "\n",this.genre_name,
+    "\n",this.album_name,
+    "\n",this.imageURL,
+    "\n",this.song_name,
+    "\n",this.year,
+    "\n",this.author,
+    "\n",this.songURL,
+    "\n",this.song_reference,
+    "\n",this.id )
+  }
+
   songCreate(song: Song, urlSong:any, filePath: any){
     const id = this.angularFirestore.createId();
-
+    this.song_name= song.song_name;
+    this.songURL= urlSong;
+    this.song_reference= filePath;
+    this.id= id;
     this.songCollection
       .doc(id)
       .set({
@@ -254,6 +274,9 @@ export class SongService {
 
   updateSong(song: Song, urlSong:any, filePath: any, id:any){
     this.album_name= song.album_name;
+    this.song_name= song.song_name;
+    this.songURL= urlSong;
+    this.song_reference= filePath;
     return this.songCollection
       .doc(id)
       .update({
@@ -265,6 +288,7 @@ export class SongService {
 
   }
   deleteSong(song){
+    this.storage.ref(song.song_reference).delete();
     return this.songCollection
     .doc(song.id)
     .delete();

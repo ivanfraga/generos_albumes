@@ -18,7 +18,7 @@ export class SongShowComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.songService.getAlbumSongs("canciones").subscribe((res) =>{
+    this.songService.getAlbumSongs("songs").subscribe((res) =>{
       this.Song = res.map((e) =>{
         return {
           id: e.payload.doc.id,
@@ -31,8 +31,8 @@ export class SongShowComponent implements OnInit {
   deleteSong(song){
     this.songService.deleteSong(song)
   }  
-  updateSong(id){
-    this.router.navigate(['/updateSong/', id])
+  updateSong(song){
+    this.songService.getSongProperties(song);
   }
   redirect(){
     this.router.navigate(['/showGenre'])
