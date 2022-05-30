@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore , AngularFirestoreCollection} from '@angular/fire/compat/firestore';
-import { Album, Genre, Song } from './song';
+import { Album, Favorite, Genre, Song } from './song';
 import { AngularFireStorage } from "@angular/fire/compat/storage";
 import { Observable } from "rxjs";;
 
@@ -18,6 +18,9 @@ export class SongService {
   //Song variables
   songCollection: AngularFirestoreCollection<Song>;
   songList: Observable<Song[]>;
+  //Favorite variables
+  //favoriteCollection: AngularFirestoreCollection<Favorite>;
+
 
   constructor(private angularFirestore: AngularFirestore,private storage: AngularFireStorage) {
     this.genreCollection= angularFirestore.collection("genres");
@@ -26,7 +29,7 @@ export class SongService {
     this.albumList= this.albumCollection.valueChanges();
     this.songCollection= angularFirestore.collection("songs");
     this.songList= this.songCollection.valueChanges();
-
+    //this.favoriteCollection= angularFirestore.collection("favorite");
    }
 
    url: any =
@@ -266,11 +269,17 @@ export class SongService {
       );
   }
 
+  
+
   getAlbumSongs(collection: string){
+    
+    
     return this.angularFirestore
     .collection(collection, ref => ref.where('album_name', '==', this.album_name))
     .snapshotChanges();
   }
+
+
 
   updateSong(song: Song, urlSong:any, filePath: any, id:any){
     this.album_name= song.album_name;
@@ -310,6 +319,25 @@ export class SongService {
       this.updateSong(object, object.songURL, object.song_reference, id)
     }
   }
+
+  //FAVORITES
+
+  public userID="DP3XfsWz0llXfYtU8UUO"//seria el usuario que inicia sesión
+
+  addToFavorite(song: Song){
+    const path="/favorite/ "+this.userID+"/songs"
+    console.log("La canción guadada es: ", song.song_name,
+    "\n Su ID: ", song.id)
+    return this.angularFirestore
+
+     .collection(path)
+     .doc(song.id)
+     .set({
+      id: song.id
+     })
+
+  }
+  
 
 
 }

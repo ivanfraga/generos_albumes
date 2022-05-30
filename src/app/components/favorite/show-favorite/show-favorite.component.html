@@ -1,0 +1,15 @@
+<h3>Lista de Favoritos</h3>
+<hr>
+<table class="table table-hover table-striped">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>ID Canción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let favorite of Favorite">
+            <td>{{favorite.id}}</td>
+        </tr>
+    </tbody>
+    
+</table>

@@ -18,6 +18,10 @@ export class Genre{
     imageURL: string;
 }
 
+export class Favorite{
+    id:string;
+}
+
 
 export class Album{
     id: string;

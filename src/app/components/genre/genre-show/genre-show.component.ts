@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Genre } from 'src/app/song';
+import { Genre, Favorite } from 'src/app/song';
 import { SongService } from 'src/app/song.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { SongService } from 'src/app/song.service';
 export class GenreShowComponent implements OnInit {
   
   Genre: Genre[];
+  
   
   constructor(
     private songService: SongService,
@@ -32,9 +34,12 @@ export class GenreShowComponent implements OnInit {
     this.songService.getGenreSongProperties(genre);
     this.router.navigate(['/showAlbum']);
     
+    
   }
   redirect(){
     this.router.navigate(['/createGenre']);
   }
+
+  
 
 }

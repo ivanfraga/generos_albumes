@@ -17,6 +17,8 @@ import { SongCreateComponent } from './components/song/song-create/song-create.c
 import { SongShowComponent } from './components/song/song-show/song-show.component';
 import { SongShowAllComponent } from './components/song/song-show-all/song-show-all.component';
 import { SongEditComponent } from './components/song/song-edit/song-edit.component';
+import { SelectFavoriteComponent } from './components/favorite/select-favorite/select-favorite.component';
+import { ShowFavoriteComponent } from './components/favorite/show-favorite/show-favorite.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { SongEditComponent } from './components/song/song-edit/song-edit.compone
     SongCreateComponent,
     SongShowComponent,
     SongShowAllComponent,
-    SongEditComponent
+    SongEditComponent,
+    SelectFavoriteComponent,
+    ShowFavoriteComponent
   ],
   imports: [
     BrowserModule,

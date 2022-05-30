@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AlbumCreateComponent } from './components/album/album-create/album-create.component';
 import { AlbumShowComponent } from './components/album/album-show/album-show.component';
+import { SelectFavoriteComponent } from './components/favorite/select-favorite/select-favorite.component';
+import { ShowFavoriteComponent } from './components/favorite/show-favorite/show-favorite.component';
 import { GenreCreateComponent } from './components/genre/genre-create/genre-create.component';
 import { GenreShowComponent } from './components/genre/genre-show/genre-show.component';
 import { SongCreateComponent } from './components/song/song-create/song-create.component';
@@ -18,6 +20,8 @@ const routes: Routes = [
   {path: 'createSong', component:SongCreateComponent},
   {path: 'showAllSong', component:SongShowAllComponent},
   {path: 'updateSong/:id', component:SongEditComponent},
+  {path: 'selectFavorites', component:SelectFavoriteComponent},
+  {path: 'showFavorites', component:ShowFavoriteComponent},
 ];
 
 @NgModule({
