@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+.add {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+.add > * {
+    margin: 10px 0;
+}
+.button{   
+    margin: 15px;
+}

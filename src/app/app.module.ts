@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
@@ -19,6 +20,12 @@ import { SongShowAllComponent } from './components/song/song-show-all/song-show-
 import { SongEditComponent } from './components/song/song-edit/song-edit.component';
 import { SelectFavoriteComponent } from './components/favorite/select-favorite/select-favorite.component';
 import { ShowFavoriteComponent } from './components/favorite/show-favorite/show-favorite.component';
+import { BodyComponent } from './body/body.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
 
 @NgModule({
   declarations: [
@@ -33,10 +40,17 @@ import { ShowFavoriteComponent } from './components/favorite/show-favorite/show-
     SongShowAllComponent,
     SongEditComponent,
     SelectFavoriteComponent,
-    ShowFavoriteComponent
+    ShowFavoriteComponent,
+    BodyComponent,
+    SidenavComponent,
+    DashboardComponent,
+    LoginComponent,
+    RegisterComponent,
+    ForgotpasswordComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
