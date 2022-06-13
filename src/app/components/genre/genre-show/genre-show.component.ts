@@ -11,14 +11,14 @@ import { SongService } from 'src/app/song.service';
 })
 export class GenreShowComponent implements OnInit {
   
-  Genre: Genre[];
+  Genre: Genre[];//variable array de tipo Género
   
   
   constructor(
-    private songService: SongService,
-    public router: Router
+    private songService: SongService,//variable que hace referencia al servicio
+    public router: Router// variable que hace referencia a un enlace en el APPROUTING
     ) { }
-
+    //método que obtiene e inicializa con todos los Géneros
   ngOnInit(): void {
     this.songService.getList("genres").subscribe((res) =>{
       this.Genre = res.map((e) =>{
@@ -29,13 +29,15 @@ export class GenreShowComponent implements OnInit {
       });
     });
   }
-  
+    //método que obtiene los datos del album, cuando se selecciona uno
+  //pasa como parámetro un género
   getGenreData(genre){
+    //referencia al método en el Sevicio
     this.songService.getGenreSongProperties(genre);
-    this.router.navigate(['/showAlbum']);
-    
-    
+    //redireccionar a la página de mostrar álbumes
+    this.router.navigate(['/showAlbum']); 
   }
+  //método para redireccionar a crear género
   redirect(){
     this.router.navigate(['/createGenre']);
   }

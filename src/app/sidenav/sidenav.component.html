@@ -7,21 +7,23 @@
         </button>
     </div>
     <ul class="sidenav-nav">
-        <li class="sidenav-nav-item" *ngFor="let data of navData">
-            <a class="sidenav-nav-link" [routerLink]="[data.routeLink]" routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact: true}">
-                <i class="sidenav-link-icon" [class]="data.icon"></i>
-                <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
-                    {{data.label}}
-                    <div class="sidenav-sublink">
-                        <a href="#">FUncionalidad</a>
-                        <a href="#">Detalle</a>
-                    </div>
-                </span>
-                
-            </a>
-            
-            
-        </li>
-    </ul>
+        <li class="sidenav-nav-item" *ngFor="let drag of drago">  
+            <details >
+                <summary class="sidenav-nav-link" >
+                    <i class="sidenav-link-icon">{{drag.icon}}</i>
+                    <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
+                        {{drag.huName}}
+                    </span>
+                </summary>
+                <div *ngFor="let met of drag.metodos">
+                    <a class="sidenav-nav-link" [routerLink]="[met.link]" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact: true}">
+                        <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
+                            {{met.metodo}}
+                        </span>                    
+                    </a>
+                </div>
+            </details>            
+        </li>        
+    </ul>   
 </div>

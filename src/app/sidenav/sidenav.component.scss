@@ -4,7 +4,7 @@
     position: fixed;
     z-index: 1;
     top: 0;
-    width: 5rem;
+    width: 6rem;
     height: 100vh;
     box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
     overflow-y: auto;
@@ -54,6 +54,7 @@
 
 ::-webkit-scrollbar {
     width: 10px;
+    
   }
 
   ::-webkit-scrollbar-track {
@@ -62,7 +63,7 @@
   
   ::-webkit-scrollbar-thumb {
     background: #00AAE4;
-    border-radius: 20px;
+    border-radius: 10px;
   }
 
 .sidenav-collapsed {
@@ -83,6 +84,8 @@
     .sidenav-nav-item {
         width: 100%;
         margin-bottom: 0.625rem;
+        
+        
 
         .sidenav-nav-link {
             display: flex;
@@ -92,39 +95,31 @@
             text-decoration: none;
             border-radius: 0.625rem;
             transition: all .3s ease;
+            margin-bottom: 0.625rem;
 
             .sidenav-link-icon {
-                font-size: 22px;
-                width: 2.5rem;
+                font-size: 20px;
+                width: 5rem;
                 min-width: 2rem;
-                margin: 0 0.5rem;
+                
                 text-align: center;
             }
 
             .sidenav-link-text {
                 margin-left: 1.5rem;
-                width: 100%;
+                width: 100%; 
             }
 
-            .sidenav-sublink{
-                background: #00AAE4;
-                
-                transition: max-height 0.3s;
-                max-height: 0;
-                overflow: hidden;
-            }
-
-            .sidenav-sublink a{
-                display: block;
-                margin-left: 2.0rem;
-                
-                
-            }
+            
         }
     }
 
     .sidenav-nav-item:hover {
         .sidenav-nav-link {
+            background-color: #fff;
+            color: #000;
+        }
+        .sidenav-nav-sublink {
             background-color: #fff;
             color: #000;
         }

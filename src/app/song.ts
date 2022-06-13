@@ -32,3 +32,13 @@ export class Album{
     image_reference: string;
     imageURL: string;
 }
+
+export class Artist {
+    id: string;
+    birthdate: string;
+    mail: string;
+    name: string;
+    password: string;
+    rol: string;
+}
+

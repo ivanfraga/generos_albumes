@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SongService } from 'src/app/song.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { SongService } from 'src/app/song.service'; //Servicio en donde estan los métodos genéricos
+import { FormBuilder, FormGroup } from '@angular/forms'; //Formulario reactivo
 import { Router } from '@angular/router';
 import { ViewChild } from "@angular/core";
 
@@ -11,13 +11,13 @@ import { ViewChild } from "@angular/core";
 })
 export class AlbumCreateComponent implements OnInit {
 
-  public albumForm: FormGroup;
-  public collectionName= "albumes"
-  isChanged = false;
-  @ViewChild("file") file;
-  files: Set<File> = new Set();
+  public albumForm: FormGroup; //formulario reactivo
+  public collectionName= "albumes" //nombre de colleción creada en firebase
+  isChanged = false; 
+  @ViewChild("file") file; //permite referenciar una instancia en HTML
+  files: Set<File> = new Set(); 
   url: any =
-    "https://i.pinimg.com/564x/65/df/2c/65df2c922e64c61235162ab7c0924d3c.jpg";
+    "https://i.pinimg.com/564x/65/df/2c/65df2c922e64c61235162ab7c0924d3c.jpg"; //imagen por defecto
   _file;
 
   constructor(
@@ -25,6 +25,7 @@ export class AlbumCreateComponent implements OnInit {
     public formBuilder: FormBuilder,
     public router: Router
   ) {
+    //campos que maneja un álbum 
     this.albumForm= this.formBuilder.group({
       genre_name:[''],
       name: [''],
@@ -40,23 +41,30 @@ export class AlbumCreateComponent implements OnInit {
   }
 
   onSubmit(){
-    this.songService.addGenreAlbum(this.albumForm.value, this._file, this.collectionName);
+    //Referencia a función del servicio para crear album
+    this.songService.addGenreAlbum(this.albumForm.value, this._file, this.collectionName);//envia como parámetros: valores del album reactivo, imagen local, nombre de la colección
+    //Obtiene datos necesarios para la canción
     this.songService.getAlbumSongProperties(this.albumForm.value);
     this.router.navigate(['/createSong']);
     
     this.isChanged = false;
+    //reseteo de file
     this.file.nativeElement.value = "";
   }
 
+  //función para transformar la imagen subida a url local
   onFilesAdded(target: any) {
     this.isChanged = true;
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.url = reader.result;
+    const reader = new FileReader(); //lector de archivos
+    //función para cargar imagen subida y presentarla al usuario
+    reader.onload = () => { 
+      this.url = reader.result; 
     };
+
     if (target.files.length > 0) {
       this._file = target.files[0];
-      reader.readAsDataURL(this._file);
+      //asignación de url local a _file
+      reader.readAsDataURL(this._file); 
     }
   }
   addFiles() {

@@ -1,6 +1,6 @@
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { Component, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
-import { navbarData } from './nav-data';
+import { navbarData, drago } from './nav-data';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -40,10 +40,26 @@ interface SideNavToggle {
 })
 export class SidenavComponent implements OnInit {
 
+  step = -1;
+
+  
+  setStep(index: number) {
+    this.step = index;
+  }
+
+  nextStep() {
+    this.step++;
+  }
+
+  prevStep() {
+    this.step--;
+  }
+
   @Output() onToggleSideNav: EventEmitter<SideNavToggle> = new EventEmitter();
   collapsed = false;
   screenWidth = 0;
   navData = navbarData;
+  drago = drago;
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {

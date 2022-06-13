@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AlbumCreateDocComponent } from './components/album/album-create-doc/album-create-doc.component';
 import { AlbumCreateComponent } from './components/album/album-create/album-create.component';
+import { AlbumShowDocComponent } from './components/album/album-show-doc/album-show-doc.component';
 import { AlbumShowComponent } from './components/album/album-show/album-show.component';
+import { ArtistRequestComponent } from './components/artist-request/artist-request.component';
 import { SelectFavoriteComponent } from './components/favorite/select-favorite/select-favorite.component';
 import { ShowFavoriteComponent } from './components/favorite/show-favorite/show-favorite.component';
 import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
@@ -29,7 +32,10 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'dashboard', component: DashboardComponent},
-  {path: 'forgotPassword', component: ForgotpasswordComponent}
+  {path: 'forgotPassword', component: ForgotpasswordComponent},
+  {path: 'artistRequest', component: ArtistRequestComponent},
+  {path: 'createAlbumDoc', component: AlbumCreateDocComponent},
+  {path: 'showAlbumDoc', component: AlbumShowDocComponent},
 ];
 
 @NgModule({

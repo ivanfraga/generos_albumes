@@ -26,6 +26,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
+import { ArtistRequestComponent } from './components/artist-request/artist-request.component';
+import { GenreSongsShowComponent } from './components/genre-songs-show/genre-songs-show.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { AlbumCreateDocComponent } from './components/album/album-create-doc/album-create-doc.component';
+import { AlbumShowDocComponent } from './components/album/album-show-doc/album-show-doc.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +51,11 @@ import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassw
     DashboardComponent,
     LoginComponent,
     RegisterComponent,
-    ForgotpasswordComponent
+    ForgotpasswordComponent,
+    ArtistRequestComponent,
+    GenreSongsShowComponent,
+    AlbumCreateDocComponent,
+    AlbumShowDocComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +66,8 @@ import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassw
     AngularFirestoreModule,
     AngularFireStorageModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

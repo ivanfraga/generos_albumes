@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+//Importa Servicio
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  //variables correo y contraseña
   email: string='';
   password: string= '';
 
@@ -15,8 +16,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  //Método para Iniciar sesión
   login(){
+    //Verificación de campos vacios
     if (this.email == ''){
       alert('Empty email');
       return;
@@ -25,8 +27,9 @@ export class LoginComponent implements OnInit {
       alert('Empty password');
       return;
     }
-
+    //referencia al método del servicio para Iniciar sesión
     this.auth.login(this.email, this.password);
+    //Reseteo de variables
     this.email= '';
     this.password= '';
 

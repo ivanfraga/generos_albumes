@@ -38,5 +38,6 @@ export class SongShowAllComponent implements OnInit {
   redirect(){
     this.router.navigate(['/showGenre'])
   }
+  
 
 }

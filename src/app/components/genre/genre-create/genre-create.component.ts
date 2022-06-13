@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+////Servicio en donde estan los métodos genéricos
 import { SongService } from 'src/app/song.service';
+//Formulario reactivo
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ViewChild } from "@angular/core";
@@ -10,21 +12,25 @@ import { ViewChild } from "@angular/core";
   styleUrls: ['./genre-create.component.css']
 })
 export class GenreCreateComponent implements OnInit {
+  //variables genéricas
 
+  //FOrmulario reactivo
   public genreForm: FormGroup;
+  //nombre de la colección
   public collectionName= "genres"
   isChanged = false;
-  @ViewChild("file") file;
+  @ViewChild("file") file;//permite referenciar una instancia en HTML
   files: Set<File> = new Set();
   url: any =
     "https://i.pinimg.com/564x/65/df/2c/65df2c922e64c61235162ab7c0924d3c.jpg";
   _file;
-
+  
   constructor(
     public songService: SongService,
     public formBuilder: FormBuilder,
     public router: Router
   ) {
+    //campos que maneja un género
     this.genreForm= this.formBuilder.group({
       name: [''],
       author: [''],
@@ -37,22 +43,28 @@ export class GenreCreateComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(){
+    //referencia al método del sevicio para crear género 
     this.songService.addGenreAlbum(this.genreForm.value, this._file, this.collectionName);
+    //Obtiene datos necesarios para la canción
     this.songService.getGenreSongProperties(this.genreForm.value);
+    //redirecciona a Crear Album
     this.router.navigate(['/createAlbum']);
     console.log(this.genreForm.value);
+    //Reestablecimiento de variables
     this.isChanged = false;
     this.file.nativeElement.value = "";
   }
-
+  //función para transformar la imagen subida a url local
   onFilesAdded(target: any) {
     this.isChanged = true;
     const reader = new FileReader();
+    //función para cargar imagen subida y presentarla al usuario
     reader.onload = () => {
       this.url = reader.result;
     };
     if (target.files.length > 0) {
       this._file = target.files[0];
+      //asignación de url local a _file
       reader.readAsDataURL(this._file);
     }
   }
