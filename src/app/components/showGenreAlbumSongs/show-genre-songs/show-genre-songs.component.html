@@ -1,0 +1,34 @@
+<hr>
+<h2>Lista de Canciones</h2>
+<hr>
+<div class="d-grid gap-2 button">
+    <button (click)="redirect()" class="btn btn-primary button" type="button">Géneros</button>
+</div>
+<table class="table table-hover table-striped">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Genre Name</th>
+            <th>Album Name</th>
+            <th>Year</th>
+            <th>Song</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let song of Song">
+            <td><img [src]="song.imageURL" alt="" width = 100 height = 100></td>
+            <td>{{song.song_name}}</td>
+            <td>{{song.genre_name}}</td>
+            <td>{{song.album_name}}</td>
+            <td>{{song.year}}</td>
+            <td><audio [src]="song.songURL" controls></audio></td>           
+            <td>
+                <button (click)="addToFavorite(song)" class="btn btn-outline-danger" >Agregar a favoritos</button>                
+            </td>
+        </tr>
+    </tbody>    
+</table>
+
+

@@ -1,0 +1,11 @@
+<hr>
+<h2>Crea o selecciona una Playlist</h2>
+<hr>
+<button (click)="redirect()" class="btn btn-primary button" type="button">Volver a lista de géneros</button>
+<form [formGroup]="playlistForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-3">
+        <label class="form-label">Nombre de la nueva Playlist</label>
+        <input formControlName="playlist_name" type="text" class="form-control" required>
+    </div>
+    <button [disabled]="!playlistForm.valid" type="submit" class="btn btn-primary button" >Guardar</button>
+</form>

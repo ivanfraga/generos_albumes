@@ -353,35 +353,72 @@ export class SongService {
   //FAVORITES
 
   public userID="DP3XfsWz0llXfYtU8UUO"//seria el usuario que inicia sesión
-
+  //función para añadir canciones a favoritos
+  //necesita parámetros: objeto canciones
   addToFavorite(song: Song){
-    
+    //la dirección de la colección se determina por el ID del usuario
     const path="/favorite/ "+this.userID+"/songs"
     console.log("La canción guadada es: ", song.song_name,
     "\n Su ID: ", song.id)
+    //se procede a guardar el ID de la canción
     return this.angularFirestore
-
+      //se guarda en la dirección anteriomente especificada
      .collection(path)
+     //toma el nombre del ID de la canción
      .doc(song.id)
+     //establece el documento mediante el ID de la canción
      .set({
       id: song.id
      })
 
   }
-  //modificación
+  //función para obtener canciones segun los id guardados en Favoritos
+  //necesita parámetros: 
+  //el nombre de la collección a estraer los documentos
+  //la lista de id de los documentos
   getfavoriteById(collection: string, id: any){
-    
+    //retorna los documentos que coincidan con la lista de id
     return this.angularFirestore
-    //Búsqueda de canciones que pertenezcan al álbum
     .collection(collection, ref => ref.where('id', 'in', id))
     .snapshotChanges();
   }
+  //función para remover canciones de la lista de Favoritos
+  //necesita parámetro: ID de la canción a remover
   removeFavorite(id: string){
+    //especificamos la dirección de favoritos
     const path="/favorite/ "+this.userID+"/songs";
+    //eliminamos la referencia de la canción segun su ID 
     return this.angularFirestore
      .collection(path)
      .doc(id)
      .delete();
+  }
+
+  //función para obtener canciones del género o álbum
+  //necesita parámetro: nombre de la colección
+  getAlbumGenreSongs(collection: string){
+    //vaiable que tendrá las canciones
+    let canciones: any;
+
+    if(collection=="genres"){
+      //Búsqueda de canciones que pertenezcan al género
+      canciones= this.angularFirestore
+      .collection("songs", ref => ref.where('genre_name', '==', this.genre_name))
+      .snapshotChanges();
+    }
+    if(collection=="albums"){
+      //Búsqueda de canciones que pertenezcan al álbum
+      canciones= this.angularFirestore
+      .collection("songs", ref => ref.where('album_name', '==', this.album_name))
+      .snapshotChanges();
+    }
+    return canciones;
+  }
+  //función para obtener álbumes correspondientes al género
+  getAlbums(){
+    return this.angularFirestore
+    .collection("albums", ref => ref.where('genre_name', '==', this.genre_name))
+    .snapshotChanges();
   }
 
 }

@@ -1,0 +1,27 @@
+<hr>
+<h2>Lista de Géneros</h2>
+<hr>
+<div class="d-grid gap-2 button">
+    <button (click)="getAlbums()" class="btn btn-primary button" type="button">Albumes</button>
+</div>
+<table class="table table-hover table-striped">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let genre of Genre">
+            <td><img [src]="genre.imageURL" alt="" width = 100 height = 100></td>
+            <td>{{genre.name}}</td>
+            <td>{{genre.author}}</td>
+            <td>
+                <button (click)="getSongs(genre)" class="btn btn-outline-danger" >Canciones</button>               
+            </td>
+        </tr>
+    </tbody>
+</table>
+

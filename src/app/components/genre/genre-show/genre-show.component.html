@@ -1,14 +1,10 @@
 <hr>
-
 <h2>Seleccionar o crear un género</h2>
 <h3>Lista de Géneros</h3>
 <hr>
-
 <div class="d-grid gap-2 button">
     <button (click)="redirect()" class="btn btn-primary button" type="button">Crear nuevo género</button>
 </div>
-
-
 <table class="table table-hover table-striped">
     <thead class="bg-dark text-white">
         <tr>
@@ -24,14 +20,10 @@
             <td>{{genre.name}}</td>
             <td>{{genre.author}}</td>
             <td>
-                <!--<button routerLink="/albumedit/{{album.id}}" class="btn btn-outline-secondary">Actualizar</button>-->
-                <button (click)="getGenreData(genre)" class="btn btn-outline-danger" >Seleccionar</button>
-                
+                <button (click)="getGenreData(genre)" class="btn btn-outline-danger" >Seleccionar</button>              
             </td>
-
         </tr>
-    </tbody>
-    
+    </tbody>  
 </table>
 
 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Genre, Favorite } from 'src/app/song';
+import { Genre } from 'src/app/song';
 import { SongService } from 'src/app/song.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class GenreShowComponent implements OnInit {
   
   constructor(
     private songService: SongService,//variable que hace referencia al servicio
-    public router: Router// variable que hace referencia a un enlace en el APPROUTING
+    private router: Router// variable que hace referencia a un enlace en el APPROUTING
     ) { }
     //método que obtiene e inicializa con todos los Géneros
   ngOnInit(): void {
@@ -41,7 +40,4 @@ export class GenreShowComponent implements OnInit {
   redirect(){
     this.router.navigate(['/createGenre']);
   }
-
-  
-
 }

@@ -14,7 +14,7 @@ import { ViewChild } from "@angular/core";
 export class GenreCreateComponent implements OnInit {
   //variables genéricas
 
-  //FOrmulario reactivo
+  //Formulario reactivo
   public genreForm: FormGroup;
   //nombre de la colección
   public collectionName= "genres"

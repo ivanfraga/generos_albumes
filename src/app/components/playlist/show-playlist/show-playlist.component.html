@@ -1,0 +1,28 @@
+<hr>
+<h3>Lista de Playlist</h3>
+<hr>
+
+<div class="d-grid gap-2 button">
+    <button (click)="redirect()" class="btn btn-primary button" type="button">Crear nueva Playlist</button>
+</div>
+
+
+<table class="table table-hover table-striped">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let playlist of Playlist">
+            <td>{{playlist.playlist_name}}</td>
+            <td>
+                <button (click)="updatePlaylist(playlist)" class="btn btn-secondary" >Actualizar</button>
+                <button (click)="showPlaylistSongs(playlist)" class="btn btn-info" >Canciones</button>
+            </td>
+
+        </tr>
+    </tbody>
+    
+</table>

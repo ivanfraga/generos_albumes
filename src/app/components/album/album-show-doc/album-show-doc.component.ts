@@ -11,5 +11,16 @@ export class AlbumShowDocComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  redirect()
+  {
+
+  }
+
+  Album
+
+  getAlbumData(album)
+  {
+
+  }
 
 }

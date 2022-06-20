@@ -22,6 +22,11 @@ export class Favorite{
     id:string;
 }
 
+export class Playlist{
+    id: string;
+    playlist_name: string;
+    playlist_collection: []; 
+}
 
 export class Album{
     id: string;

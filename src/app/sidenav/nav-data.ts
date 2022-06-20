@@ -179,4 +179,24 @@ export const drago = [
             metodo: "Visualizar Favoritos"},
         ]
     },
+    {
+        icon: "HU 10",
+        huName: "Visualizar géneros ciudadano",
+        metodos :[
+            {link: "showGenres",
+            metodo: "Visualizar Géneros"},
+            {link: "showGenreSongs",
+            metodo: "Canciones de Géneros"},
+        ]
+    },
+    {
+        icon: "HU 11",
+        huName: "Visualizar álbumes ciudadano",
+        metodos :[
+            {link: "showAlbums",
+            metodo: "Visualizar Álbumes"},
+            {link: "showAlbumSongs",
+            metodo: "Canciones de Álbumes"},
+        ]
+    },
 ]
