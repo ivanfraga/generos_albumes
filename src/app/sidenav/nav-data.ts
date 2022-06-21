@@ -121,7 +121,6 @@ export const drago = [
         metodos :[
             {link: "register",
             metodo: "Registrar a travez de formulario"},
-            
         ]
     },
     {
@@ -130,8 +129,12 @@ export const drago = [
         metodos :[
             {link: "showGenre",
             metodo: "Visualizar Géneros"},
+            {link: "showGenreDoc",
+            metodo: "Documentación Visualizar Géneros"},
             {link: "createGenre",
             metodo: "Crear Género"},
+            {link: "createGenreDoc",
+            metodo: "Documentación Crear Género"},
         ]
     },
     {
@@ -175,8 +178,12 @@ export const drago = [
         metodos :[
             {link: "selectFavorites",
             metodo: "Seleccionar Favoritos"},
+            {link: "selectFavoritesDoc",
+            metodo: "Documentación Seleccionar Favoritos"},
             {link: "showFavorites",
             metodo: "Visualizar Favoritos"},
+            {link: "showFavoritesDoc",
+            metodo: "Documentación Visualizar Favoritos"},
         ]
     },
     {
@@ -185,8 +192,12 @@ export const drago = [
         metodos :[
             {link: "showGenres",
             metodo: "Visualizar Géneros"},
+            {link: "showGenresDoc",
+            metodo: "Documentación Visualizar Géneros"},
             {link: "showGenreSongs",
             metodo: "Canciones de Géneros"},
+            {link: "showGenreSongsDoc",
+            metodo: "Documentación Canciones de Géneros"},
         ]
     },
     {
@@ -195,8 +206,32 @@ export const drago = [
         metodos :[
             {link: "showAlbums",
             metodo: "Visualizar Álbumes"},
+            {link: "showAlbumsDoc",
+            metodo: "Documentación Visualizar Álbumes"},
             {link: "showAlbumSongs",
             metodo: "Canciones de Álbumes"},
+            {link: "showAlbumSongsDoc",
+            metodo: "Documentación Canciones de Álbumes"},
+        ]
+    },
+    {
+        icon: "HU 12",
+        huName: "Gestionar Playlist",
+        metodos :[
+            {link: "createPlaylist",
+            metodo: "Crear o seleccionar Playlist"},
+            {link: "showPlaylist",
+            metodo: "Visualizar Playlist"},
+        ]
+    },
+    {
+        icon: "HU 13",
+        huName: "Gestionar Canciones Playlist",
+        metodos :[
+            {link: "addPlaylistSongs",
+            metodo: "Añadir Canciones al Playlist"},
+            {link: "showPlaylistSongs/:id",
+            metodo: "Visualizar Canciones Playlist"},
         ]
     },
 ]

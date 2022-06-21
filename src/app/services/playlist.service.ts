@@ -19,19 +19,12 @@ export class PlaylistService {
      .collection(collection)//especifica la colección
      .snapshotChanges();//obtiene los documentos
   }
-  //Obtener documento específico
-  //necesita parámetros: nombre de la colección, id del documento
-  getObject(collection: string, id: any){
-    return this.angularFirestore//accede a Firestore
-    .collection(collection)//especifica la colección
-    .doc(id)//especifica el documento
-    .valueChanges()//obtiene el documento
-  }
-
   //variables genéricas para crear canción
   public playlist_name: string;
+  public playlist_songs: string[] = [];
   public id: string;
   public songId: string;
+  public busqueda:string;
 
   public userID="DP3XfsWz0llXfYtU8UUO"//seria el usuario que inicia sesión
 
@@ -42,7 +35,7 @@ export class PlaylistService {
     playlist.id= id;
     //crea un documento con los campos especificados 
     this.getPlaylistProperties(playlist);
-    const path = "playlist/"+this.userID+"/"+id;
+    const path = "playlist/"+this.userID+"/playlist";
     this.angularFirestore.collection(path).
       doc(id)
       //establece y crea documento mediante los campos especificados
@@ -65,34 +58,60 @@ export class PlaylistService {
   getPlaylistSongProperties(playlist: Playlist){
     this.playlist_name= playlist.playlist_name;
     this.id= playlist.id;
+    
   }
 
-  getPlaylistById(collection: string, id: any){
+  getPlaylistById( id: any){
     
     return this.angularFirestore
     //Búsqueda de canciones que pertenezcan al álbum
-    .collection(collection, ref => ref.where('id', 'in', id))
+    .collection("songs", ref => ref.where('id', 'in', id))
     .snapshotChanges();
   }
 
-  showPlaylistSongs(){
-    const path =  "playlist/"+this.userID;
+  showPlaylists(){
+    const path =  "playlist/"+this.userID+"/playlist";
     return this.angularFirestore.collection(path)
-    .doc(this.id)
-    .valueChanges();
+    .snapshotChanges();//obtiene los documentos
   }
 
-  addPlaylistSongs(playlistSongs: any){
-    const path = "playlist/"+this.userID+"/"+this.id;
+  addPlaylistSongs(playlistSongs: string[]){
+    console.log("Playlist a ingresar: ", playlistSongs)
+    console.log("Playlist semi: ", this.playlist_songs)
+    const path = "playlist/"+this.userID+"/playlist";
+    this.playlist_songs.push(...playlistSongs);
+    console.log("Playlist completa: ", this.playlist_songs)
     return this.angularFirestore.collection(path)
     .doc(this.id)
     .update({
-      playlist_collection: playlistSongs
+      playlist_collection: this.playlist_songs
     })
   }
   getPlaylistProperties(playlist: Playlist){
     this.id= playlist.id;
-    this.playlist_name= playlist.playlist_name
+    this.playlist_name= playlist.playlist_name;
+    this.playlist_songs= playlist.playlist_collection
+    console.log("propiedades de la playlist: ", playlist)
+  }
+
+  setSearch(busqueda: string){
+    this.busqueda= busqueda;
+  }
+
+  getSongsSearch(){
+    return this.angularFirestore//accede a Firestore
+     .collection("songs", ref => ref.where('song_name', '==', this.busqueda))//especifica la colección
+     .snapshotChanges();//obtiene los documentos
+  }
+
+  //Obtener documento específico
+  //necesita parámetros: nombre de la colección, id del documento
+  getObject( id: any){
+    const path = "playlist/"+this.userID+"/playlist";
+    return this.angularFirestore//accede a Firestore
+    .collection(path)//especifica la colección
+    .doc(id)//especifica el documento
+    .valueChanges()//obtiene el documento
   }
 
 }

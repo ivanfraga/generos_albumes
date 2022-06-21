@@ -1,1 +1,44 @@
-<p>add-playlist-songs works!</p>
+<hr>
+<h2>Selecciona canciones para que sean parte de tu playlist</h2>
+<hr>
+<button (click)="showAllSongs()" class="btn btn-secondary button" type="button">Inicio</button>
+<input
+  #identificador    
+  type="text"
+  placeholder="Buscar canciones"          
+  autocomplete="off"    
+/>
+<button  
+  class="btn btn-primary button"
+  type="button"  
+  (click)="setSearch(identificador.value)"
+>
+Buscar Canción
+</button>
+<button (click)="onSubmit()" class="btn btn-primary button" type="button">Finalizar</button>
+<table class="table table-responsive table-hover table-striped">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>Image</th>
+            <th [width]="50">Autor</th>
+            <th>Name</th>
+            <th>Genre Name</th>
+            <th>Song</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let song of Song">
+            <td><img [src]="song.imageURL" alt="" width = 100 height = 100></td>
+            <td>{{song.author}}</td>
+            <td>{{song.song_name}}</td>
+            <td>{{song.genre_name}}</td>
+            <td><audio [src]="song.songURL" controls></audio></td>
+            <td>
+                <button (click)="addSongPlaylist(song.id)" class="btn btn-outline-secondary" >+</button>
+            </td>
+
+        </tr>
+    </tbody>
+    
+</table>

@@ -15,7 +15,9 @@ import { GenreCreateComponent } from './components/genre/genre-create/genre-crea
 import { GenreShowDocComponent } from './components/genre/genre-show-doc/genre-show-doc.component';
 import { GenreShowComponent } from './components/genre/genre-show/genre-show.component';
 import { LoginComponent } from './components/login/login.component';
+import { AddPlaylistSongsComponent } from './components/playlist/add-playlist-songs/add-playlist-songs.component';
 import { CreatePlaylistComponent } from './components/playlist/create-playlist/create-playlist.component';
+import { ShowPlaylistSongsComponent } from './components/playlist/show-playlist-songs/show-playlist-songs.component';
 import { ShowPlaylistComponent } from './components/playlist/show-playlist/show-playlist.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ShowAlbumSongsDocComponent } from './components/showGenreAlbumSongs/show-album-songs-doc/show-album-songs-doc.component';
@@ -65,7 +67,9 @@ const routes: Routes = [
   {path: 'showGenreSongsDoc', component: ShowGenreSongsDocComponent},
 
   {path: 'createPlaylist', component: CreatePlaylistComponent},  
+  {path: 'addPlaylistSongs', component: AddPlaylistSongsComponent}, 
   {path: 'showPlaylist', component: ShowPlaylistComponent},
+  {path: 'showPlaylistSongs/:id', component: ShowPlaylistSongsComponent},
 ];
 
 @NgModule({

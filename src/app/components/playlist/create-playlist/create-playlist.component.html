@@ -9,3 +9,20 @@
     </div>
     <button [disabled]="!playlistForm.valid" type="submit" class="btn btn-primary button" >Guardar</button>
 </form>
+<table class="table table-responsive table-hover table-striped">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>Nombre Playlist</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let playlist of Playlist">   
+            <td>{{playlist.playlist_name}}</td>
+            <td>
+                <button (click)="getPlaylistProperties(playlist)" class="btn btn-outline-secondary" >Seleccionar</button>
+            </td>
+        </tr>
+    </tbody>
+    
+</table>

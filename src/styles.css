@@ -26,6 +26,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     overflow-x: auto;
     padding: 30px;
     
+    
+}
+
+.imgCodigo{
+    height: 600px;
+    margin-left: 70px;
+    margin-right: 70px;
+    display: flex;
+    justify-content: left;
+    border-radius: 20px;
+    overflow-x: auto;
+    padding: 30px;
 }
 
 .card{

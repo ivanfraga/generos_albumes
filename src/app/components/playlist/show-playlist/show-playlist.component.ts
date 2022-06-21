@@ -20,7 +20,7 @@ export class ShowPlaylistComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.playlistService.getList("playlist").subscribe((res) =>{
+    this.playlistService.showPlaylists().subscribe((res) =>{
       this.Playlist = res.map((e) =>{
         return {
           id: e.payload.doc.id,
@@ -41,6 +41,10 @@ export class ShowPlaylistComponent implements OnInit {
   updatePlaylist(playlist){
     this.playlistService.getPlaylistSongProperties(playlist)
     this.router.navigate(['/updatePlaylist'])
+  }
+
+  getPlaylistProperties(playlist: Playlist){
+    this.playlistService.getPlaylistProperties(playlist);
   }
 
 
