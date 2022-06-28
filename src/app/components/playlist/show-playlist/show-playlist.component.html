@@ -1,7 +1,9 @@
-<hr>
-<h2>Lista de Playlists</h2>
-<hr>
-
+<div class="card card_title">
+    <div class="card-head"><h2>Visualiza playlists</h2></div>
+    <div class="card-body">
+        En este apartado se presentan playlists, los cuales pueden ser seleccionadas para visualizar sus canciones. 
+    </div>
+</div>
 <div class="d-grid gap-2 button">
     <button (click)="redirect()" class="btn btn-primary button" type="button">Crear nueva Playlist</button>
 </div>
@@ -16,9 +18,12 @@
         <tr *ngFor="let playlist of Playlist">
             <td>{{playlist.playlist_name}}</td>
             <td>
-                <button (click)="updatePlaylist(playlist)" class="btn btn-secondary" >Actualizar</button>
-                <button (click)="getPlaylistProperties(playlist)" routerLink="/showPlaylistSongs/{{playlist.id}}" class="btn btn-outline-secondary">Canciones</button>
+                <button (click)="getPlaylistProperties(playlist)" 
+                routerLink="/showPlaylistSongs/{{playlist.id}}" class="btn btn-secondary">Canciones</button>
             </td>
         </tr>
     </tbody>
 </table>
+
+
+

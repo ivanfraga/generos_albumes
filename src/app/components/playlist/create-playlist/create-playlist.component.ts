@@ -15,7 +15,7 @@ export class CreatePlaylistComponent implements OnInit {
 
   Playlist: Playlist[];
 
-  //FOrmulario reactivo
+  //Formulario reactivo
   public playlistForm: FormGroup;
    constructor(
     public playlistService: PlaylistService,
@@ -31,6 +31,7 @@ export class CreatePlaylistComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    //inicialización de la lista de playlists
     this.playlistService.showPlaylists().subscribe((res) =>{
       this.Playlist = res.map((e) =>{
         return {
@@ -40,19 +41,22 @@ export class CreatePlaylistComponent implements OnInit {
       });
     });
   }
-
+  //manda a crear a la playlist con los valores del formulario reactivo
   onSubmit(){
+    //función del servicio para crear playlist
     this.playlistService.playlistCreate(this.playlistForm.value);
+    //redirige a la lista de canciones
     this.router.navigate(['/addPlaylistSongs']);
     
   }
-
+  //redirige a la lista de géneros
   redirect(){
     this.router.navigate(['/showGenre']);
   }
-
+  //obtiene los campos de la playlist
   getPlaylistProperties(playlist){
     this.playlistService.getPlaylistProperties(playlist);
+    //redirige a la lista de canciones
     this.router.navigate(['/addPlaylistSongs']);
   }
 

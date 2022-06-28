@@ -1,6 +1,9 @@
-<hr>
-<h2>Selecciona canciones para que sean parte de tu playlist</h2>
-<hr>
+<div class="card card_title">
+    <div class="card-head"><h2>Selecciona canciones para la playlist</h2></div>
+    <div class="card-body">
+        En este apartado se presentan canciones, los cuales pueden ser seleccionadas para agregarse a la playlist. 
+    </div>
+</div>
 <button (click)="showAllSongs()" class="btn btn-secondary button" type="button">Inicio</button>
 <input
   #identificador    
@@ -37,8 +40,9 @@ Buscar Canción
             <td>
                 <button (click)="addSongPlaylist(song.id)" class="btn btn-outline-secondary" >+</button>
             </td>
-
         </tr>
     </tbody>
-    
 </table>
+
+
+

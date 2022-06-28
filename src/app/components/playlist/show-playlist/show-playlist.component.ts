@@ -11,7 +11,7 @@ import { Playlist } from 'src/app/song';
   styleUrls: ['./show-playlist.component.css']
 })
 export class ShowPlaylistComponent implements OnInit {
-
+  //lista de playlist
   Playlist: Playlist[];
 
   constructor(
@@ -20,6 +20,7 @@ export class ShowPlaylistComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    //inicializar playlists
     this.playlistService.showPlaylists().subscribe((res) =>{
       this.Playlist = res.map((e) =>{
         return {
@@ -29,23 +30,12 @@ export class ShowPlaylistComponent implements OnInit {
       });
     });
   }
+  //redireccionar a crear playlist
   redirect(){
     this.router.navigate(['/createPlaylist'])
   }
-
-  showPlaylistSongs(playlist){
-    this.playlistService.getPlaylistSongProperties(playlist)
-    this.router.navigate(['/showPlaylistSongs'])
-  }
-
-  updatePlaylist(playlist){
-    this.playlistService.getPlaylistSongProperties(playlist)
-    this.router.navigate(['/updatePlaylist'])
-  }
-
+  //obtener los campos de playlist
   getPlaylistProperties(playlist: Playlist){
     this.playlistService.getPlaylistProperties(playlist);
   }
-
-
 }

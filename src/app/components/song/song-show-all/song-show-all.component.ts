@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { Song } from 'src/app/song';
 import { SongService } from 'src/app/song.service';
 
@@ -14,10 +15,12 @@ export class SongShowAllComponent implements OnInit {
 
   constructor(
     private songService: SongService,
-    public router: Router
+    public router: Router,
+    public global: AppComponent
   ) { }
 
   ngOnInit(): void {
+    console.log(this.global.print());
     this.songService.getList("songs").subscribe((res) =>{
       this.Song = res.map((e) =>{
         return {

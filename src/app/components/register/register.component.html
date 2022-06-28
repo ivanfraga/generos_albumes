@@ -1,33 +1,35 @@
-<p>register works!</p>
-<div class="container-fluid">
-    <div class="row mt-5">
-      <div class="col">
-        <div class="col-4">
-          <div class="card">
-            <div class="card-body">
-              <form>
-                <div class="mb-3">
-                  <h4 class="text-dark text-muted">Register</h4>
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputEmanil1" class="form-label">Email</label>
-                  <input type="email" class="form-control" name="email" [(ngModel)]="email">
-                </div>
-                <div class="mb-3">
-                  <label for="exampleInputPassword" class="form-label">Password</label>
-                  <input type="password" class="form-control" name="password" [(ngModel)]="password">
-  
-                </div>
-                <button type="button" class="btn btn-info" (click)="register()">Register</button>
-                <div class="row">
-                  <div class="col-md-6">
-                    <a href="/login" style="text-decoration: none;">Iniciar sesion<span class="text-danger">Login</span></a>
-                  </div>  
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="card card_title">
+    <div class="card-head"><h2>Registrar un nuevo artista/ciudadano</h2></div>
+    <div class="card-body">
+        En este apartado se puede registrar un usuario ya sea artista o ciudadano con los siguientes campos. 
     </div>
-  </div>
+</div>
+<br>
+<form [formGroup]="userForm" (ngSubmit)="register()" novalidate>
+    <div class="mb-3">
+      <label class="form-label">Correo</label>
+      <input formControlName="mail" type="email" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Contraseña</label>
+      <input formControlName="password" type="password" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input formControlName="name" type="text" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Fecha de nacimiento</label>
+      <input formControlName="birthdate" type="date" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Rol</label>
+      <input formControlName="rol" type="text" class="form-control" required>
+    </div>
+
+    <button (click)="redirect()" class="btn btn-primary button" type="button">Login</button>
+    
+    <button [disabled]="!userForm.valid" type="submit" class="btn btn-primary button" >Registrar</button>
+        
+    
+</form>

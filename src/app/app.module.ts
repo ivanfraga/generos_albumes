@@ -46,6 +46,13 @@ import { ShowAlbumsDocComponent } from './components/showGenreAlbumSongs/show-al
 import { ShowGenreDocComponent } from './components/showGenreAlbumSongs/show-genre-doc/show-genre-doc.component';
 import { ShowGenreSongsDocComponent } from './components/showGenreAlbumSongs/show-genre-songs-doc/show-genre-songs-doc.component';
 import { AddPlaylistSongsComponent } from './components/playlist/add-playlist-songs/add-playlist-songs.component';
+import { CreatePlaylistDocComponent } from './components/playlist/create-playlist-doc/create-playlist-doc.component';
+import { ShowPlaylistDocComponent } from './components/playlist/show-playlist-doc/show-playlist-doc.component';
+import { AddPlaylistSongsDocComponent } from './components/playlist/add-playlist-songs-doc/add-playlist-songs-doc.component';
+import { ShowPlaylistSongsDocComponent } from './components/playlist/show-playlist-songs-doc/show-playlist-songs-doc.component';
+import { RegisterDocComponent } from './components/register/register-doc/register-doc.component';
+import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
+import { UserProfileEditComponent } from './components/user/user-profile-edit/user-profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +93,13 @@ import { AddPlaylistSongsComponent } from './components/playlist/add-playlist-so
     ShowGenreDocComponent,
     ShowGenreSongsDocComponent,
     AddPlaylistSongsComponent,
+    CreatePlaylistDocComponent,
+    ShowPlaylistDocComponent,
+    AddPlaylistSongsDocComponent,
+    ShowPlaylistSongsDocComponent,
+    RegisterDocComponent,
+    UserProfileComponent,
+    UserProfileEditComponent,
     
   ],
   imports: [

@@ -34,6 +34,6 @@ export class SelectFavoriteComponent implements OnInit {
   }
   //método que redirecciona a la visualización de géneros
   redirect(){
-    this.router.navigate(['/showGenre'])
+    this.router.navigate(['/showGenres'])
   }
 }

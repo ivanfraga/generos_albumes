@@ -10,12 +10,11 @@ import { Playlist, Song } from 'src/app/song';
   styleUrls: ['./show-playlist-songs.component.css']
 })
 export class ShowPlaylistSongsComponent implements OnInit {
-
+  //array canciones
   Song: Song[];
-  path= "/favorite/ DP3XfsWz0llXfYtU8UUO/songs";
-  path2= "songs";
   
   playlistSongs: Song[];  
+  //Objeto playlist
   playlist: any;
 
   constructor(
@@ -23,17 +22,21 @@ export class ShowPlaylistSongsComponent implements OnInit {
     private router: Router,
     private activeRoute: ActivatedRoute,
   ) { }
-
+  //función inicializadora de playlist por id
   ngOnInit(): void {
+    //obtiene el id de la playlist mediante la ruta
     const id = this.activeRoute.snapshot.paramMap.get('id');
+    //obtiene la playlist correspondiente al id
     this.playlistService.getObject(id).subscribe( res =>{
       this.playlist = res;
+      this.playlistService.getPlaylistProperties(this.playlist);
       this.getSongs();
     })
 
   }
 
   getSongs(){
+    //obtiene canciones por medio de la lista de Ids de la playlist
     this.playlistService.getPlaylistById(this.playlist.playlist_collection).subscribe(res =>{
       this.Song = res.map((e) =>{
         return {
@@ -43,13 +46,13 @@ export class ShowPlaylistSongsComponent implements OnInit {
       })
     })
   }
-
+  //redirecciónar a la lista de playlist
   showPlaylist(){
     this.router.navigate(['/showPlaylist']);
   }
-
-  deleteSong(id: any){
-    
+  //eliminar canción de la playlist
+  deleteSong(id: string){
+    this.playlistService.deletePlaylistSong(id);
   }
 
 }

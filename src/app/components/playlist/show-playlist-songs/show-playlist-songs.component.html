@@ -1,10 +1,12 @@
-<hr>
-<h3>Playlist {{playlist.playlist_name}}</h3>
-<hr>
+<div class="card card_title">
+    <div class="card-head"><h2>{{playlist.playlist_name}}</h2></div>
+    <div class="card-body">
+        En este apartado se presentan las canciones pertenecientes a la playlist <b>{{playlist.playlist_name}}</b>. 
+    </div>
+</div>
 <div class="d-grid gap-2 button">
     <button (click)="showPlaylist()" class="btn btn-primary button" type="button">Albumes</button>
 </div>
-
 <table class="table table-hover table-striped">
     <thead class="bg-dark text-white">
         <tr>
@@ -21,13 +23,10 @@
             <td>{{song.song_name}}</td>
             <td>{{song.genre_name}}</td>
             <td><audio [src]="song.songURL" controls></audio></td>
-            
-            
             <td>
                 <button (click)="deleteSong(song.id)" class="btn btn-outline-danger" >Eliminar</button>                
             </td>
-
         </tr>
     </tbody>
-    
 </table>
+

@@ -15,10 +15,15 @@ import { GenreCreateComponent } from './components/genre/genre-create/genre-crea
 import { GenreShowDocComponent } from './components/genre/genre-show-doc/genre-show-doc.component';
 import { GenreShowComponent } from './components/genre/genre-show/genre-show.component';
 import { LoginComponent } from './components/login/login.component';
+import { AddPlaylistSongsDocComponent } from './components/playlist/add-playlist-songs-doc/add-playlist-songs-doc.component';
 import { AddPlaylistSongsComponent } from './components/playlist/add-playlist-songs/add-playlist-songs.component';
+import { CreatePlaylistDocComponent } from './components/playlist/create-playlist-doc/create-playlist-doc.component';
 import { CreatePlaylistComponent } from './components/playlist/create-playlist/create-playlist.component';
+import { ShowPlaylistDocComponent } from './components/playlist/show-playlist-doc/show-playlist-doc.component';
+import { ShowPlaylistSongsDocComponent } from './components/playlist/show-playlist-songs-doc/show-playlist-songs-doc.component';
 import { ShowPlaylistSongsComponent } from './components/playlist/show-playlist-songs/show-playlist-songs.component';
 import { ShowPlaylistComponent } from './components/playlist/show-playlist/show-playlist.component';
+import { RegisterDocComponent } from './components/register/register-doc/register-doc.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ShowAlbumSongsDocComponent } from './components/showGenreAlbumSongs/show-album-songs-doc/show-album-songs-doc.component';
 import { ShowAlbumSongsComponent } from './components/showGenreAlbumSongs/show-album-songs/show-album-songs.component';
@@ -32,6 +37,8 @@ import { SongCreateComponent } from './components/song/song-create/song-create.c
 import { SongEditComponent } from './components/song/song-edit/song-edit.component';
 import { SongShowAllComponent } from './components/song/song-show-all/song-show-all.component';
 import { SongShowComponent } from './components/song/song-show/song-show.component';
+import { UserProfileEditComponent } from './components/user/user-profile-edit/user-profile-edit.component';
+import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
@@ -51,6 +58,7 @@ const routes: Routes = [
   {path: 'showFavoritesDoc', component:FavoriteShowDocComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'registerDoc', component: RegisterDocComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'forgotPassword', component: ForgotpasswordComponent},
   {path: 'artistRequest', component: ArtistRequestComponent},
@@ -66,10 +74,16 @@ const routes: Routes = [
   {path: 'showGenreSongs', component: ShowGenreSongsComponent},
   {path: 'showGenreSongsDoc', component: ShowGenreSongsDocComponent},
 
-  {path: 'createPlaylist', component: CreatePlaylistComponent},  
+  {path: 'createPlaylist', component: CreatePlaylistComponent}, 
+  {path: 'createPlaylistDoc', component: CreatePlaylistDocComponent},   
   {path: 'addPlaylistSongs', component: AddPlaylistSongsComponent}, 
+  {path: 'addPlaylistSongsDoc', component: AddPlaylistSongsDocComponent}, 
   {path: 'showPlaylist', component: ShowPlaylistComponent},
+  {path: 'showPlaylistDoc', component: ShowPlaylistDocComponent},
   {path: 'showPlaylistSongs/:id', component: ShowPlaylistSongsComponent},
+  {path: 'showPlaylistSongsDoc', component: ShowPlaylistSongsDocComponent},
+  {path: 'userProfile/:id', component: UserProfileComponent},
+  {path: 'userEdit/:id', component: UserProfileEditComponent},
 ];
 
 @NgModule({

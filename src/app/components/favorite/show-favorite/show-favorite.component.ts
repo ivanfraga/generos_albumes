@@ -70,4 +70,7 @@ export class ShowFavoriteComponent implements OnInit {
     //referencia al método de servicio que elimina el documento segun el ID
     this.songService.removeFavorite(favorite.id);
   }
+  redirect(){
+    this.router.navigate(['/showGenres'])
+  }
 }
