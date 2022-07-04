@@ -4,7 +4,6 @@
         <label class="form-label">Nombre de la canción</label>
         <input formControlName="song_name" type="text" class="form-control" required>
     </div>
-    
     <div class="add">
         <label class="form-label">Agregar la canción</label>
         <br>
@@ -16,12 +15,9 @@
         />
         <br>
         <audio [src]="url" controls></audio>
-        
     </div>
-
     <button (click)="redirect()" class="btn btn-primary button" type="button">Lista de albumes</button>
-    
     <button [disabled]="!songForm.valid" type="submit" class="btn btn-primary button" >Save</button>
-        
-    
 </form>
+
+

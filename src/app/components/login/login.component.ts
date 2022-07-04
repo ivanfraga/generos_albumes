@@ -4,9 +4,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
-
-
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,7 +15,6 @@ export class LoginComponent implements OnInit {
   password: string= '';
   public userForm: FormGroup;
   public user: any;
-
   constructor(private auth: AuthService, 
     public formBuilder: FormBuilder, 
     private router : Router,
@@ -34,12 +30,10 @@ export class LoginComponent implements OnInit {
       id: null
     })
    }
-
   ngOnInit(): void {
   }
   //Método para Iniciar sesión
   async login(){
-    
     //referencia al método del servicio para Iniciar sesión
     //verificación de algun error
     const res = await this.auth.login(this.userForm.value).catch(error =>{
@@ -61,40 +55,18 @@ export class LoginComponent implements OnInit {
           this.user = res;
           console.log("datos del usuario", this.user);
           this.auth.setUserProperties(this.user);
-          //this.auth.getuserProperties();
           console.log("global", this.global.title);
           this.global.getuserProperties(this.user.id, this.user.name, this.user.rol);
           console.log(this.global.print());
-          switch(this.user.rol) { 
-            case "artist": { 
-              this.router.navigate(['/userProfile', this.user.id])
-               break; 
-            } 
-            case "citizen": { 
-              this.router.navigate(['/showGenres'])
-               break; 
-            } 
-            case "admin": { 
-              this.router.navigate(['/artistRequest'])
-              break; 
-           }
-            default: { 
-               alert("revisa que el usuario tenga rol")
-               break; 
-            } 
-         } 
-
-        })
-        
+          if(this.user.rol == "no artist"){
+            this.router.navigate(['/noArtist'])
+          }
+          else{
+            this.router.navigate(['/userProfile', this.user.id])
+          }
           
-        //redireccionar a la vista principal
-        
-  
+        })
       }
-  
-    
-   
-
   }
 
 }

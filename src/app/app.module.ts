@@ -53,6 +53,16 @@ import { ShowPlaylistSongsDocComponent } from './components/playlist/show-playli
 import { RegisterDocComponent } from './components/register/register-doc/register-doc.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { UserProfileEditComponent } from './components/user/user-profile-edit/user-profile-edit.component';
+import { SongShowDocComponent } from './components/song/song-show-doc/song-show-doc.component';
+import { SongCreateDocComponent } from './components/song/song-create-doc/song-create-doc.component';
+import { SongShowAllDocComponent } from './components/song/song-show-all-doc/song-show-all-doc.component';
+import { SongEditDocComponent } from './components/song/song-edit-doc/song-edit-doc.component';
+import { LoginDocComponent } from './components/login/login-doc/login-doc.component';
+import { ForgotpasswordDocComponent } from './components/forgotpassword/forgotpassword-doc/forgotpassword-doc.component';
+import { ArtistRequestDocComponent } from './components/artist-request/artist-request-doc/artist-request-doc.component';
+import { UserProfileDocComponent } from './components/user/user-profile-doc/user-profile-doc.component';
+import { UserProfileEditDocComponent } from './components/user/user-profile-edit-doc/user-profile-edit-doc.component';
+import { NoArtistComponent } from './components/user/no-artist/no-artist.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +110,16 @@ import { UserProfileEditComponent } from './components/user/user-profile-edit/us
     RegisterDocComponent,
     UserProfileComponent,
     UserProfileEditComponent,
+    SongShowDocComponent,
+    SongCreateDocComponent,
+    SongShowAllDocComponent,
+    SongEditDocComponent,
+    LoginDocComponent,
+    ForgotpasswordDocComponent,
+    ArtistRequestDocComponent,
+    UserProfileDocComponent,
+    UserProfileEditDocComponent,
+    NoArtistComponent,
     
   ],
   imports: [

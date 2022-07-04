@@ -8,7 +8,6 @@
         <label class="form-label">Nombre de la canción</label>
         <input formControlName="name" type="text" class="form-control" required>
     </div>
-    
     <div class="add">
         <label class="form-label">Cambia la foto de perfil</label>
         <br>
@@ -19,13 +18,10 @@
             (change)="onFilesAdded($event.target)"     
         />
         <br>
-        <img [src]="url" formControlName="imageURL" controls height="200px" width="200px">
-        
+        <img [src]="url" formControlName="imageURL" controls height="200px" width="200px"> 
     </div>
-
     <button (click)="redirect()" class="btn btn-primary button" type="button">Perfil</button>
-    
     <button [disabled]="!userEditForm.valid" type="submit" class="btn btn-primary button" >Guardar</button>
-        
-    
 </form>
+
+

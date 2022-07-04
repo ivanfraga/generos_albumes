@@ -16,12 +16,11 @@
         />
         <br>
         <audio [src]="url" formControlName="songURL" controls></audio>
-        
     </div>
-
-    <button (click)="redirect()" class="btn btn-primary button" type="button">Lista de albumes</button>
-    
-    <button [disabled]="!songEditForm.valid" type="submit" class="btn btn-primary button" >Save</button>
-        
-    
+    <button (click)="redirect()" class="btn btn-primary button" type="button">
+        Lista de albumes</button>
+    <button [disabled]="!songEditForm.valid" type="submit" class="btn btn-primary button" >
+        Save</button>
 </form>
+
+

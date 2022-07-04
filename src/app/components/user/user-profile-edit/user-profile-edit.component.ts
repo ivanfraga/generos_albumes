@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+//importar servicio
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -24,6 +25,7 @@ export class UserProfileEditComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     public router: Router
   ) {
+    //declarar campos del formulario reactivo
     this.userEditForm= this.formBuilder.group({
       id: [''],
       name: [''],
@@ -31,11 +33,15 @@ export class UserProfileEditComponent implements OnInit {
       image_reference: [''],
     })
    }
-
+   //función inicializadora
   ngOnInit(): void {
+    //obtener el id de la ruta
     this.id = this.activeRoute.snapshot.paramMap.get('id')
+    //obtener el usuario segun el id
     this.authService.getObject(this.id, "users").subscribe( res =>{
+      //asignación del usuario
       this.user = res;
+      //inicializar los campos del formulario reactivo
       this.userEditForm = this.formBuilder.group({
         id: [this.user.id],
         name: [this.user.name],
@@ -47,22 +53,27 @@ export class UserProfileEditComponent implements OnInit {
     })
   }
   onSubmit() {
-    const id = this.activeRoute.snapshot.paramMap.get('id');   
+    //obtener id de la ruta
+    const id = this.activeRoute.snapshot.paramMap.get('id');  
+    //cargar los cambios realizados 
     this.authService.updateUserProcess(this.userEditForm.value, this._file, this.isChanged, id);
+    //redireccionar a la vista del perfil
     this.router.navigate(['/userProfile', this.id]);
     console.log(this.userEditForm.value) //podemos ver los valores capturados
     this.isChanged = false;
     this.file.nativeElement.value = "";
   }
-
+  //función para transformar la imagen subida a url local
   onFilesAdded(target: any) {
     this.isChanged = true;
-    const reader = new FileReader();
+    const reader = new FileReader();//lector de archivos
+    //función para cargar imagen subida y presentarla al usuario
     reader.onload = () => {
       this.url = reader.result;
     };
     if (target.files.length > 0) {
       this._file = target.files[0];
+      //asignación de url local a _file
       reader.readAsDataURL(this._file);
     }
   }

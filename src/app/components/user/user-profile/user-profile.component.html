@@ -4,9 +4,6 @@
         En este apartado se presenta el perfil actual de usuario. 
     </div>
 </div>
-<div class="d-grid gap-2 button">
-    <button (click)="showGenre()" class="btn btn-primary button" type="button">{{redirection}}</button>
-</div>
 <div class="col d-flex justify-content-center">
     <div class="card cardProfile" style="width: 18rem;">
         <img src={{usuario.imageURL}} class="card-img-top" alt="...">
@@ -23,7 +20,14 @@
             
           </p>
         </div>
-        <button (click)="editar()" class="btn btn-primary">Editar</button>
+        <button (click)="editar()" class="btn btn-primary profilebutton">Editar Perfil</button>
+        
+        <button (click)="showGenre()" class="btn btn-primary profilebutton">{{redirection}}</button>
+        
+        <button (click)="logout()" class="btn btn-secondary profilebutton">Cerrar Sesión</button>
     </div>
     
 </div>
+
+
+

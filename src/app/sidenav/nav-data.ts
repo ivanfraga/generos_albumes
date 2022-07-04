@@ -178,7 +178,7 @@ export const drago = [
         metodos :[
             {link: "selectFavorites",
             metodo: "Seleccionar Favoritos"},
-            {link: "selectFavoritesDoc",
+            {link: "selectFavoritesDoc/",
             metodo: "Documentación Seleccionar Favoritos"},
             {link: "showFavorites",
             metodo: "Visualizar Favoritos"},

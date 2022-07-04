@@ -1,26 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+//importar servicio
 import { ArtistRequestService } from 'src/app/services/artist-request.service';
 import { Artist } from 'src/app/song';
-
-
-
 @Component({
   selector: 'app-artist-request',
   templateUrl: './artist-request.component.html',
   styleUrls: ['./artist-request.component.css']
 })
 export class ArtistRequestComponent implements OnInit {
-
+  //array de artistas
   Artist: Artist[];
+  //array de no artistas
   NoArtist: Artist[];
   artist= 'artist'
   noArtist = 'no artist'
 
   constructor(private artistService: ArtistRequestService) { }
-
+  //función inicializadora
   ngOnInit(): void {
-    
+    //obtiene los no artistas
     this.artistService.getNoArtist().subscribe((res) =>{
+      //asignación de los no artistas
       this.Artist = res.map((e) =>{
         return {
           id: e.payload.doc.id,
@@ -33,7 +33,9 @@ export class ArtistRequestComponent implements OnInit {
   }
 
   getArtist(){
+    //obtiene los artistas
     this.artistService.getArtist().subscribe((res) =>{
+      //asignación de artistas
       this.NoArtist = res.map((e) =>{
         return {
           id: e.payload.doc.id,
@@ -42,7 +44,8 @@ export class ArtistRequestComponent implements OnInit {
       });
     });
   }
-
+  //función para cambiar de rol a artista
+  //necesita parámetro: objeto artista
   convertToArtist(artist: Artist){
     this.artistService.artistRol(artist)};
 

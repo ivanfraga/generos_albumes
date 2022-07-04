@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   password: string= '';
   //formulario de usuario
   public userForm: FormGroup;
+  user: any;
 
   constructor(private auth: AuthService, private router: Router, public formBuilder: FormBuilder,) {
     //esecificación de los campos de usuario
@@ -53,18 +54,28 @@ export class RegisterComponent implements OnInit {
       //impresión por consola de los datos del usuario registrado
       console.log("datos usuario", this.userForm.value)
       //creario usuario en Firestore
-      await this.auth.createUser(this.userForm.value, path);
+      this.auth.createUser(this.userForm.value, path);
+      await this.auth.getObject(id, path).subscribe( res =>{
+        //asignación del perfil
+         this.user = res;
+         console.log("usuario creado: ", this.user);
+         if(this.user.rol == "no artist"){
+          this.router.navigate(['/noArtist'])
+        }
+        else{
+          this.router.navigate(['/userProfile', this.user.id])
+        }
+      })
       //redireccionar a la vista principal
-      this.router.navigate(['/showAllSong'])
 
     }
 
   }
   artista(){
-    this.userForm.patchValue({rol: "artista"});
+    this.userForm.patchValue({rol: "no artist"});
   }
   ciudadano(){
-    this.userForm.patchValue({rol: "ciudadano"});
+    this.userForm.patchValue({rol: "citizen"});
   }
   //función para redireccionar a login
   redirect(){

@@ -4,16 +4,19 @@ import { AlbumCreateDocComponent } from './components/album/album-create-doc/alb
 import { AlbumCreateComponent } from './components/album/album-create/album-create.component';
 import { AlbumShowDocComponent } from './components/album/album-show-doc/album-show-doc.component';
 import { AlbumShowComponent } from './components/album/album-show/album-show.component';
+import { ArtistRequestDocComponent } from './components/artist-request/artist-request-doc/artist-request-doc.component';
 import { ArtistRequestComponent } from './components/artist-request/artist-request.component';
 import { FavoriteSelectDocComponent } from './components/favorite/favorite-select-doc/favorite-select-doc.component';
 import { FavoriteShowDocComponent } from './components/favorite/favorite-show-doc/favorite-show-doc.component';
 import { SelectFavoriteComponent } from './components/favorite/select-favorite/select-favorite.component';
 import { ShowFavoriteComponent } from './components/favorite/show-favorite/show-favorite.component';
+import { ForgotpasswordDocComponent } from './components/forgotpassword/forgotpassword-doc/forgotpassword-doc.component';
 import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
 import { GenreCreateDocComponent } from './components/genre/genre-create-doc/genre-create-doc.component';
 import { GenreCreateComponent } from './components/genre/genre-create/genre-create.component';
 import { GenreShowDocComponent } from './components/genre/genre-show-doc/genre-show-doc.component';
 import { GenreShowComponent } from './components/genre/genre-show/genre-show.component';
+import { LoginDocComponent } from './components/login/login-doc/login-doc.component';
 import { LoginComponent } from './components/login/login.component';
 import { AddPlaylistSongsDocComponent } from './components/playlist/add-playlist-songs-doc/add-playlist-songs-doc.component';
 import { AddPlaylistSongsComponent } from './components/playlist/add-playlist-songs/add-playlist-songs.component';
@@ -33,10 +36,17 @@ import { ShowGenreDocComponent } from './components/showGenreAlbumSongs/show-gen
 import { ShowGenreSongsDocComponent } from './components/showGenreAlbumSongs/show-genre-songs-doc/show-genre-songs-doc.component';
 import { ShowGenreSongsComponent } from './components/showGenreAlbumSongs/show-genre-songs/show-genre-songs.component';
 import { ShowGenreComponent } from './components/showGenreAlbumSongs/show-genre/show-genre.component';
+import { SongCreateDocComponent } from './components/song/song-create-doc/song-create-doc.component';
 import { SongCreateComponent } from './components/song/song-create/song-create.component';
+import { SongEditDocComponent } from './components/song/song-edit-doc/song-edit-doc.component';
 import { SongEditComponent } from './components/song/song-edit/song-edit.component';
+import { SongShowAllDocComponent } from './components/song/song-show-all-doc/song-show-all-doc.component';
 import { SongShowAllComponent } from './components/song/song-show-all/song-show-all.component';
+import { SongShowDocComponent } from './components/song/song-show-doc/song-show-doc.component';
 import { SongShowComponent } from './components/song/song-show/song-show.component';
+import { NoArtistComponent } from './components/user/no-artist/no-artist.component';
+import { UserProfileDocComponent } from './components/user/user-profile-doc/user-profile-doc.component';
+import { UserProfileEditDocComponent } from './components/user/user-profile-edit-doc/user-profile-edit-doc.component';
 import { UserProfileEditComponent } from './components/user/user-profile-edit/user-profile-edit.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -47,24 +57,31 @@ const routes: Routes = [
   {path: 'createGenre', component:GenreCreateComponent},
   {path: 'createGenreDoc', component:GenreCreateDocComponent},
   {path: 'showAlbum', component:AlbumShowComponent},
+  {path: 'showAlbumDoc', component: AlbumShowDocComponent},
   {path: 'createAlbum', component:AlbumCreateComponent},
+  {path: 'createAlbumDoc', component: AlbumCreateDocComponent},
   {path: 'showSong', component:SongShowComponent},
+  {path: 'showSongDoc', component:SongShowDocComponent},
   {path: 'createSong', component:SongCreateComponent},
+  {path: 'createSongDoc', component:SongCreateDocComponent},
   {path: 'showAllSong', component:SongShowAllComponent},
+  {path: 'showAllSongDoc', component:SongShowAllDocComponent},
   {path: 'updateSong/:id', component:SongEditComponent},
+  {path: 'updateSongDoc', component:SongEditDocComponent},
   {path: 'selectFavorites', component:SelectFavoriteComponent},
   {path: 'selectFavoritesDoc', component:FavoriteSelectDocComponent},
   {path: 'showFavorites', component:ShowFavoriteComponent},
   {path: 'showFavoritesDoc', component:FavoriteShowDocComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'loginDoc', component: LoginDocComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'registerDoc', component: RegisterDocComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'forgotPassword', component: ForgotpasswordComponent},
+  {path: 'forgotPasswordDoc', component: ForgotpasswordDocComponent},
   {path: 'artistRequest', component: ArtistRequestComponent},
-  {path: 'createAlbumDoc', component: AlbumCreateDocComponent},
-  {path: 'showAlbumDoc', component: AlbumShowDocComponent},
-
+  {path: 'artistRequestDoc', component: ArtistRequestDocComponent},
+  
   {path: 'showAlbumSongs', component: ShowAlbumSongsComponent},
   {path: 'showAlbumSongsDoc', component: ShowAlbumSongsDocComponent},
   {path: 'showAlbums', component: ShowAlbumsComponent},
@@ -83,9 +100,11 @@ const routes: Routes = [
   {path: 'showPlaylistSongs/:id', component: ShowPlaylistSongsComponent},
   {path: 'showPlaylistSongsDoc', component: ShowPlaylistSongsDocComponent},
   {path: 'userProfile/:id', component: UserProfileComponent},
+  {path: 'userProfileDoc', component: UserProfileDocComponent},
   {path: 'userEdit/:id', component: UserProfileEditComponent},
+  {path: 'userEditDoc', component: UserProfileEditDocComponent},
+  {path: 'noArtist', component: NoArtistComponent},
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

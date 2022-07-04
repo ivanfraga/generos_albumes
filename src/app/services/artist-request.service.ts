@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-//AngularFirestore library
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { CLIENT_RENEG_LIMIT } from 'tls';
 import { Artist } from '../song';
 
 @Injectable({
@@ -11,12 +9,13 @@ export class ArtistRequestService {
 
   constructor(private angularFirestore: AngularFirestore) { }
 
-  //traemos todos los post
+  //traemos todos los no artistas
   getNoArtist(){
     return this.angularFirestore
     .collection("citizen", ref => ref.where('rol', '==', 'no artist')) //filtrado de usuarios no artistas
     .snapshotChanges()
   }
+  //traemos todos los no artistas
   getArtist(){
     return this.angularFirestore
     .collection("citizen", ref => ref.where('rol', '==', 'artist')) //filtrado de usuarios artistas
@@ -24,10 +23,10 @@ export class ArtistRequestService {
   }
 
   //cambiar de rol
+  //necesita parámetro: objeto artista
   artistRol(artist: Artist)
   {
-    
-    console.log("el rol a actualizar es: ", artist.id )
+    console.log("el rol a actualizar es del artista: ", artist.id )
     const au = this.angularFirestore.doc(`citizen/${artist.id}`)
     au.update({
       rol: artist.rol= "artist"

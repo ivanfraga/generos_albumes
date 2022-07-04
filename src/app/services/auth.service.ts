@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 //Importa biblioteca de Firebase Authentication
-import { AngularFireAuth} from '@angular/fire/compat/auth'
+import { AngularFireAuth} from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 //Importa biblioteca de Router
@@ -38,7 +38,7 @@ export class AuthService {
   }
   //login method
   //Método para Acceder al sistema
-  //Necesita parámetros: correo y contraseña 
+  //Necesita parámetro: objeto User
   login(user: User) {
     //método de firebase para acceder al sistema mediante el correo y contraseña
     return this.fireauth.signInWithEmailAndPassword(user.mail,user.password);
@@ -151,13 +151,18 @@ export class AuthService {
   
     //verifica si hubo cambio de archivo canción
     if(isChanged){
+      //especifica la ruta del usuario
       const filePath = id+ "/" + object.name;
+      //guarda la imagen en storage, segun la ruta especficada 
       const ref = this.storage.ref(filePath);
       console.log("el path hasta aquí si sirve")
       ref.put(_file).then(() => {
         ref.getDownloadURL().subscribe(url => {
+          //en caso de que exista una imagen guardada en storage, se la elimina  
+          //paraeconomizar recursos
           if (object.image_reference !== ''){
           this.storage.ref(object.image_reference).delete();}
+          //actualizar con los nuevos campos editados
           this.updateUser(object, url, filePath, id)
         })
       });
