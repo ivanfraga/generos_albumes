@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { Album } from 'src/app/song';
 import { SongService } from 'src/app/song.service';
 @Component({
@@ -12,9 +12,11 @@ export class AlbumShowComponent implements OnInit {
   Album: Album[];//variable array de tipo Album
 
   constructor(
+    private activeRoute: ActivatedRoute,
     private songService: SongService, //variable que hace referencia al servicio
     public router: Router// variable que hace referencia a un enlace en el APPROUTING
   ) { }
+  public id=this.activeRoute.snapshot.paramMap.get('id');
     //método que obtiene e inicializa con todos los albumes
   ngOnInit(): void {
     this.songService.getList("albums").subscribe((res) =>{
@@ -34,12 +36,12 @@ export class AlbumShowComponent implements OnInit {
     this.songService.getAlbumSongProperties(album);
     console.log("Propiedades del album seleccionado", album)
     //redireccionar a la página de crear canción
-    this.router.navigate(['/createSong']);
+    this.router.navigate(['/createSong', this.id]);
     
   }
   //método para redireccionar a crear álbum
   redirect(){
-    this.router.navigate(['/createAlbum']);
+    this.router.navigate(['/createAlbum', this.id]);
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { Song, Favorite } from 'src/app/song';//importar clases referentes a favoritos y canciones
 import { SongService } from 'src/app/song.service';
 
@@ -25,12 +25,13 @@ export class ShowFavoriteComponent implements OnInit {
 
   //variables que hacen referencia a :
   constructor(
+    private activeRoute: ActivatedRoute,
     //servicio en donde se alojan los métodos genéricos
     private songService: SongService,
     //variable que ayuda a cambiar de ruta
     public router: Router
   ) { }
-  
+  public id=this.activeRoute.snapshot.paramMap.get('id');
   ngOnInit(): void {
     //Método que obtiene los IDs registrados en Favoritos
     this.songService.getList(this.path).subscribe(res =>{
@@ -71,6 +72,11 @@ export class ShowFavoriteComponent implements OnInit {
     this.songService.removeFavorite(favorite.id);
   }
   redirect(){
-    this.router.navigate(['/showGenres'])
+    this.router.navigate(['/selectFavorites', this.id]);
   }
+
+  playlist(){
+    this.router.navigate(['/showPlaylist', this.id]);
+  }
+
 }

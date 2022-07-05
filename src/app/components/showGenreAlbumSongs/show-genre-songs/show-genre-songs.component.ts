@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {  ActivatedRoute,Router } from '@angular/router';
 import { Song } from 'src/app/song';//importar clase Canción
 import { SongService } from 'src/app/song.service';//importar servicio
 
@@ -12,9 +12,11 @@ export class ShowGenreSongsComponent implements OnInit {
   //variable donde se almacena la lsita de canciones
   Song: Song[];
   constructor(
+    private activeRoute: ActivatedRoute,
     private songService: SongService,
     private router: Router
   ) { }
+  public id=this.activeRoute.snapshot.paramMap.get('id');
   //método que inicializa las canciones dependiendo del género
   ngOnInit(): void {
     this.songService.getAlbumGenreSongs("genres").subscribe((res) =>{
@@ -28,12 +30,16 @@ export class ShowGenreSongsComponent implements OnInit {
   }
   //método que redirecciona a la visualización de géneros
   redirect(){
-    this.router.navigate(['/showGenres'])
+    this.router.navigate(['/showGenres', this.id]);
   }
   //opcional
   //función para añadir a favoritos
   addToFavorite(song){
     this.songService.addToFavorite(song);
+  }
+
+  favoritos(){
+    this.router.navigate(['/showFavorites', this.id]);
   }
 
 }

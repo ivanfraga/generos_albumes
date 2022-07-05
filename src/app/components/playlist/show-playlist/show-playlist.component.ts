@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 ////Servicio en donde estan los métodos genéricos
 import { PlaylistService } from 'src/app/services/playlist.service';
 //Formulario reactivo
-import { Router } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { Playlist } from 'src/app/song';
 
 @Component({
@@ -15,10 +15,11 @@ export class ShowPlaylistComponent implements OnInit {
   Playlist: Playlist[];
 
   constructor(
+    private activeRoute: ActivatedRoute,
     private playlistService: PlaylistService,
     private router: Router
   ) { }
-
+  public id=this.activeRoute.snapshot.paramMap.get('id');
   ngOnInit(): void {
     //inicializar playlists
     this.playlistService.showPlaylists().subscribe((res) =>{
@@ -32,7 +33,10 @@ export class ShowPlaylistComponent implements OnInit {
   }
   //redireccionar a crear playlist
   redirect(){
-    this.router.navigate(['/createPlaylist'])
+    this.router.navigate(['/createPlaylist', this.id])
+  }
+  favoritos(){
+    this.router.navigate(['/showFavorites', this.id])
   }
   //obtener los campos de playlist
   getPlaylistProperties(playlist: Playlist){

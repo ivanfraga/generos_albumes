@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { SongService } from 'src/app/song.service';
 //Formulario reactivo
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { ViewChild } from "@angular/core";
 
 @Component({
@@ -28,7 +28,8 @@ export class GenreCreateComponent implements OnInit {
   constructor(
     public songService: SongService,
     public formBuilder: FormBuilder,
-    public router: Router
+    public router: Router,
+    private activeRoute: ActivatedRoute,
   ) {
     //campos que maneja un género
     this.genreForm= this.formBuilder.group({
@@ -39,6 +40,7 @@ export class GenreCreateComponent implements OnInit {
       id: null
     })
    }
+   public id=this.activeRoute.snapshot.paramMap.get('id');
 
   ngOnInit(): void {
   }
@@ -48,7 +50,7 @@ export class GenreCreateComponent implements OnInit {
     //Obtiene datos necesarios para la canción
     this.songService.getGenreSongProperties(this.genreForm.value);
     //redirecciona a Crear Album
-    this.router.navigate(['/createAlbum']);
+    this.router.navigate(['/createAlbum', this.id]);
     console.log(this.genreForm.value);
     //Reestablecimiento de variables
     this.isChanged = false;
@@ -73,7 +75,7 @@ export class GenreCreateComponent implements OnInit {
   }
 
   redirect(){
-    this.router.navigate(['/showGenre']);
+    this.router.navigate(['/showGenre', this.id]);
   }
 
 }

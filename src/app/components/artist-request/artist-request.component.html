@@ -1,9 +1,15 @@
 <div class="card">
     <div class="card-head"><h2>Candidatos a Artistas</h2></div>
     <div class="card-body">
-        En este apartado se muestran los candidatos a artistas y artistas. 
+        En este apartado se muestran los candidatos a artistas y artistas aprobados. 
     </div>
 </div>
+<div class="d-grid gap-2 button">
+    <button (click)="profile()" class="d-grid gap-2 button btn btn-secondary" >Perfil</button>
+</div>
+<br>
+<h3>Candidatos a artistas</h3>
+<br>
 <table class="table table-hover table-striped">
     <thead class="bg-dark text-white">
         <tr>
@@ -24,9 +30,9 @@
         </tr>
     </tbody>
 </table>
-<hr>
-<button (click)="getArtist()">Actualizar Artistas</button>
-<hr>
+<br>
+<h3>Artistas</h3>
+<br>
 <table class="table table-hover table-striped">
     <thead class="bg-dark text-white">
         <tr>

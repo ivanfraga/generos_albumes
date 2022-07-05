@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SongService } from 'src/app/song.service'; //Servicio en donde estan los métodos genéricos
 import { FormBuilder, FormGroup } from '@angular/forms'; //Formulario reactivo
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { ViewChild } from "@angular/core";
 
 @Component({
@@ -21,6 +21,7 @@ export class AlbumCreateComponent implements OnInit {
   _file;
 
   constructor(
+    private activeRoute: ActivatedRoute,
     public songService: SongService,
     public formBuilder: FormBuilder,
     public router: Router
@@ -36,6 +37,7 @@ export class AlbumCreateComponent implements OnInit {
       id: null
     })
    }
+   public id=this.activeRoute.snapshot.paramMap.get('id');
 
   ngOnInit(): void {
   }
@@ -45,7 +47,7 @@ export class AlbumCreateComponent implements OnInit {
     this.songService.addGenreAlbum(this.albumForm.value, this._file, this.collectionName);//envia como parámetros: valores del album reactivo, imagen local, nombre de la colección
     //Obtiene datos necesarios para la canción
     this.songService.getAlbumSongProperties(this.albumForm.value);
-    this.router.navigate(['/createSong']);
+    this.router.navigate(['/createSong', this.id]);
     
     this.isChanged = false;
     //reseteo de file
@@ -72,7 +74,7 @@ export class AlbumCreateComponent implements OnInit {
   }
 
   redirect(){
-    this.router.navigate(['/showAlbum']);
+    this.router.navigate(['/showAlbum', this.id]);
   }
 
 }

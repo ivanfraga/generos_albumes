@@ -4,7 +4,7 @@ import { SongService } from 'src/app/song.service';
 //Formularios reactvos
 import { FormBuilder, FormGroup } from '@angular/forms';
 //rutas
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { ViewChild } from "@angular/core";
 
 @Component({
@@ -24,6 +24,7 @@ export class SongCreateComponent implements OnInit {
   _file;
 
   constructor(
+    private activeRoute: ActivatedRoute,
     public songService: SongService,
     public formBuilder: FormBuilder,
     public router: Router
@@ -42,7 +43,7 @@ export class SongCreateComponent implements OnInit {
       id: null
     })
    }
-
+   public id=this.activeRoute.snapshot.paramMap.get('id');
   ngOnInit(): void {
   }
 
@@ -50,7 +51,7 @@ export class SongCreateComponent implements OnInit {
     //Referencia a función del servicio para subir una canción
     this.songService.addGenreAlbum(this.songForm.value, this._file, this.collectionName);
     // una vez subida la canción, redirige a mostrar canciones del album 
-    this.router.navigate(['/showSong']);
+    this.router.navigate(['/showSong', this.id]);
     //formatea las variables
     this.isChanged = false;
     this.file.nativeElement.value = "";
@@ -74,7 +75,7 @@ export class SongCreateComponent implements OnInit {
   }
 
   redirect(){
-    this.router.navigate(['/showAlbum']);
+    this.router.navigate(['/showAlbum', this.id]);
   }
 
 }

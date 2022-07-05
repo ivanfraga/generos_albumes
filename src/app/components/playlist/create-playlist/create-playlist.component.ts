@@ -29,6 +29,7 @@ export class CreatePlaylistComponent implements OnInit {
       id: null
     })
    }
+   //public id=this.activeRoute.snapshot.paramMap.get('id');
 
   ngOnInit(): void {
     //inicialización de la lista de playlists

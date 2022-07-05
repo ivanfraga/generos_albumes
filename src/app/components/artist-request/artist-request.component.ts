@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 //importar servicio
 import { ArtistRequestService } from 'src/app/services/artist-request.service';
 import { Artist } from 'src/app/song';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+
 @Component({
   selector: 'app-artist-request',
   templateUrl: './artist-request.component.html',
@@ -15,9 +18,12 @@ export class ArtistRequestComponent implements OnInit {
   artist= 'artist'
   noArtist = 'no artist'
 
-  constructor(private artistService: ArtistRequestService) { }
+  constructor(private artistService: ArtistRequestService,
+     private router: Router,
+     private activeRoute: ActivatedRoute,) { }
   //función inicializadora
   ngOnInit(): void {
+    this.getArtist()
     //obtiene los no artistas
     this.artistService.getNoArtist().subscribe((res) =>{
       //asignación de los no artistas
@@ -52,5 +58,9 @@ export class ArtistRequestComponent implements OnInit {
   convertToNoArtist(artist: Artist){
     this.artistService.noArtistRol(artist);
   } 
+  profile(){
+    const id = this.activeRoute.snapshot.paramMap.get('id');
+    this.router.navigate(['/userProfile', id]);
+  }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { Genre } from 'src/app/song';
 import { SongService } from 'src/app/song.service';
 
@@ -13,9 +13,12 @@ export class ShowGenreComponent implements OnInit {
   Genre: Genre[];//variable array de tipo Género
 
   constructor(
+    private activeRoute: ActivatedRoute,
     private songService: SongService,//variable que hace referencia al servicio
     private router: Router// variable que hace referencia a un enlace en el APPROUTING
   ) { }
+
+  public id=this.activeRoute.snapshot.paramMap.get('id');
 
   ngOnInit(): void {
     this.songService.getList("genres").subscribe((res) =>{
@@ -33,13 +36,17 @@ export class ShowGenreComponent implements OnInit {
     //referencia al método en el Sevicio
     this.songService.getGenreSongProperties(genre);
     //redireccionar a la página de mostrar canciones del género
-    this.router.navigate(['/showGenreSongs']); 
+    this.router.navigate(['/showGenreSongs', this.id]); 
   }
   //método para redireccionar a crear género
   getAlbums(){
     //referencia al método en el Sevicio
     //this.songService.getGenreSongProperties(genre);
-    this.router.navigate(['/showAlbums']);
+    this.router.navigate(['/showAlbums', this.id]);
+  }
+  canciones(){
+    //const id = this.activeRoute.snapshot.paramMap.get('id');
+    this.router.navigate(['/selectFavorites', this.id]);
   }
 
 }

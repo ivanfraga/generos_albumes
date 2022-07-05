@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 //importamos la clase canción
 import { Song } from 'src/app/song';
 //importamos el servicio
@@ -15,9 +15,11 @@ export class SongShowComponent implements OnInit {
   Song: Song[];
 
   constructor(
+    private activeRoute: ActivatedRoute,
     private songService: SongService,
     public router: Router
   ) { }
+  public id=this.activeRoute.snapshot.paramMap.get('id');
   //función para inicialzar las canciones correspondientes a al álbum creado
   ngOnInit(): void {
     this.songService.getAlbumSongs("songs").subscribe((res) =>{
@@ -43,12 +45,12 @@ export class SongShowComponent implements OnInit {
   //función para redirecciónar a géneros
   //no necesita parámetros
   redirect(){
-    this.router.navigate(['/showGenre'])
+    this.router.navigate(['/showGenre', this.id])
   }
   //función para redirecciónar a mostrar canciones
   //no necesita parámetros
   showAllSongs(){
-    this.router.navigate(['/showAllSong'])
+    this.router.navigate(['/showAllSong', this.id])
   }
 
 

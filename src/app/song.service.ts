@@ -420,5 +420,6 @@ export class SongService {
     .collection("albums", ref => ref.where('genre_name', '==', this.genre_name))
     .snapshotChanges();
   }
+  
 
 }

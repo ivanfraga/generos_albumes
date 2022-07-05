@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import { Song } from 'src/app/song';
 import { SongService } from 'src/app/song.service';
@@ -14,11 +14,12 @@ export class SongShowAllComponent implements OnInit {
   Song: Song[];
 
   constructor(
+    private activeRoute: ActivatedRoute,
     private songService: SongService,
     public router: Router,
     public global: AppComponent
   ) { }
-
+  public id=this.activeRoute.snapshot.paramMap.get('id');
   ngOnInit(): void {
     console.log(this.global.print());
     this.songService.getList("songs").subscribe((res) =>{
@@ -39,8 +40,6 @@ export class SongShowAllComponent implements OnInit {
   }
 
   redirect(){
-    this.router.navigate(['/showGenre'])
+    this.router.navigate(['/showGenre', this.id])
   }
-  
-
 }

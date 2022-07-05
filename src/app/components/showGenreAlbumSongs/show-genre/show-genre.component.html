@@ -1,7 +1,11 @@
-<hr>
-<h2>Lista de Géneros</h2>
-<hr>
+<div class="card card_title">
+    <div class="card-head"><h2>Lista de géneros</h2></div>
+    <div class="card-body">
+        En este apartado se presentan géneros, estos al ser seleccionados, presentarán todas las canciones que concidan con el género. 
+    </div>
+</div>
 <div class="d-grid gap-2 button">
+    <button (click)="canciones()" class="d-grid gap-2 button btn btn-secondary" >Canciones</button>
     <button (click)="getAlbums()" class="btn btn-primary button" type="button">Albumes</button>
 </div>
 <table class="table table-hover table-striped">

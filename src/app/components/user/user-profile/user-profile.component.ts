@@ -30,7 +30,10 @@ export class UserProfileComponent implements OnInit {
      this.songService.getObject(this.collectionName,id).subscribe( res =>{
       //asignación del perfil
        this.usuario = res;
-       console.log("usuario valor: ", this.usuario)
+       console.log("usuario valor: ", this.usuario);
+
+       localStorage.setItem("idUser",this.usuario.id );
+      console.log(localStorage.getItem("idUser"))
        //dependiendo del rol del usuario asignamos el nombre de redirección
        switch(this.usuario.rol) { 
         case "artist": { 
@@ -39,7 +42,7 @@ export class UserProfileComponent implements OnInit {
            break; 
         } 
         case "citizen": { 
-          this.redirection= "Visualizar géneros";
+          this.redirection= "Visualizar canciones";
           
            break; 
         } 
@@ -60,17 +63,17 @@ export class UserProfileComponent implements OnInit {
     switch(this.usuario.rol) { 
       case "artist": { 
         this.redirection= "Subir una canción";
-        this.ruta.navigate(['/showGenre'])
+        this.ruta.navigate(['/showGenre', this.usuario.id])
          break; 
       } 
       case "citizen": { 
         this.redirection= "Visualizar géneros";
-        this.ruta.navigate(['/showGenres'])
+        this.ruta.navigate(['/selectFavorites', this.usuario.id])
          break; 
       } 
       case "admin": { 
         this.redirection= "Gestionar artistas";
-        this.ruta.navigate(['/artistRequest'])
+        this.ruta.navigate(['/artistRequest', this.usuario.id])
         break; 
      }
       default: { 

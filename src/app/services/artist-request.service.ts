@@ -12,13 +12,13 @@ export class ArtistRequestService {
   //traemos todos los no artistas
   getNoArtist(){
     return this.angularFirestore
-    .collection("citizen", ref => ref.where('rol', '==', 'no artist')) //filtrado de usuarios no artistas
+    .collection("users", ref => ref.where('rol', '==', 'no artist')) //filtrado de usuarios no artistas
     .snapshotChanges()
   }
   //traemos todos los no artistas
   getArtist(){
     return this.angularFirestore
-    .collection("citizen", ref => ref.where('rol', '==', 'artist')) //filtrado de usuarios artistas
+    .collection("users", ref => ref.where('rol', '==', 'artist')) //filtrado de usuarios artistas
     .snapshotChanges()
   }
 
@@ -27,7 +27,7 @@ export class ArtistRequestService {
   artistRol(artist: Artist)
   {
     console.log("el rol a actualizar es del artista: ", artist.id )
-    const au = this.angularFirestore.doc(`citizen/${artist.id}`)
+    const au = this.angularFirestore.doc(`users/${artist.id}`)
     au.update({
       rol: artist.rol= "artist"
       })
