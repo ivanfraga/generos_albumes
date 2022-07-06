@@ -81,7 +81,6 @@ const routes: Routes = [
   {path: 'forgotPasswordDoc', component: ForgotpasswordDocComponent},
   {path: 'artistRequest/:id', component: ArtistRequestComponent},
   {path: 'artistRequestDoc', component: ArtistRequestDocComponent},
-  
   {path: 'showAlbumSongs/:id', component: ShowAlbumSongsComponent},
   {path: 'showAlbumSongsDoc', component: ShowAlbumSongsDocComponent},
   {path: 'showAlbums/:id', component: ShowAlbumsComponent},
@@ -90,10 +89,9 @@ const routes: Routes = [
   {path: 'showGenresDoc', component: ShowGenreDocComponent},
   {path: 'showGenreSongs/:id', component: ShowGenreSongsComponent},
   {path: 'showGenreSongsDoc', component: ShowGenreSongsDocComponent},
-
   {path: 'createPlaylist/:id', component: CreatePlaylistComponent}, 
   {path: 'createPlaylistDoc', component: CreatePlaylistDocComponent},   
-  {path: 'addPlaylistSongs', component: AddPlaylistSongsComponent}, 
+  {path: 'addPlaylistSongs/:id', component: AddPlaylistSongsComponent}, 
   {path: 'addPlaylistSongsDoc', component: AddPlaylistSongsDocComponent}, 
   {path: 'showPlaylist/:id', component: ShowPlaylistComponent},
   {path: 'showPlaylistDoc', component: ShowPlaylistDocComponent},

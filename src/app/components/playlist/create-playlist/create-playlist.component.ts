@@ -16,6 +16,7 @@ export class CreatePlaylistComponent implements OnInit {
   Playlist: Playlist[];
 
   //Formulario reactivo
+  public susan: any;
   public playlistForm: FormGroup;
    constructor(
     public playlistService: PlaylistService,
@@ -51,14 +52,16 @@ export class CreatePlaylistComponent implements OnInit {
     
   }
   //redirige a la lista de géneros
+
   redirect(){
-    this.router.navigate(['/showGenre']);
+    
+    this.router.navigate(['/showGenres',localStorage.getItem("id")]);
   }
   //obtiene los campos de la playlist
   getPlaylistProperties(playlist){
     this.playlistService.getPlaylistProperties(playlist);
     //redirige a la lista de canciones
-    this.router.navigate(['/addPlaylistSongs']);
+    this.router.navigate(['/addPlaylistSongs',localStorage.getItem("id")]);
   }
 
 }

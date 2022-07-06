@@ -84,54 +84,65 @@ export const navbarData = [
 ];
 export const drago = [
     {
+        icon: "HU 04",
+        huName: "Registro",
+        metodos :[
+            {link: "register",
+            metodo: "Registrar a travez de Formulario"},
+            {link: "registerDoc",
+            metodo: "Documentación Registrar"},
+        ]
+    },
+    {
         icon: "HU 01",
         huName: "Iniciar, cerrar sesión y recuperar contraseña.",
         metodos :[
             {link: "login",
             metodo: "Iniciar Sesión"},
+            {link: "loginDoc",
+            metodo: "Documentación Iniciar Sesión"},
             {link: "forgotPassword",
             metodo: "Restablecer Contraseña"},
+            {link: "forgotPasswordDoc",
+            metodo: "Documentación Restablecer Contraseña"},
         ]
     },
     {
         icon: "HU 02",
         huName: "Modificar Perfil de usuario",
         metodos :[
-            {link: "forgotPassword",
-            metodo: "metodo2",
-            
+            {link: "userProfile/"+localStorage.getItem("id"),
+            metodo: "Perfil",
             },
-            {link: "forgotPassword",
-            metodo: "metodo3"},
-            
+            {link: "userProfileDoc",
+            metodo: "Documentación Perfil"},
+            {link: "userEdit/"+localStorage.getItem("id"),
+            metodo: "Editar Perfil"},
+            {link: "userEditDoc",
+            metodo: "Documentación Editar Perfil"},
         ]
     },
     {
         icon: "HU 03",
         huName: "Gestionar solicitudes de artistas",
         metodos :[
-            {link: "artistRequest",
-            metodo: "Aceptar solicitudes de Artistas"},
+            {link: "artistRequest/"+localStorage.getItem("id"),
+            metodo: "Gestionar Solicitudes de Artistas"},
+            {link: "artistRequestDoc",
+            metodo: "Documentación Gestionar Solicitudes de Artistas"},
             
         ]
     },
-    {
-        icon: "HU 04",
-        huName: "Registro",
-        metodos :[
-            {link: "register",
-            metodo: "Registrar a travez de formulario"},
-        ]
-    },
+    
     {
         icon: "HU 05",
         huName: "Gestionar Géneros",
         metodos :[
-            {link: "showGenre",
+            {link: "showGenre/"+localStorage.getItem("id"),
             metodo: "Visualizar Géneros"},
             {link: "showGenreDoc",
             metodo: "Documentación Visualizar Géneros"},
-            {link: "createGenre",
+            {link: "createGenre/"+localStorage.getItem("id"),
             metodo: "Crear Género"},
             {link: "createGenreDoc",
             metodo: "Documentación Crear Género"},
@@ -141,11 +152,11 @@ export const drago = [
         icon: "HU 06",
         huName: "Gestionar Álbumes",
         metodos :[
-            {link: "showAlbum",
+            {link: "showAlbum/"+localStorage.getItem("id"),
             metodo: "Visualizar Álbumes"},
             {link: "showAlbumDoc",
             metodo: "Documentación Visualizar Álbumes"},
-            {link: "createAlbum",
+            {link: "createAlbum/"+localStorage.getItem("id"),
             metodo: "Crear Álbum"},
             {link: "createAlbumDoc",
             metodo: "Documentación Crear Álbum"},
@@ -155,20 +166,28 @@ export const drago = [
         icon: "HU 07",
         huName: "Gestionar Canciones",
         metodos :[
-            {link: "showSong",
+            {link: "showSong/"+localStorage.getItem("id"),
             metodo: "Visualizar Canciones del Álbum"},
-            {link: "createSong",
+            {link: "showSongDoc",
+            metodo: "Documentación Visualizar Canciones del Álbum"},
+            {link: "createSong/"+localStorage.getItem("id"),
             metodo: "Crear Canción"},
-            {link: "updateSong/:id",
+            {link: "createSongDoc",
+            metodo: "Documentación Crear Canción"},
+            {link: "updateSong/"+localStorage.getItem("id"),
             metodo: "Actualizar Canción"},
+            {link: "updateSongDoc",
+            metodo: "Documentación Actualizar Canción"},
         ]
     },
     {
         icon: "HU 08",
         huName: "Visualizar Canciones",
         metodos :[
-            {link: "showAllSong",
-            metodo: "Visualizar todas las canciones"},
+            {link: "selectFavorites/"+localStorage.getItem("id"),
+            metodo: "Visulizar Canciones"},
+            {link: "showAllSongDoc",
+            metodo: "Documentación Visulizar Canciones"},
             
         ]
     },
@@ -176,11 +195,11 @@ export const drago = [
         icon: "HU 09",
         huName: "Gestionar Favoritos",
         metodos :[
-            {link: "selectFavorites",
+            {link: "selectFavorites/"+localStorage.getItem("id"),
             metodo: "Seleccionar Favoritos"},
-            {link: "selectFavoritesDoc/",
+            {link: "selectFavoritesDoc",
             metodo: "Documentación Seleccionar Favoritos"},
-            {link: "showFavorites",
+            {link: "showFavorites/"+localStorage.getItem("id"),
             metodo: "Visualizar Favoritos"},
             {link: "showFavoritesDoc",
             metodo: "Documentación Visualizar Favoritos"},
@@ -190,11 +209,11 @@ export const drago = [
         icon: "HU 10",
         huName: "Visualizar géneros ciudadano",
         metodos :[
-            {link: "showGenres",
+            {link: "showGenres/"+localStorage.getItem("id"),
             metodo: "Visualizar Géneros"},
             {link: "showGenresDoc",
             metodo: "Documentación Visualizar Géneros"},
-            {link: "showGenreSongs",
+            {link: "showGenreSongs/"+localStorage.getItem("id"),
             metodo: "Canciones de Géneros"},
             {link: "showGenreSongsDoc",
             metodo: "Documentación Canciones de Géneros"},
@@ -204,11 +223,11 @@ export const drago = [
         icon: "HU 11",
         huName: "Visualizar álbumes ciudadano",
         metodos :[
-            {link: "showAlbums",
+            {link: "showAlbums/"+localStorage.getItem("id"),
             metodo: "Visualizar Álbumes"},
             {link: "showAlbumsDoc",
             metodo: "Documentación Visualizar Álbumes"},
-            {link: "showAlbumSongs",
+            {link: "showAlbumSongs/"+localStorage.getItem("id"),
             metodo: "Canciones de Álbumes"},
             {link: "showAlbumSongsDoc",
             metodo: "Documentación Canciones de Álbumes"},
@@ -218,20 +237,29 @@ export const drago = [
         icon: "HU 12",
         huName: "Gestionar Playlist",
         metodos :[
-            {link: "createPlaylist",
-            metodo: "Crear o seleccionar Playlist"},
-            {link: "showPlaylist",
+            {link: "showPlaylist/"+localStorage.getItem("id"),
             metodo: "Visualizar Playlist"},
+            {link: "showPlaylistDoc",
+            metodo: "Documentación Visualizar Playlist"},
+            {link: "createPlaylist/"+localStorage.getItem("id"),
+            metodo: "Crear o seleccionar Playlist"},
+            {link: "createPlaylistDoc",
+            metodo: "Documentación Crear o seleccionar Playlist"},
+            
         ]
     },
     {
         icon: "HU 13",
         huName: "Gestionar Canciones Playlist",
         metodos :[
-            {link: "addPlaylistSongs",
+            {link: "addPlaylistSongs/"+localStorage.getItem("id"),
             metodo: "Añadir Canciones al Playlist"},
-            {link: "showPlaylistSongs/:id",
+            {link: "addPlaylistSongsDoc",
+            metodo: "Documentación Añadir Canciones al Playlist"},
+            {link: "showPlaylistSongs/"+localStorage.getItem("id"),
             metodo: "Visualizar Canciones Playlist"},
+            {link: "showPlaylistSongsDoc",
+            metodo: "Documentación Visualizar Canciones Playlist"},
         ]
     },
 ]

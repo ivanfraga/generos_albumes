@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone  } from '@angular/core';
 //importar servicio
 import { SongService } from 'src/app/song.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { LocalService } from 'src/app/services/local.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -15,25 +16,32 @@ export class UserProfileComponent implements OnInit {
   public collectionName="users";
   public uid: any;
   public redirection: string;
+  public room: any;
 
-  constructor(public songService: SongService, 
+  constructor(
+    private zone: NgZone,
+    public local: LocalService,
+    public songService: SongService, 
     public ruta: Router, 
     private activeRoute: ActivatedRoute,
     private auth : AuthService){ }
     //función inicializadora
    ngOnInit(): void {
+    this.recargaProcess();
     //obtener el id de la ruta
      const id = this.activeRoute.snapshot.paramMap.get('id');
      //asignación de id
      this.uid= id;
+     
      //obtener el perfil
      this.songService.getObject(this.collectionName,id).subscribe( res =>{
       //asignación del perfil
        this.usuario = res;
        console.log("usuario valor: ", this.usuario);
-
-       localStorage.setItem("idUser",this.usuario.id );
-      console.log(localStorage.getItem("idUser"))
+      
+       //this.local.set("user", this.usuario);
+      console.log("el usuario guardado es: ", this.local.get("user"));
+      
        //dependiendo del rol del usuario asignamos el nombre de redirección
        switch(this.usuario.rol) { 
         case "artist": { 
@@ -63,17 +71,17 @@ export class UserProfileComponent implements OnInit {
     switch(this.usuario.rol) { 
       case "artist": { 
         this.redirection= "Subir una canción";
-        this.ruta.navigate(['/showGenre', this.usuario.id])
+        this.ruta.navigate(['/showGenre', localStorage.getItem("id")])
          break; 
       } 
       case "citizen": { 
         this.redirection= "Visualizar géneros";
-        this.ruta.navigate(['/selectFavorites', this.usuario.id])
+        this.ruta.navigate(['/selectFavorites', localStorage.getItem("id")])
          break; 
       } 
       case "admin": { 
         this.redirection= "Gestionar artistas";
-        this.ruta.navigate(['/artistRequest', this.usuario.id])
+        this.ruta.navigate(['/artistRequest', localStorage.getItem("id")])
         break; 
      }
       default: { 
@@ -87,7 +95,24 @@ export class UserProfileComponent implements OnInit {
     this.ruta.navigate(['/userEdit', this.uid])
   }
   logout(){
+    
     this.auth.logout();
+    
+  }
+  reloadPage() { // click handler or similar
+    this.zone.runOutsideAngular(() => {
+        location.reload();
+    });
+  }
+  recargaProcess(){
+    if(localStorage.getItem("recarga")==="true"){
+      console.log("recarga");
+      localStorage.setItem("recarga", "");
+      this.reloadPage();
+    }
+    else{
+      console.log("no recarga")
+    }
   }
 
 }

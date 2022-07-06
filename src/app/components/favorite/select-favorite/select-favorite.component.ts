@@ -19,6 +19,7 @@ export class SelectFavoriteComponent implements OnInit {
   public id=this.activeRoute.snapshot.paramMap.get('id');
   //método que trae los documentos canciones de la colección songs  
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
     this.songService.getList("songs").subscribe((res) =>{
       this.Song = res.map((e) =>{
         return {
