@@ -18,11 +18,15 @@ export class ArtistRequestComponent implements OnInit {
   artist= 'artist'
   noArtist = 'no artist'
 
-  constructor(private artistService: ArtistRequestService,
+  constructor(
+    private auth : AuthService,
+    private artistService: ArtistRequestService,
      private router: Router,
      private activeRoute: ActivatedRoute,) { }
   //función inicializadora
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
+    this.auth.rolVerification("admin");
     this.getArtist()
     //obtiene los no artistas
     this.artistService.getNoArtist().subscribe((res) =>{

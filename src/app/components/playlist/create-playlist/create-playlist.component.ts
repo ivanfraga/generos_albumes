@@ -55,13 +55,13 @@ export class CreatePlaylistComponent implements OnInit {
 
   redirect(){
     
-    this.router.navigate(['/showGenres',localStorage.getItem("id")]);
+    this.router.navigate(['/showGenres',localStorage.getItem("idUser")]);
   }
   //obtiene los campos de la playlist
   getPlaylistProperties(playlist){
     this.playlistService.getPlaylistProperties(playlist);
     //redirige a la lista de canciones
-    this.router.navigate(['/addPlaylistSongs',localStorage.getItem("id")]);
+    this.router.navigate(['/addPlaylistSongs',localStorage.getItem("idUser")]);
   }
 
 }

@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
     })
    }
   ngOnInit(): void {
+    //borrar el almacenamiento interno
+    localStorage.clear();
   }
   //Método para Iniciar sesión
   async login(){
@@ -46,24 +48,28 @@ export class LoginComponent implements OnInit {
         const path = "users";
         //asignación del id de Fireauthentication al id del formulario
         const id:string= res.user.uid;
-        localStorage.setItem("id", id);
         console.log("id user: ", id)
         //impresión por consola de los datos del usuario registrado
         console.log("datos usuario", this.userForm.value)
         //creario usuario en Firestore
         await this.auth.getObject(id, path).subscribe( res =>{
           this.user = res;
-          /*
-          console.log("datos del usuario", this.user);
-          this.auth.setUserProperties(this.user);
-          console.log("global", this.global.title);
-          this.global.getuserProperties(this.user.id, this.user.name, this.user.rol);
-          console.log(this.global.print());*/
+          //localstorage de datos del usuario: id, rol y nombre
+         localStorage.setItem("idUser", this.user.id);
+         localStorage.setItem("rolUser", this.user.rol);
+         localStorage.setItem("nameUser", this.user.name);
+         //visualización de datos usuario
+         console.log("Datos usuario: ",
+         localStorage.getItem("idUser"),
+         localStorage.getItem("rolUser"),
+         localStorage.getItem("nameUser"),
+         )
+         //verificación de rol
           if(this.user.rol == "no artist"){
             this.router.navigate(['/noArtist'])
           }
           else{
-            this.router.navigate(['/userProfile', localStorage.getItem("id")])
+            this.router.navigate(['/userProfile', localStorage.getItem("idUser")])
           }
           
         })

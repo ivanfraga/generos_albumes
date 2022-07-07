@@ -63,6 +63,7 @@ import { ArtistRequestDocComponent } from './components/artist-request/artist-re
 import { UserProfileDocComponent } from './components/user/user-profile-doc/user-profile-doc.component';
 import { UserProfileEditDocComponent } from './components/user/user-profile-edit-doc/user-profile-edit-doc.component';
 import { NoArtistComponent } from './components/user/no-artist/no-artist.component';
+import { RolDeniedComponent } from './components/user/rol-denied/rol-denied.component';
 
 @NgModule({
   declarations: [
@@ -120,6 +121,7 @@ import { NoArtistComponent } from './components/user/no-artist/no-artist.compone
     UserProfileDocComponent,
     UserProfileEditDocComponent,
     NoArtistComponent,
+    RolDeniedComponent,
     
   ],
   imports: [

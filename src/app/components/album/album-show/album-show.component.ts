@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { Album } from 'src/app/song';
 import { SongService } from 'src/app/song.service';
+
 @Component({
   selector: 'app-album-show',
   templateUrl: './album-show.component.html',
@@ -12,6 +14,7 @@ export class AlbumShowComponent implements OnInit {
   Album: Album[];//variable array de tipo Album
 
   constructor(
+    private auth: AuthService,
     private activeRoute: ActivatedRoute,
     private songService: SongService, //variable que hace referencia al servicio
     public router: Router// variable que hace referencia a un enlace en el APPROUTING
@@ -19,6 +22,8 @@ export class AlbumShowComponent implements OnInit {
   public id=this.activeRoute.snapshot.paramMap.get('id');
     //método que obtiene e inicializa con todos los albumes
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
+    this.auth.rolVerification("artist");
     this.songService.getList("albums").subscribe((res) =>{
       this.Album = res.map((e) =>{
         return {

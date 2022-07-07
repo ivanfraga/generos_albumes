@@ -41,7 +41,6 @@ export class ShowGenreComponent implements OnInit {
   //método para redireccionar a crear género
   getAlbums(){
     //referencia al método en el Sevicio
-    //this.songService.getGenreSongProperties(genre);
     this.router.navigate(['/showAlbums', this.id]);
   }
   canciones(){

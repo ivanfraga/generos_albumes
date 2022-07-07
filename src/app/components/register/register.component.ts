@@ -33,6 +33,8 @@ export class RegisterComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    //borrar el almacenamiento interno
+    localStorage.clear();
   }
     //Método para Registrar
   async register(){
@@ -56,14 +58,19 @@ export class RegisterComponent implements OnInit {
       //creario usuario en Firestore
       this.auth.createUser(this.userForm.value, path);
       await this.auth.getObject(id, path).subscribe( res =>{
-        //asignación del perfil
+        //asignación del usuario
          this.user = res;
          console.log("usuario creado: ", this.user);
+         //localstorage de datos del usuario: id, rol y nombre
+         localStorage.setItem("idUser", this.user.id);
+         localStorage.setItem("rolUser", this.user.rol);
+         localStorage.setItem("nameUser", this.user.name);
+         //verificación de rol
          if(this.user.rol == "no artist"){
           this.router.navigate(['/noArtist'])
         }
         else{
-          this.router.navigate(['/userProfile', this.user.id])
+          this.router.navigate(['/userProfile', localStorage.getItem("idUser")])
         }
       })
       //redireccionar a la vista principal

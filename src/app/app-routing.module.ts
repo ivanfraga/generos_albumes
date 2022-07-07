@@ -45,6 +45,7 @@ import { SongShowAllComponent } from './components/song/song-show-all/song-show-
 import { SongShowDocComponent } from './components/song/song-show-doc/song-show-doc.component';
 import { SongShowComponent } from './components/song/song-show/song-show.component';
 import { NoArtistComponent } from './components/user/no-artist/no-artist.component';
+import { RolDeniedComponent } from './components/user/rol-denied/rol-denied.component';
 import { UserProfileDocComponent } from './components/user/user-profile-doc/user-profile-doc.component';
 import { UserProfileEditDocComponent } from './components/user/user-profile-edit-doc/user-profile-edit-doc.component';
 import { UserProfileEditComponent } from './components/user/user-profile-edit/user-profile-edit.component';
@@ -102,6 +103,7 @@ const routes: Routes = [
   {path: 'userEdit/:id', component: UserProfileEditComponent},
   {path: 'userEditDoc', component: UserProfileEditDocComponent},
   {path: 'noArtist', component: NoArtistComponent},
+  {path: 'rolDenied', component: RolDeniedComponent},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 //rutas
 import { Router,ActivatedRoute } from '@angular/router';
 import { ViewChild } from "@angular/core";
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-song-create',
@@ -24,6 +25,7 @@ export class SongCreateComponent implements OnInit {
   _file;
 
   constructor(
+    private auth: AuthService,
     private activeRoute: ActivatedRoute,
     public songService: SongService,
     public formBuilder: FormBuilder,
@@ -45,6 +47,8 @@ export class SongCreateComponent implements OnInit {
    }
    public id=this.activeRoute.snapshot.paramMap.get('id');
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
+    this.auth.rolVerification("artist");
   }
 
   onSubmit(){

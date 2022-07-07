@@ -29,7 +29,7 @@ export class UserProfileComponent implements OnInit {
    ngOnInit(): void {
     this.recargaProcess();
     //obtener el id de la ruta
-     const id = this.activeRoute.snapshot.paramMap.get('id');
+     const id = localStorage.getItem("idUser");
      //asignación de id
      this.uid= id;
      
@@ -38,9 +38,6 @@ export class UserProfileComponent implements OnInit {
       //asignación del perfil
        this.usuario = res;
        console.log("usuario valor: ", this.usuario);
-      
-       //this.local.set("user", this.usuario);
-      console.log("el usuario guardado es: ", this.local.get("user"));
       
        //dependiendo del rol del usuario asignamos el nombre de redirección
        switch(this.usuario.rol) { 
@@ -71,17 +68,17 @@ export class UserProfileComponent implements OnInit {
     switch(this.usuario.rol) { 
       case "artist": { 
         this.redirection= "Subir una canción";
-        this.ruta.navigate(['/showGenre', localStorage.getItem("id")])
+        this.ruta.navigate(['/showGenre', localStorage.getItem("idUser")])
          break; 
       } 
       case "citizen": { 
         this.redirection= "Visualizar géneros";
-        this.ruta.navigate(['/selectFavorites', localStorage.getItem("id")])
+        this.ruta.navigate(['/selectFavorites', localStorage.getItem("idUser")])
          break; 
       } 
       case "admin": { 
         this.redirection= "Gestionar artistas";
-        this.ruta.navigate(['/artistRequest', localStorage.getItem("id")])
+        this.ruta.navigate(['/artistRequest', localStorage.getItem("idUser")])
         break; 
      }
       default: { 
@@ -92,7 +89,7 @@ export class UserProfileComponent implements OnInit {
   }
   //función para editar el perfil
   editar(){
-    this.ruta.navigate(['/userEdit', this.uid])
+    this.ruta.navigate(['/userEdit', localStorage.getItem("idUser")])
   }
   logout(){
     

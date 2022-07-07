@@ -5,6 +5,7 @@ import { SongService } from 'src/app/song.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
 import { ViewChild } from "@angular/core";
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-genre-create',
@@ -26,6 +27,7 @@ export class GenreCreateComponent implements OnInit {
   _file;
   
   constructor(
+    private auth: AuthService,
     public songService: SongService,
     public formBuilder: FormBuilder,
     public router: Router,
@@ -45,6 +47,8 @@ export class GenreCreateComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit(){
+    localStorage.setItem("recarga", "true");
+    this.auth.rolVerification("artist");
     //referencia al método del sevicio para crear género 
     this.songService.addGenreAlbum(this.genreForm.value, this._file, this.collectionName);
     //Obtiene datos necesarios para la canción

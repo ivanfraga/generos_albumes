@@ -204,6 +204,7 @@ export class SongService {
   //función para obtener datos del género
   getGenreSongProperties(genre: Genre){
     //asignación de datos de género en variables genéricas 
+    localStorage.setItem("genreName", genre.name);
     this.genre_name = genre.name;
     console.log("nombre del genero", this.genre_name);
   }

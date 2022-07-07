@@ -44,6 +44,7 @@ export class CitizenService {
 
   //obtener propiedades de género 
   getGenreSongProperties(genre: Genre){
+    localStorage.setItem("genreName", genre.name);
     this.genre_name = genre.name;
     console.log("nombre del genero", this.genre_name);
   }

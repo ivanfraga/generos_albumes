@@ -82,7 +82,7 @@ export class AuthService {
     //método de firebase para salir del sistema
     this.fireauth.signOut().then(()=>{
       //deshabilitar el token
-      localStorage.removeItem('token');
+      localStorage.clear();
       //redieccionar al Inicio de sesión
       this.router.navigate(['/login']);
     }, err=>{
@@ -173,6 +173,13 @@ export class AuthService {
     }
   
   }
-  
+  //VERIFICACIÓN DE ROL
+  rolVerification(rol: string){
+    if(localStorage.getItem("rolUser")==rol){
+      console.log("Rol Verificado")
+    }else{
+      this.router.navigate(['/rolDenied']);
+    }
+  }
 
 }

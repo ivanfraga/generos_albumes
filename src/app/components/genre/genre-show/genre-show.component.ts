@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute,Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { Genre } from 'src/app/song';
 import { SongService } from 'src/app/song.service';
 
@@ -14,26 +15,31 @@ export class GenreShowComponent implements OnInit {
   
   
   constructor(
+    private auth: AuthService,
     private songService: SongService,//variable que hace referencia al servicio
     private router: Router,// variable que hace referencia a un enlace en el APPROUTING
-    private activeRoute: ActivatedRoute,
     ) { }
-    public id=this.activeRoute.snapshot.paramMap.get('id');
+    public id=localStorage.getItem("idUser");
     //método que obtiene e inicializa con todos los Géneros
   ngOnInit(): void {
-    this.songService.getList("genres").subscribe((res) =>{
-      this.Genre = res.map((e) =>{
-        return {
-          id: e.payload.doc.id,
-          ...(e.payload.doc.data() as Genre)
-        };
+    localStorage.setItem("recarga", "true");
+    this.auth.rolVerification("artist");
+      this.songService.getList("genres").subscribe((res) =>{
+        this.Genre = res.map((e) =>{
+          return {
+            id: e.payload.doc.id,
+            ...(e.payload.doc.data() as Genre)
+          };
+        });
       });
-    });
+    
+    
+    
   }
     //método que obtiene los datos del album, cuando se selecciona uno
   //pasa como parámetro un género
   getGenreData(genre){
-    //referencia al método en el Sevicio
+    //referencia al método en el Sevicio 
     this.songService.getGenreSongProperties(genre);
     //redireccionar a la página de mostrar álbumes
     this.router.navigate(['/showAlbum', this.id]); 
@@ -44,7 +50,6 @@ export class GenreShowComponent implements OnInit {
   }
 
   profile(){
-    //const id = this.activeRoute.snapshot.paramMap.get('id');
     this.router.navigate(['/userProfile', this.id]);
   }
 }
