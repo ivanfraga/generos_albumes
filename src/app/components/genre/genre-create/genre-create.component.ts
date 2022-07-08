@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
 import { ViewChild } from "@angular/core";
 import { AuthService } from 'src/app/services/auth.service';
+import { Genre } from 'src/app/song';
 
 @Component({
   selector: 'app-genre-create',
@@ -14,7 +15,10 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class GenreCreateComponent implements OnInit {
   //variables genéricas
-
+  //variables para la verificación
+  public genreNames: string[] = [];
+  Generos:Genre[]= [];
+  //fin variables
   //Formulario reactivo
   public genreForm: FormGroup;
   //nombre de la colección
@@ -45,10 +49,34 @@ export class GenreCreateComponent implements OnInit {
    public id=this.activeRoute.snapshot.paramMap.get('id');
 
   ngOnInit(): void {
+    
+    this.songService.getList("genres").subscribe((res) =>{
+      this.Generos = res.map((e) =>{
+
+        return {
+          id: e.payload.doc.id,
+          ...(e.payload.doc.data() as Genre)
+        };
+      });
+    });
+    
+
   }
   onSubmit(){
     localStorage.setItem("recarga", "true");
     this.auth.rolVerification("artist");
+    for (let i = 0; i < this.Generos.length; i++) {
+      this.genreNames.push(this.Generos[i].name)
+    }
+    console.log("generos completos: ", this.Generos);
+    console.log("generos nopmbres: ", this.genreNames);
+    let incluyeGenero = this.genreNames.includes(this.genreForm.get('name').value);
+    if(incluyeGenero){
+      alert("genero ya registrado")
+    }
+    
+    else{
+
     //referencia al método del sevicio para crear género 
     this.songService.addGenreAlbum(this.genreForm.value, this._file, this.collectionName);
     //Obtiene datos necesarios para la canción
@@ -59,6 +87,7 @@ export class GenreCreateComponent implements OnInit {
     //Reestablecimiento de variables
     this.isChanged = false;
     this.file.nativeElement.value = "";
+    }
   }
   //función para transformar la imagen subida a url local
   onFilesAdded(target: any) {
@@ -81,5 +110,7 @@ export class GenreCreateComponent implements OnInit {
   redirect(){
     this.router.navigate(['/showGenre', this.id]);
   }
+  
 
 }
+

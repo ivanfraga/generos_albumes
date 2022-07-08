@@ -80,3 +80,22 @@ export class ShowFavoriteComponent implements OnInit {
   }
 
 }
+
+/*
+public genreNames: string[] = [];
+Generos:Generos[];
+  //en el metodo oninit
+    *traer todos los generos teniendo asi la variable Generos don todos los generos
+    //ciclo for para cargar todos los nombres de generos
+    for (let i = 0; i < this.Generos.length; i++) {
+      this.genreNames.push(this.Generos[i].id)
+    }
+  //en el metodo onSubmit
+  let incluyeGenero = this.genreNames.includes(this.genreForm.get('name').value);
+  if(incluyeGenero){
+    alert("genero ya registrado")
+  }
+  else{
+    *proceso a continuar
+  }
+*/

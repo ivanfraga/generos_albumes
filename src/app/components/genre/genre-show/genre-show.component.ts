@@ -32,7 +32,7 @@ export class GenreShowComponent implements OnInit {
           };
         });
       });
-    
+      
     
     
   }
