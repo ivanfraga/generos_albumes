@@ -12,3 +12,9 @@
     
     margin: 15px;
 }
+.error{
+    color: red;
+ }
+ .red{
+    border-color: red; 
+ }

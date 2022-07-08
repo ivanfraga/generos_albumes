@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 ////Servicio en donde estan los métodos genéricos
 import { SongService } from 'src/app/song.service';
 //Formulario reactivo
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
 import { ViewChild } from "@angular/core";
 import { AuthService } from 'src/app/services/auth.service';
 import { Genre } from 'src/app/song';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-genre-create',
@@ -39,7 +40,7 @@ export class GenreCreateComponent implements OnInit {
   ) {
     //campos que maneja un género
     this.genreForm= this.formBuilder.group({
-      name: [''],
+      name: ['',[Validators.required]],
       author: [''],
       image_reference: [''],
       imageURL: [''],
@@ -72,7 +73,13 @@ export class GenreCreateComponent implements OnInit {
     console.log("generos nopmbres: ", this.genreNames);
     let incluyeGenero = this.genreNames.includes(this.genreForm.get('name').value);
     if(incluyeGenero){
-      alert("genero ya registrado")
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Genero '+this.genreForm.get('name').value+ ' ya existe!',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }
     
     else{
@@ -109,6 +116,18 @@ export class GenreCreateComponent implements OnInit {
 
   redirect(){
     this.router.navigate(['/showGenre', this.id]);
+  }
+
+  //validaciones
+  getErrorMessage_genero_nuevo(){
+    if (this.genreForm.get('name')?.hasError('required')) {
+      return 'El campo es obligatorio';
+    }
+   
+    return this.genreForm.get('name')? 'El campo no permite números' : '';
+  }
+  get genero_nuevo_no_valido(){
+    return this.genreForm.get('name')?.invalid && this.genreForm.get('name')?.touched
   }
   
 
