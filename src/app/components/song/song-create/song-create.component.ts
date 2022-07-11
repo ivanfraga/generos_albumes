@@ -82,4 +82,16 @@ export class SongCreateComponent implements OnInit {
     this.router.navigate(['/showAlbum', this.id]);
   }
 
+  emptyFields(field: string){
+    if (this.songForm.get(field)?.hasError('required')) {
+      return 'El campo es obligatorio';
+    }
+   
+    return this.songForm.get(field)? 'Algun exidente ocurrió' : '';
+  }
+
+  get emptyName(){
+    return this.songForm.get('song_name')?.invalid && this.songForm.get('song_name')?.touched
+  }
+
 }

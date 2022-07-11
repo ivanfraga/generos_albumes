@@ -9,10 +9,12 @@
     <div class="mb-3">
         <label class="form-label">Nombre del álbum</label>
         <input formControlName="name" type="text" class="form-control" required>
+        <label class="error"  *ngIf="emptyName" >{{emptyFields("name")}}</label>
     </div>
     <div class="mb-3">
         <label class="form-label">Año</label>
         <input formControlName="year" type="number" class="form-control" required>
+        <label class="error"  *ngIf="emptyYear" >{{emptyFields("year")}}</label>
     </div>
     
     <div class="add">
@@ -20,7 +22,7 @@
         <input 
             type="file"
             #file
-            class="input-file"
+            class="input-file" accept="image/*"
             (change)="onFilesAdded($event.target)"     
         />
         

@@ -8,10 +8,9 @@
 <form [formGroup]="genreForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="mb-3">
         <label class="form-label">Nombre del género musical </label>
-        <input ngModel pattern="^[a-zA-Z\u00F1\u00D1\u00E0-\u00FC\s]+$"  [class.red]="genero_nuevo_no_valido" formControlName="name" type="text" class="form-control" required>
+        <input pattern="^[a-zA-Z\u00F1\u00D1\u00E0-\u00FC\s]+$" formControlName="name" type="text" class="form-control" required>
         <label class="error"  *ngIf="genero_nuevo_no_valido" >{{getErrorMessage_genero_nuevo()}}</label>
     </div>
-    
     <div class="add">
         <img (click)="addFiles()" class="upload" [src]="url" alt="" width="150" />
         <input 
@@ -20,12 +19,7 @@
             class="input-file" accept="image/*"
             (change)="onFilesAdded($event.target)"     
         />
-        
     </div>
-
     <button (click)="redirect()" class="btn btn-primary button" type="button">Volver a lista de géneros</button>
-    
     <button [disabled]="!genreForm.valid" type="submit" class="btn btn-primary button" >Save</button>
-        
-    
 </form>
