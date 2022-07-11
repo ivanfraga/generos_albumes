@@ -24,7 +24,7 @@ export class AlbumShowComponent implements OnInit {
   ngOnInit(): void {
     localStorage.setItem("recarga", "true");
     this.auth.rolVerification("artist");
-    this.songService.getList("albums").subscribe((res) =>{
+    this.songService.getAlbums().subscribe((res) =>{
       this.Album = res.map((e) =>{
         return {
           id: e.payload.doc.id,

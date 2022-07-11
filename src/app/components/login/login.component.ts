@@ -76,4 +76,19 @@ export class LoginComponent implements OnInit {
       }
   }
 
+  emptyFields(field: string){
+    if (this.userForm.get(field)?.hasError('required')) {
+      return 'El campo es obligatorio';
+    }
+   
+    return this.userForm.get(field)? 'Algun exidente ocurrió' : '';
+  }
+  
+  get emptyPassword(){
+    return this.userForm.get('password')?.invalid && this.userForm.get('password')?.touched
+  }
+  get emptyemail(){
+    return this.userForm.get('mail')?.invalid && this.userForm.get('mail')?.touched
+  }
+
 }

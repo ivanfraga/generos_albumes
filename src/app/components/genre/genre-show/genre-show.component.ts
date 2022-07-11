@@ -24,7 +24,7 @@ export class GenreShowComponent implements OnInit {
   ngOnInit(): void {
     localStorage.setItem("recarga", "true");
     this.auth.rolVerification("artist");
-      this.songService.getList("genres").subscribe((res) =>{
+      this.songService.getGenres("genres").subscribe((res) =>{
         this.Genre = res.map((e) =>{
           return {
             id: e.payload.doc.id,
@@ -41,6 +41,7 @@ export class GenreShowComponent implements OnInit {
   getGenreData(genre){
     //referencia al método en el Sevicio 
     this.songService.getGenreSongProperties(genre);
+    console.log("nombre del género: ",localStorage.getItem("genreName"));
     //redireccionar a la página de mostrar álbumes
     this.router.navigate(['/showAlbum', this.id]); 
   }

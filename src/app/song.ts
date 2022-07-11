@@ -8,6 +8,7 @@ export class Song {
     songURL: string;
     song_reference: string;
     id: string;
+    authorId: string;
 }
 
 export class Genre{
@@ -16,6 +17,7 @@ export class Genre{
     author: string;
     image_reference: string;
     imageURL: string;
+    authorId: string;
 }
 
 export class Favorite{

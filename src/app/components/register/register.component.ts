@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 //Importa Servicio
 import { AuthService } from 'src/app/services/auth.service';
 //importación de formulario reactivo
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
       name: [''],
       birthdate: [''],
       mail: [''],
-      password: [''],
+      password: new FormControl(this.password, [ Validators.required, Validators.minLength(8), Validators.pattern("^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{8,100}$") ]),
       rol: [''],
       imageURL: [''],
       image_reference: [''],
@@ -88,6 +88,40 @@ export class RegisterComponent implements OnInit {
   redirect(){
     this.router.navigate(['/login']);
   }
+  //validaciones
+  emptyFields(field: string){
+    if (this.userForm.get(field)?.hasError('required')) {
+      return 'El campo es obligatorio';
+    }
+   
+    return this.userForm.get(field)? 'Algun exidente ocurrió' : '';
+  }
+  emptypassword(field: string){
+    if (this.userForm.get(field)?.hasError('required')) {
+      return 'El campo es obligatorio';
+    }
+    return this.userForm.get(field)? 'La contraseña debe tener más de 8 caracteres con números y simbolos' : '';
+  }
+  emptyRol(field: string){
+    
+    return this.userForm.get(field)? 'Por favor seleccionar un rol' : '';
+  }
+  get emptyName(){
+    return this.userForm.get('name')?.invalid && this.userForm.get('name')?.touched
+  }
+  get emptyPassword(){
+    return this.userForm.get('password')?.invalid && this.userForm.get('password')?.touched
+  }
+  get emptyemail(){
+    return this.userForm.get('mail')?.invalid && this.userForm.get('mail')?.touched
+  }
+  get emptybirthdate(){
+    return this.userForm.get('birthdate')?.invalid && this.userForm.get('birthdate')?.touched
+  }
+  get emptyrol(){
+    return this.userForm.get('rol')? true:false
+  }
+  
   
 
 }

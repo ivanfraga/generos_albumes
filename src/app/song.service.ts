@@ -67,6 +67,7 @@ export class SongService {
    //necesita parámetros: objeto género, url, referencia en FireStorage
    genreCreate(genre: Genre, urlImg:any, filePath: any) {
     const id = this.angularFirestore.createId();//crea un ID
+    console.log("el id del género es: ", id)
     //crea un documento con los campos especificados 
     this.genreCollection
       .doc(id)//especifica el documento
@@ -74,8 +75,10 @@ export class SongService {
       .set({id,
          name: genre.name,
          imageURL: urlImg, 
-         author: "generic", 
+         author: localStorage.getItem("nameUser"), 
+         authorId: localStorage.getItem("idUser"),
          image_reference: filePath });
+    
     
   }
   //función para agregar la imagen y luego crear el objeto en FireStorage
@@ -87,15 +90,15 @@ export class SongService {
     
     switch(collection) { //cambio de ruta dependiendo de la colección
       case "genres": { 
-        this.filePath = collection+ "/generic/"+ object.name; //en caso que sea generos
+        this.filePath = collection+ "/"+ localStorage.getItem("idUser")+ "/"+ object.name; //en caso que sea generos
          break; 
       } 
       case "albumes": { 
-        this.filePath = collection+ "/" + object.name; //en caso que sea albumes
+        this.filePath = collection+ "/"+ localStorage.getItem("idUser")+ "/" + object.name; //en caso que sea albumes
          break; 
       }
       case "songs": { 
-        this.filePath = collection+ "/testSongs"+ "/" + object.song_name; //en caso que sea canciones
+        this.filePath = collection+"/"+ localStorage.getItem("idUser")+ "/" + object.song_name; //en caso que sea canciones
          break; 
       } 
       default: { 
@@ -152,17 +155,20 @@ export class SongService {
   //función para crear un álbum 
   //necesita parámetros: objeto género, url, referencia en FireStorage
   albumCreate(album: Album, urlImg:any, filePath: any) {
+
     const id = this.angularFirestore.createId();//crea un ID
+    localStorage.setItem("imageURL", urlImg);
     //crea un documento con los campos especificados
     this.albumCollection
       .doc(id)//especifica el documento
       //establece y crea documento mediante los campos especificados
       .set({id,
         //nombre del género por parte de variable general
-         genre_name: this.genre_name, 
+         //genre_name: this.genre_name, 
+         genre_name: localStorage.getItem("genreName"),
          name: album.name,
          imageURL: urlImg, 
-         author: album.author, 
+         author: localStorage.getItem("nameUser"), 
          image_reference: filePath,
         year: album.year });
     this.imageURL= urlImg; 
@@ -204,18 +210,16 @@ export class SongService {
   //función para obtener datos del género
   getGenreSongProperties(genre: Genre){
     //asignación de datos de género en variables genéricas 
-    localStorage.setItem("genreName", genre.name);
+    localStorage.setItem("genreName", genre.name);/*
     this.genre_name = genre.name;
-    console.log("nombre del genero", this.genre_name);
+    console.log("nombre del genero", this.genre_name);*/
   }
   //función para obtener datos del álbum
   getAlbumSongProperties(album: Album){
     //asignación de datos de álbum en variables genéricas
-    this.genre_name= album.genre_name;
-    this.album_name = album.name;
-    this.imageURL= album.imageURL  
-    this.year= album.year;
-    this.author= album.author;
+    localStorage.setItem("album_name", album.name);
+    localStorage.setItem("imageURL", album.imageURL);
+    localStorage.setItem("year", String(album.year));
     console.log(
       "propiedades del album\n","\nalbum_name: ",this.album_name,
       "\nimageURL: ",this.imageURL,"\nyear: ",this.year,"\nauthor: ",
@@ -259,14 +263,15 @@ export class SongService {
       .doc(id)
       .set({
         id,
-        genre_name: this.genre_name,
-        album_name: this.album_name,
-        imageURL: this.imageURL,
+        genre_name: localStorage.getItem("genreName"),
+        album_name: localStorage.getItem("album_name"),
+        imageURL: localStorage.getItem("imageURL"),
         song_name: song.song_name,
-        year: this.year,
-        author: this.author,
+        year: parseInt(localStorage.getItem("year")),
+        author: localStorage.getItem("nameUser"),
         songURL: urlSong,
         song_reference: filePath,
+        authorId: localStorage.getItem("idUser")
 
       })
       console.log(
@@ -296,7 +301,7 @@ export class SongService {
   getAlbumSongs(collection: string){
     return this.angularFirestore
     //Búsqueda de canciones que pertenezcan al álbum
-    .collection(collection, ref => ref.where('album_name', '==', this.album_name))
+    .collection(collection, ref => ref.where('album_name', '==', localStorage.getItem("album_name")))
     .snapshotChanges();
   }
 
@@ -418,9 +423,20 @@ export class SongService {
   //función para obtener álbumes correspondientes al género
   getAlbums(){
     return this.angularFirestore
-    .collection("albums", ref => ref.where('genre_name', '==', this.genre_name))
+    .collection("albums", ref => ref.where('genre_name', '==', localStorage.getItem("genreName")))
     .snapshotChanges();
   }
-  
+  getGenres(collection: string){
+    return this.angularFirestore
+    //Búsqueda de canciones que pertenezcan al álbum
+    .collection(collection, ref => ref.where('authorId', '==', localStorage.getItem("idUser")))
+    .snapshotChanges();
+  }
+  getUserAllSongs(){
+    return this.angularFirestore
+    //Búsqueda de canciones que pertenezcan al álbum
+    .collection("songs", ref => ref.where('authorId', '==', localStorage.getItem("idUser")))
+    .snapshotChanges();
+  }
 
 }

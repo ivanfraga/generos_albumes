@@ -9,26 +9,28 @@
     <div class="mb-3">
       <label class="form-label">Correo</label>
       <input formControlName="mail" type="email" class="form-control" required>
+      <label class="error"  *ngIf="emptyemail" >{{emptyFields("mail")}}</label>
     </div>
     <div class="mb-3">
       <label class="form-label">Contraseña</label>
-      <input formControlName="password" type="password" class="form-control" required>
+      <input formControlName="password" type="password" class="form-control" ng-minlength="8" ng-maxlength="20" required>
+      <label class="error"  *ngIf="emptyPassword" >{{emptypassword("password")}}</label>
     </div>
     <div class="mb-3">
       <label class="form-label">Nombre</label>
-      <input formControlName="name" type="text" class="form-control" required>
+      <input  formControlName="name" type="text" class="form-control" required>
+      <label class="error"  *ngIf="emptyName" >{{emptyFields("name")}}</label>
     </div>
     <div class="mb-3">
       <label class="form-label">Fecha de nacimiento</label>
-      <input formControlName="birthdate" type="date" class="form-control" required>
+      <input  formControlName="birthdate" type="date" class="form-control" required>
+      <label class="error"  *ngIf="emptybirthdate" >{{emptyFields("birthdate")}}</label>
     </div>
     <div class="mb-3">
-      <label class="form-label">Seleccionar un rol</label>
-      <br>
+      <label class="form-label" >Seleccionar un rol</label>
       <button (click)="artista()" class="btn btn-secondary button" type="button">Artista</button>
       <button (click)="ciudadano()" class="btn btn-secondary button" type="button">Ciudadano</button>
-      </div>
-
+    </div>
     <button (click)="redirect()" class="btn btn-primary button" type="button">Login</button>
     
     <button [disabled]="!userForm.valid" type="submit" class="btn btn-primary button" >Registrar</button>

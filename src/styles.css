@@ -58,3 +58,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding-left: 15px;
     padding-right: 15px;
 }
+.error{
+    color: red;
+ }
+ .red{
+    border-color: red; 
+ }

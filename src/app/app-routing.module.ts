@@ -51,9 +51,11 @@ import { UserProfileEditDocComponent } from './components/user/user-profile-edit
 import { UserProfileEditComponent } from './components/user/user-profile-edit/user-profile-edit.component';
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PermisoArtistGuard } from './permiso-artist.guard';
+import { PermisoGlobalGuard } from './permiso-global.guard';
 
 const routes: Routes = [
-  {path: 'showGenre/:id', component:GenreShowComponent},
+  {path: 'showGenre/:id', component:GenreShowComponent,canActivate:[PermisoArtistGuard,PermisoGlobalGuard]},
   {path: 'showGenreDoc', component:GenreShowDocComponent},
   {path: 'createGenre/:id', component:GenreCreateComponent},
   {path: 'createGenreDoc', component:GenreCreateDocComponent},
@@ -98,7 +100,7 @@ const routes: Routes = [
   {path: 'showPlaylistDoc', component: ShowPlaylistDocComponent},
   {path: 'showPlaylistSongs/:id', component: ShowPlaylistSongsComponent},
   {path: 'showPlaylistSongsDoc', component: ShowPlaylistSongsDocComponent},
-  {path: 'userProfile/:id', component: UserProfileComponent},
+  {path: 'userProfile/:id', component: UserProfileComponent,canActivate:[PermisoGlobalGuard]},
   {path: 'userProfileDoc', component: UserProfileDocComponent},
   {path: 'userEdit/:id', component: UserProfileEditComponent},
   {path: 'userEditDoc', component: UserProfileEditDocComponent},

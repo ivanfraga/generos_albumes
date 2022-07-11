@@ -22,7 +22,7 @@ export class SongShowAllComponent implements OnInit {
   public id=this.activeRoute.snapshot.paramMap.get('id');
   ngOnInit(): void {
     console.log(this.global.print());
-    this.songService.getList("songs").subscribe((res) =>{
+    this.songService.getUserAllSongs().subscribe((res) =>{
       this.Song = res.map((e) =>{
         return {
           id: e.payload.doc.id,

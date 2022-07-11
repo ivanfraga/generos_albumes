@@ -53,7 +53,6 @@ export class GenreCreateComponent implements OnInit {
     
     this.songService.getList("genres").subscribe((res) =>{
       this.Generos = res.map((e) =>{
-
         return {
           id: e.payload.doc.id,
           ...(e.payload.doc.data() as Genre)
@@ -90,7 +89,6 @@ export class GenreCreateComponent implements OnInit {
     this.songService.getGenreSongProperties(this.genreForm.value);
     //redirecciona a Crear Album
     this.router.navigate(['/createAlbum', this.id]);
-    console.log(this.genreForm.value);
     //Reestablecimiento de variables
     this.isChanged = false;
     this.file.nativeElement.value = "";
