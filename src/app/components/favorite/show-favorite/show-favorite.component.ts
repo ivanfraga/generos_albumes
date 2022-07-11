@@ -9,12 +9,12 @@ import { SongService } from 'src/app/song.service';
   styleUrls: ['./show-favorite.component.css']
 })
 export class ShowFavoriteComponent implements OnInit {
-
+  public id=localStorage.getItem("idUser");
   //variables generales
   //array de canciones que va a obtener a partir de los IDs registrados
   Song: Song[];
   //dirección de favoritos
-  path= "/favorite/ DP3XfsWz0llXfYtU8UUO/songs";
+  path= "/favorite/"+ this.id + "/songs";
   //nombre de la colección de canciones
   path2= "songs";
   //array de favoritos registrados
@@ -31,7 +31,7 @@ export class ShowFavoriteComponent implements OnInit {
     //variable que ayuda a cambiar de ruta
     public router: Router
   ) { }
-  public id=this.activeRoute.snapshot.paramMap.get('id');
+  
   ngOnInit(): void {
     //Método que obtiene los IDs registrados en Favoritos
     this.songService.getList(this.path).subscribe(res =>{

@@ -36,7 +36,7 @@ export class UserProfileEditComponent implements OnInit {
    //función inicializadora
   ngOnInit(): void {
     //obtener el id de la ruta
-    this.id = this.activeRoute.snapshot.paramMap.get('id')
+    this.id = localStorage.getItem("idUser");
     //obtener el usuario segun el id
     this.authService.getObject(this.id, "users").subscribe( res =>{
       //asignación del usuario
@@ -54,7 +54,7 @@ export class UserProfileEditComponent implements OnInit {
   }
   onSubmit() {
     //obtener id de la ruta
-    const id = this.activeRoute.snapshot.paramMap.get('id');  
+    const id = localStorage.getItem("idUser");  
     //cargar los cambios realizados 
     this.authService.updateUserProcess(this.userEditForm.value, this._file, this.isChanged, id);
     //redireccionar a la vista del perfil
@@ -83,6 +83,18 @@ export class UserProfileEditComponent implements OnInit {
 
   redirect(){
     this.router.navigate(['/userProfile', this.id]);
+  }
+
+  emptyFields(field: string){
+    if (this.userEditForm.get(field)?.hasError('required')) {
+      return 'El campo es obligatorio';
+    }
+   
+    return this.userEditForm.get(field)? 'Algun exidente ocurrió' : '';
+  }
+
+  get emptyName(){
+    return this.userEditForm.get('name')?.invalid && this.userEditForm.get('name')?.touched
   }
 
 }

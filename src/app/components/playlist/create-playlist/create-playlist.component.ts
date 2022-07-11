@@ -63,5 +63,15 @@ export class CreatePlaylistComponent implements OnInit {
     //redirige a la lista de canciones
     this.router.navigate(['/addPlaylistSongs',localStorage.getItem("idUser")]);
   }
+  emptyFields(field: string){
+    if (this.playlistForm.get(field)?.hasError('required')) {
+      return 'El campo es obligatorio';
+    }
+   
+    return this.playlistForm.get(field)? 'Algun exidente ocurrió' : '';
+  }
+  get emptyName(){
+    return this.playlistForm.get('playlist_name')?.invalid && this.playlistForm.get('playlist_name')?.touched
+  }
 
 }

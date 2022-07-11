@@ -26,7 +26,7 @@ export class PlaylistService {
   public songId: string;
   public busqueda:string;
 
-  public userID="DP3XfsWz0llXfYtU8UUO"//seria el usuario que inicia sesión
+  public userID=localStorage.getItem("idUser");//seria el usuario que inicia sesión
 
   //función para crear un género 
   //necesita parámetros: objeto género, url, referencia en FireStorage

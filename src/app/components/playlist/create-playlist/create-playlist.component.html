@@ -9,6 +9,7 @@
     <div class="mb-3">
         <label class="form-label">Nombre de la nueva Playlist</label>
         <input formControlName="playlist_name" type="text" class="form-control" required>
+        <label class="error"  *ngIf="emptyName" >{{emptyFields("playlist_name")}}</label>
     </div>
     <button [disabled]="!playlistForm.valid" type="submit" class="btn btn-primary button" >Guardar</button>
 </form>

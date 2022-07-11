@@ -7,6 +7,7 @@
     <div class="mb-3">
         <label class="form-label">Nombre de la canción</label>
         <input formControlName="name" type="text" class="form-control" required>
+        <label class="error"  *ngIf="emptyName" >{{emptyFields("name")}}</label>
     </div>
     <div class="add">
         <label class="form-label">Cambia la foto de perfil</label>
@@ -14,7 +15,7 @@
         <input 
             type="file"
             #file
-            class="input-file"
+            class="input-file" accept="image/*"
             (change)="onFilesAdded($event.target)"     
         />
         <br>

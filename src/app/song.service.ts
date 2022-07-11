@@ -358,12 +358,12 @@ export class SongService {
 
   //FAVORITES
 
-  public userID="DP3XfsWz0llXfYtU8UUO"//seria el usuario que inicia sesión
+  public userID=localStorage.getItem("idUser");//seria el usuario que inicia sesión
   //función para añadir canciones a favoritos
   //necesita parámetros: objeto canciones
   addToFavorite(song: Song){
     //la dirección de la colección se determina por el ID del usuario
-    const path="/favorite/ "+this.userID+"/songs"
+    const path="/favorite/"+this.userID+"/songs"
     console.log("La canción guadada es: ", song.song_name,
     "\n Su ID: ", song.id)
     //se procede a guardar el ID de la canción
@@ -392,7 +392,7 @@ export class SongService {
   //necesita parámetro: ID de la canción a remover
   removeFavorite(id: string){
     //especificamos la dirección de favoritos
-    const path="/favorite/ "+this.userID+"/songs";
+    const path="/favorite/"+this.userID+"/songs";
     //eliminamos la referencia de la canción segun su ID 
     return this.angularFirestore
      .collection(path)
