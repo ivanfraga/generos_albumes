@@ -24,6 +24,7 @@ export class ShowPlaylistSongsComponent implements OnInit {
   ) { }
   //función inicializadora de playlist por id
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
     //obtiene el id de la playlist mediante la ruta
     const id = this.activeRoute.snapshot.paramMap.get('id');
     //obtiene la playlist correspondiente al id

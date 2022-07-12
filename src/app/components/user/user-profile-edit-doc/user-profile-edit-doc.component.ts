@@ -10,6 +10,7 @@ export class UserProfileEditDocComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
   }
 
 }

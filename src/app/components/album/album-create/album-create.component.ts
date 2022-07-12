@@ -40,6 +40,7 @@ export class AlbumCreateComponent implements OnInit {
    public id=this.activeRoute.snapshot.paramMap.get('id');
 
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
   }
 
   onSubmit(){

@@ -10,6 +10,7 @@ export class ShowAlbumSongsDocComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
   }
 
 }

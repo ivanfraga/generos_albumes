@@ -35,6 +35,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     //borrar el almacenamiento interno
     localStorage.clear();
+    localStorage.setItem("recarga", "true");
   }
     //Método para Registrar
   async register(){

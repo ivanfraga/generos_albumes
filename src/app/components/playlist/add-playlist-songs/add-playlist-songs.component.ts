@@ -28,6 +28,7 @@ export class AddPlaylistSongsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
     //mostrar resultados en caso de que exista busqueda
     if(this.isSearch){
       //obtener las canciones que coincidan con la busqueda

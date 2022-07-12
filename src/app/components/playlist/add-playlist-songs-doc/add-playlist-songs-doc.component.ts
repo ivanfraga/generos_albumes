@@ -10,6 +10,7 @@ export class AddPlaylistSongsDocComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
   }
 
 }

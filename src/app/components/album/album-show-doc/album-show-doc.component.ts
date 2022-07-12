@@ -10,6 +10,7 @@ export class AlbumShowDocComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
   }
   redirect()
   {

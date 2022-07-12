@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GenreCreateDocComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    localStorage.setItem("recarga", "true");
+   }
 
   ngOnInit(): void {
   }

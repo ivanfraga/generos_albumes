@@ -21,6 +21,7 @@ export class ShowGenreComponent implements OnInit {
   public id=this.activeRoute.snapshot.paramMap.get('id');
 
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
     this.songService.getList("genres").subscribe((res) =>{
       this.Genre = res.map((e) =>{
         return {

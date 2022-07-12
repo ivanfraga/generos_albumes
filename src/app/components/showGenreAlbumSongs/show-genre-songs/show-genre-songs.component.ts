@@ -19,6 +19,7 @@ export class ShowGenreSongsComponent implements OnInit {
   public id=this.activeRoute.snapshot.paramMap.get('id');
   //método que inicializa las canciones dependiendo del género
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
     this.songService.getAlbumGenreSongs("genres").subscribe((res) =>{
       this.Song = res.map((e) =>{
         return {

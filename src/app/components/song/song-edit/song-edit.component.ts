@@ -42,6 +42,7 @@ export class SongEditComponent implements OnInit {
    }
    //función inicializadora
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
     //obtener el id de la url
     const id = this.activeRoute.snapshot.paramMap.get('id');
     //obtener la canción según el id seleccionado

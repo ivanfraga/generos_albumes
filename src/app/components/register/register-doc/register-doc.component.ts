@@ -10,6 +10,7 @@ export class RegisterDocComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
   }
 
 }

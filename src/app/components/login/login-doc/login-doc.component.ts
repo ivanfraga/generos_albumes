@@ -10,6 +10,7 @@ export class LoginDocComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
   }
 
 }

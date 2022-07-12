@@ -20,6 +20,7 @@ export class ShowAlbumSongsComponent implements OnInit {
   public id=this.activeRoute.snapshot.paramMap.get('id');
   //método que inicializa las canciones dependiendo del álbum
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
     console.log("el id del usuario: "+localStorage.getItem("idUser"))
     this.songService.getAlbumGenreSongs("albums").subscribe((res) =>{
       this.Song = res.map((e) =>{

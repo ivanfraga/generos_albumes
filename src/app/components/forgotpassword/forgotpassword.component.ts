@@ -14,6 +14,7 @@ export class ForgotpasswordComponent implements OnInit {
   constructor(private auth : AuthService) { }
 
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
   }
   //Método para reestablecer contraseña
   forgotPassword(){

@@ -33,6 +33,7 @@ export class ShowFavoriteComponent implements OnInit {
   ) { }
   
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
     //Método que obtiene los IDs registrados en Favoritos
     this.songService.getList(this.path).subscribe(res =>{
       this.Favorite = res.map((e) =>{

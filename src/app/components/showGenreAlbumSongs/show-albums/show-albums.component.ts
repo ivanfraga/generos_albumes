@@ -20,6 +20,7 @@ export class ShowAlbumsComponent implements OnInit {
   public id=this.activeRoute.snapshot.paramMap.get('id');
   //método que obtiene e inicializa con todos los albumes
   ngOnInit(): void {
+    localStorage.setItem("recarga", "true");
     this.songService.getList("albums").subscribe((res) =>{
       this.Album = res.map((e) =>{
         return {

@@ -314,6 +314,7 @@ export class SongService {
     this.song_name= song.song_name;
     this.songURL= urlSong;
     this.song_reference= filePath;
+    localStorage.setItem("song_name", song.song_name);
     return this.songCollection
       .doc(id)//referencia al documento por id
       //actualización de los siguientes campos de la canción
@@ -409,13 +410,13 @@ export class SongService {
     if(collection=="genres"){
       //Búsqueda de canciones que pertenezcan al género
       canciones= this.angularFirestore
-      .collection("songs", ref => ref.where('genre_name', '==', this.genre_name))
+      .collection("songs", ref => ref.where('genre_name', '==', localStorage.getItem("genreName")))
       .snapshotChanges();
     }
     if(collection=="albums"){
       //Búsqueda de canciones que pertenezcan al álbum
       canciones= this.angularFirestore
-      .collection("songs", ref => ref.where('album_name', '==', this.album_name))
+      .collection("songs", ref => ref.where('album_name', '==', localStorage.getItem("album_name")))
       .snapshotChanges();
     }
     return canciones;

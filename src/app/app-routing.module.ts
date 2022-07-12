@@ -52,26 +52,29 @@ import { UserProfileEditComponent } from './components/user/user-profile-edit/us
 import { UserProfileComponent } from './components/user/user-profile/user-profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PermisoAdminGuard } from './permisos/permiso-admin.guard';
+import { PermisoAlbumGuard } from './permisos/permiso-album.guard';
 import { PermisoArtistGuard } from './permisos/permiso-artist.guard';
 import { PermisoCitizenGuard } from './permisos/permiso-citizen.guard';
+import { PermisoGeneroGuard } from './permisos/permiso-genero.guard';
 import { PermisoGlobalGuard } from './permisos/permiso-global.guard';
+import { PermisoSongGuard } from './permisos/permiso-song.guard';
 
 const routes: Routes = [
   {path: 'showGenre/:id', component:GenreShowComponent,canActivate:[PermisoArtistGuard,PermisoGlobalGuard]},
   {path: 'showGenreDoc', component:GenreShowDocComponent},
   {path: 'createGenre/:id', component:GenreCreateComponent,canActivate:[PermisoArtistGuard,PermisoGlobalGuard]},
   {path: 'createGenreDoc', component:GenreCreateDocComponent},
-  {path: 'showAlbum/:id', component:AlbumShowComponent,canActivate:[PermisoArtistGuard,PermisoGlobalGuard]},
+  {path: 'showAlbum/:id', component:AlbumShowComponent,canActivate:[PermisoGeneroGuard,PermisoArtistGuard,PermisoGlobalGuard]},
   {path: 'showAlbumDoc', component: AlbumShowDocComponent},
-  {path: 'createAlbum/:id', component:AlbumCreateComponent,canActivate:[PermisoArtistGuard,PermisoGlobalGuard]},
+  {path: 'createAlbum/:id', component:AlbumCreateComponent,canActivate:[PermisoGeneroGuard,PermisoArtistGuard,PermisoGlobalGuard]},
   {path: 'createAlbumDoc', component: AlbumCreateDocComponent},
-  {path: 'showSong/:id', component:SongShowComponent,canActivate:[PermisoArtistGuard,PermisoGlobalGuard]},
+  {path: 'showSong/:id', component:SongShowComponent,canActivate:[PermisoAlbumGuard,PermisoArtistGuard,PermisoGlobalGuard]},
   {path: 'showSongDoc', component:SongShowDocComponent},
-  {path: 'createSong/:id', component:SongCreateComponent,canActivate:[PermisoArtistGuard,PermisoGlobalGuard]},
+  {path: 'createSong/:id', component:SongCreateComponent,canActivate:[PermisoAlbumGuard,PermisoArtistGuard,PermisoGlobalGuard]},
   {path: 'createSongDoc', component:SongCreateDocComponent},
   {path: 'showAllSong/:id', component:SongShowAllComponent,canActivate:[PermisoArtistGuard,PermisoGlobalGuard]},
   {path: 'showAllSongDoc', component:SongShowAllDocComponent},
-  {path: 'updateSong/:id', component:SongEditComponent,canActivate:[PermisoArtistGuard,PermisoGlobalGuard]},
+  {path: 'updateSong/:id', component:SongEditComponent,canActivate:[PermisoSongGuard,PermisoArtistGuard,PermisoGlobalGuard]},
   {path: 'updateSongDoc', component:SongEditDocComponent},
   {path: 'selectFavorites/:id', component:SelectFavoriteComponent,canActivate:[PermisoCitizenGuard,PermisoGlobalGuard]},
   {path: 'selectFavoritesDoc', component:FavoriteSelectDocComponent},

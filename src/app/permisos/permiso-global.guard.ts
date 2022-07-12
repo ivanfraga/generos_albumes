@@ -30,7 +30,7 @@ private afAuth : AngularFireAuth,private router : Router
         timer: 1500
       })
         
-        this.router.navigate(['register']);
+        this.router.navigate(['login']);
       }
 
       return isAuthenticated  ;

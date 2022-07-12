@@ -52,6 +52,7 @@ export class SongCreateComponent implements OnInit {
   }
 
   onSubmit(){
+    localStorage.setItem("recarga", "true");
     //Referencia a función del servicio para subir una canción
     this.songService.addGenreAlbum(this.songForm.value, this._file, this.collectionName);
     // una vez subida la canción, redirige a mostrar canciones del album 
