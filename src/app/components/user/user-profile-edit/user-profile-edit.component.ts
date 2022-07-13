@@ -35,7 +35,7 @@ export class UserProfileEditComponent implements OnInit {
    }
    //función inicializadora
   ngOnInit(): void {
-    localStorage.setItem("recarga", "true");
+    //localStorage.setItem("recarga", "true");
     //obtener el id de la ruta
     this.id = localStorage.getItem("idUser");
     //obtener el usuario segun el id

@@ -93,8 +93,11 @@ export class PlaylistService {
   //Necesita parámetros: objeto playlist
   getPlaylistProperties(playlist: Playlist){
     //actualiza el valor de las variables generales con los campos de la playlist
-    this.id= playlist.id;
-    this.playlist_name= playlist.playlist_name;
+    localStorage.setItem("idPlaylist", playlist.id);
+    localStorage.setItem("playlist_name", playlist.playlist_name);
+    
+    this.id= localStorage.getItem("idPlaylist");
+    this.playlist_name= localStorage.getItem("playlist_name");
     this.playlist_songs= playlist.playlist_collection
     console.log("propiedades de la playlist: ", playlist)
   }

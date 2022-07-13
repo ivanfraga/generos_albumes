@@ -30,10 +30,10 @@
             <td><audio [src]="song.songURL" controls></audio></td>
             <td>
                 <button (click)="deleteSong(song)" class="btn btn-outline-danger" >
-                    <i class="fa-solid fa-trash"></i>
+                    <mat-icon>delete</mat-icon>
                 </button>
                 <button (click)="updateSong(song)" routerLink="/updateSong/{{song.id}}" class="btn btn-outline-secondary">
-                    <i class="fa-solid fa-pen"></i>
+                    <mat-icon>edit</mat-icon>
                 </button>
             </td>
         </tr>

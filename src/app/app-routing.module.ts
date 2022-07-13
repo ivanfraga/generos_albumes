@@ -57,6 +57,7 @@ import { PermisoArtistGuard } from './permisos/permiso-artist.guard';
 import { PermisoCitizenGuard } from './permisos/permiso-citizen.guard';
 import { PermisoGeneroGuard } from './permisos/permiso-genero.guard';
 import { PermisoGlobalGuard } from './permisos/permiso-global.guard';
+import { PermisoPlaylistGuard } from './permisos/permiso-playlist.guard';
 import { PermisoSongGuard } from './permisos/permiso-song.guard';
 
 const routes: Routes = [
@@ -99,11 +100,11 @@ const routes: Routes = [
   {path: 'showGenreSongsDoc', component: ShowGenreSongsDocComponent},
   {path: 'createPlaylist/:id', component: CreatePlaylistComponent,canActivate:[PermisoCitizenGuard,PermisoGlobalGuard]}, 
   {path: 'createPlaylistDoc', component: CreatePlaylistDocComponent},   
-  {path: 'addPlaylistSongs/:id', component: AddPlaylistSongsComponent,canActivate:[PermisoCitizenGuard,PermisoGlobalGuard]}, 
+  {path: 'addPlaylistSongs/:id', component: AddPlaylistSongsComponent,canActivate:[PermisoPlaylistGuard,PermisoCitizenGuard,PermisoGlobalGuard]}, 
   {path: 'addPlaylistSongsDoc', component: AddPlaylistSongsDocComponent}, 
   {path: 'showPlaylist/:id', component: ShowPlaylistComponent,canActivate:[PermisoCitizenGuard,PermisoGlobalGuard]},
   {path: 'showPlaylistDoc', component: ShowPlaylistDocComponent},
-  {path: 'showPlaylistSongs/:id', component: ShowPlaylistSongsComponent,canActivate:[PermisoCitizenGuard,PermisoGlobalGuard]},
+  {path: 'showPlaylistSongs/:id', component: ShowPlaylistSongsComponent,canActivate:[PermisoPlaylistGuard,PermisoCitizenGuard,PermisoGlobalGuard]},
   {path: 'showPlaylistSongsDoc', component: ShowPlaylistSongsDocComponent},
   {path: 'userProfile/:id', component: UserProfileComponent,canActivate:[PermisoGlobalGuard]},
   {path: 'userProfileDoc', component: UserProfileDocComponent},

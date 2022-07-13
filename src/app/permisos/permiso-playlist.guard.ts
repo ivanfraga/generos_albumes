@@ -5,23 +5,25 @@ import Swal from 'sweetalert2';
 @Injectable({
   providedIn: 'root'
 })
-export class PermisoGeneroGuard implements CanActivate {
-  public genre:any;
+export class PermisoPlaylistGuard implements CanActivate {
+  public playlist:any;
 
   constructor (
   ){}
    async canActivate(
       route: ActivatedRouteSnapshot,
       state: RouterStateSnapshot):  Promise<boolean | UrlTree> {
-        this.genre = localStorage.getItem("genreName");
-       if(this.genre){
+        this.playlist = localStorage.getItem("playlist_name");
+      
+
+       if(this.playlist){
          return true;
         }
 
         Swal.fire({
           position: 'center',
           icon: 'error',
-          title: 'Debes tener un genero creado o seleccionado previamente para acceder a este apartado',
+          title: 'Debes tener una playlist creada o seleccionada previamente para acceder a este apartado',
           showConfirmButton: false,
           timer: 2500
         })

@@ -176,13 +176,13 @@ export class SongService {
     console.log(
       "propiedades del album\n",
       "album_name: ",
-      this.album_name,
+      album.name,
       "\nimageURL: ",
-      this.imageURL,
+      urlImg,
       "\nyear: ",
-      this.year,
+      album.year,
       "\nauthor: ",
-      this.author 
+      localStorage.getItem("nameUser") 
     );    
   }
   //función para eliminar géneros
@@ -210,9 +210,7 @@ export class SongService {
   //función para obtener datos del género
   getGenreSongProperties(genre: Genre){
     //asignación de datos de género en variables genéricas 
-    localStorage.setItem("genreName", genre.name);/*
-    this.genre_name = genre.name;
-    console.log("nombre del genero", this.genre_name);*/
+    localStorage.setItem("genreName", genre.name);
   }
   //función para obtener datos del álbum
   getAlbumSongProperties(album: Album){
@@ -220,11 +218,7 @@ export class SongService {
     localStorage.setItem("album_name", album.name);
     localStorage.setItem("imageURL", album.imageURL);
     localStorage.setItem("year", String(album.year));
-    console.log(
-      "propiedades del album\n","\nalbum_name: ",this.album_name,
-      "\nimageURL: ",this.imageURL,"\nyear: ",this.year,"\nauthor: ",
-      this.author 
-    );
+    
   }
   //función para obtener datos de canción
   getSongProperties(song: Song){
@@ -274,25 +268,7 @@ export class SongService {
         authorId: localStorage.getItem("idUser")
 
       })
-      console.log(
-        "propiedades de canción\n",
-        "\ngenre_name: ",
-        this.genre_name,
-        "\nalbum_name: ",
-        this.album_name,
-        "\nimageURL: ",
-        this.imageURL,
-        "song_name: ",
-        song.song_name,
-        "\nyear: ",
-        this.year,
-        "\nauthor: ",
-        this.author,
-        "\nsongURL: ",
-        urlSong,
-        "\nsong_reference: ",
-        filePath, 
-      );
+      
   }
 
   
