@@ -19,6 +19,7 @@ export class AddPlaylistSongsComponent implements OnInit {
   public busqueda="";
   //array para agregar los id de las canciones agregadas
   public songList: string[] = [];
+  public id = localStorage.getItem("idUser");
 
   constructor(
     public playlistService: PlaylistService,
@@ -81,6 +82,8 @@ export class AddPlaylistSongsComponent implements OnInit {
   onSubmit(){
     //función del servicio para agregar la lista songlist
     this.playlistService.addPlaylistSongs(this.songList);
+    console.log("Canciones agredadas: ", this.songList);
+    this.router.navigate(['/showPlaylistSongs', this.id]);
 
   }
   //función para volver a mostrar todas las canciones

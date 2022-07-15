@@ -43,4 +43,10 @@ export class ShowPlaylistComponent implements OnInit {
   getPlaylistProperties(playlist: Playlist){
     this.playlistService.getPlaylistProperties(playlist);
   }
+  //obtiene los campos de la playlist
+  addPlaylistSongs(playlist){
+    this.playlistService.getPlaylistProperties(playlist);
+    //redirige a la lista de canciones
+    this.router.navigate(['/addPlaylistSongs',localStorage.getItem("idUser")]);
+  }
 }

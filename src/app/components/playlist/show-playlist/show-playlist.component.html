@@ -20,7 +20,10 @@
             <td>{{playlist.playlist_name}}</td>
             <td>
                 <button (click)="getPlaylistProperties(playlist)" 
-                routerLink="/showPlaylistSongs/{{playlist.id}}" class="btn btn-secondary">Canciones</button>
+                routerLink="/showPlaylistSongs/{{playlist.id}}" class="btn btn-primary separacion">Canciones</button>
+                
+                
+                <button (click)="addPlaylistSongs(playlist)" class="btn btn-secondary separacion">Agregar Canciones</button>
             </td>
         </tr>
     </tbody>

@@ -16,7 +16,7 @@ export class ShowPlaylistSongsComponent implements OnInit {
   playlistSongs: Song[];  
   //Objeto playlist
   playlist: any;
-
+  public id=this.activeRoute.snapshot.paramMap.get('id');
   constructor(
     private playlistService: PlaylistService,
     private router: Router,
@@ -26,7 +26,7 @@ export class ShowPlaylistSongsComponent implements OnInit {
   ngOnInit(): void {
     localStorage.setItem("recarga", "true");
     //obtiene el id de la playlist mediante la ruta
-    const id = this.activeRoute.snapshot.paramMap.get('id');
+    const id = localStorage.getItem("idPlaylist");
     //obtiene la playlist correspondiente al id
     this.playlistService.getObject(id).subscribe( res =>{
       this.playlist = res;
@@ -49,7 +49,7 @@ export class ShowPlaylistSongsComponent implements OnInit {
   }
   //redirecciónar a la lista de playlist
   showPlaylist(){
-    this.router.navigate(['/showPlaylist']);
+    this.router.navigate(['/showPlaylist', this.id]);
   }
   //eliminar canción de la playlist
   deleteSong(id: string){
