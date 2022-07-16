@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
     //referencia al método del servicio para Registrar
     //verificación de algun error
     const res = await this.auth.register(this.userForm.value).catch(error =>{
-      alert("Algun accidente ocurrió")
+      alert("Registro incompleto")
       console.log('error', error);
     })
     //en caso de que exista respuesta
@@ -95,7 +95,7 @@ export class RegisterComponent implements OnInit {
       return 'El campo es obligatorio';
     }
    
-    return this.userForm.get(field)? 'Algun exidente ocurrió' : '';
+    return this.userForm.get(field)? 'Formato incorrecto' : '';
   }
   emptypassword(field: string){
     if (this.userForm.get(field)?.hasError('required')) {

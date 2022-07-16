@@ -69,7 +69,7 @@ export class CreatePlaylistComponent implements OnInit {
       return 'El campo es obligatorio';
     }
    
-    return this.playlistForm.get(field)? 'Algun exidente ocurrió' : '';
+    return this.playlistForm.get(field)? 'Formato incorrecto' : '';
   }
   get emptyName(){
     return this.playlistForm.get('playlist_name')?.invalid && this.playlistForm.get('playlist_name')?.touched

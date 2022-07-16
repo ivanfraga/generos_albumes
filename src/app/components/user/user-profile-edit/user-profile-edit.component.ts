@@ -91,7 +91,7 @@ export class UserProfileEditComponent implements OnInit {
       return 'El campo es obligatorio';
     }
    
-    return this.userEditForm.get(field)? 'Algun exidente ocurrió' : '';
+    return this.userEditForm.get(field)? 'Formato incorrecto' : '';
   }
 
   get emptyName(){

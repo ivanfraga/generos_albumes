@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     //referencia al método del servicio para Iniciar sesión
     //verificación de algun error
     const res = await this.auth.login(this.userForm.value).catch(error =>{
-      alert("Algun accidente ocurrió")
+      alert("Credenciales Incorrectas")
       console.log('error', error);
     })
    //en caso de que exista respuesta
@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
       return 'El campo es obligatorio';
     }
    
-    return this.userForm.get(field)? 'Algun exidente ocurrió' : '';
+    return this.userForm.get(field)? 'Formato incorrecto' : '';
   }
   
   get emptyPassword(){

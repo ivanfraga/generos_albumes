@@ -82,6 +82,7 @@ const routes: Routes = [
   {path: 'showFavorites/:id', component:ShowFavoriteComponent,canActivate:[PermisoCitizenGuard,PermisoGlobalGuard]},
   {path: 'showFavoritesDoc', component:FavoriteShowDocComponent},
   {path: 'login', component: LoginComponent},
+  {path: '', component: LoginComponent},
   {path: 'loginDoc', component: LoginDocComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'registerDoc', component: RegisterDocComponent},

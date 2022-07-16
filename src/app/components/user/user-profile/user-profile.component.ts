@@ -17,6 +17,7 @@ export class UserProfileComponent implements OnInit {
   public uid: any;
   public redirection: string;
   public room: any;
+  public rolUser: string;
 
   constructor(
     private zone: NgZone,
@@ -43,16 +44,19 @@ export class UserProfileComponent implements OnInit {
        switch(this.usuario.rol) { 
         case "artist": { 
           this.redirection= "Subir una canción";
+          this.rolUser= "Artista";
           
            break; 
         } 
         case "citizen": { 
           this.redirection= "Visualizar canciones";
+          this.rolUser= "Ciudadano";
           
            break; 
         } 
         case "admin": { 
           this.redirection= "Gestionar artistas";
+          this.rolUser= "Administrador";
           
           break; 
        }

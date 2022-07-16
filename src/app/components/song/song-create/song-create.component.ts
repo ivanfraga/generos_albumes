@@ -88,7 +88,7 @@ export class SongCreateComponent implements OnInit {
       return 'El campo es obligatorio';
     }
    
-    return this.songForm.get(field)? 'Algun exidente ocurrió' : '';
+    return this.songForm.get(field)? 'Formato incorrecto' : '';
   }
 
   get emptyName(){

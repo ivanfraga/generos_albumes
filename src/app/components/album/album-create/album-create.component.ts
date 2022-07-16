@@ -83,7 +83,7 @@ export class AlbumCreateComponent implements OnInit {
       return 'El campo es obligatorio';
     }
    
-    return this.albumForm.get(field)? 'Algun exidente ocurrió' : '';
+    return this.albumForm.get(field)? 'Formato incorrecto' : '';
   }
 
   get emptyName(){

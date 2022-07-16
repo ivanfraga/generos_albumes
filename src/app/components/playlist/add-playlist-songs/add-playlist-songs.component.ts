@@ -92,7 +92,7 @@ export class AddPlaylistSongsComponent implements OnInit {
     //cambio de estado de la búsqueda
     this.isSearch= false;
     //recargar el método inicializador
-    this.ngOnInit();
+    this.router.navigate(['/selectFavorites', this.id]);
   }
 
 }
