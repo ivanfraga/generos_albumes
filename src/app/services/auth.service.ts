@@ -65,7 +65,7 @@ export class AuthService {
     //establece al usuario segun los campos de usuario
     .set({id: user.id,
     mail: user.mail,
-    password: user.password,
+    //password: user.password,
     name: user.name,
     birthdate: user.birthdate,
     rol: user.rol,

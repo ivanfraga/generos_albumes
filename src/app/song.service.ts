@@ -249,6 +249,7 @@ export class SongService {
     const id = this.angularFirestore.createId();//crea un ID
     //obtener datos de variables genéicas para asignarlas a campos de canción
     this.song_name= song.song_name;
+    localStorage.setItem("song_name", song.song_name);
     this.songURL= urlSong;
     this.song_reference= filePath;
     this.id= id;

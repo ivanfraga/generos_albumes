@@ -44,6 +44,7 @@ export class SongShowComponent implements OnInit {
   //función para actualizar canción
   //necesita parámetro: objeto canción 
   updateSong(song){
+    localStorage.setItem("song_name", song.song_name);
     this.songService.getSongProperties(song);
   }
   //función para redirecciónar a géneros

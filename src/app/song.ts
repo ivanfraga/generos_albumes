@@ -54,7 +54,7 @@ export class User {
     birthdate: string;
     mail: string;
     name: string;
-    password: string;
+    password?: string;
     rol: string;
     imageURL: string;
     image_reference: string;

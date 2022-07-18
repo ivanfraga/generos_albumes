@@ -21,6 +21,7 @@ export class SongEditComponent implements OnInit {
     "https://i.pinimg.com/564x/65/df/2c/65df2c922e64c61235162ab7c0924d3c.jpg";
   _file;
   song: any;
+  public id=this.activeRoute.snapshot.paramMap.get('id');
   constructor(
     public songService: SongService,
     public formBuilder: FormBuilder,
@@ -42,6 +43,7 @@ export class SongEditComponent implements OnInit {
    }
    //función inicializadora
   ngOnInit(): void {
+    
     localStorage.setItem("recarga", "true");
     //obtener el id de la url
     const id = this.activeRoute.snapshot.paramMap.get('id');
@@ -72,7 +74,7 @@ export class SongEditComponent implements OnInit {
     this.songService.updateSongProcess(this.songEditForm.value,
        this._file, this.collectionName, 
        this.isChanged, id);
-    this.router.navigate(['/showSong']);
+    this.router.navigate(['/showSong', this.id]);
     //Ver los valores capturados
     console.log(this.songEditForm.value) 
     this.isChanged = false;
