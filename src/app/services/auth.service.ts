@@ -65,14 +65,12 @@ export class AuthService {
     //establece al usuario segun los campos de usuario
     .set({id: user.id,
     mail: user.mail,
-    //password: user.password,
     name: user.name,
     birthdate: user.birthdate,
     rol: user.rol,
     imageURL: user.imageURL,
     image_reference: user.image_reference,
     });
-  
   }
 
   //logout method
@@ -98,8 +96,9 @@ export class AuthService {
     //método de firebase para reestablecer contraseña mediante correo
     this.fireauth.sendPasswordResetEmail(email).then(() => {
       //redireccionar al dashboard
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['/login']);
     }, err => {
+      console.log("error: ", err)
       alert('Something went wrong');
     })
   }
@@ -129,26 +128,22 @@ export class AuthService {
     console.log("valores obtenidos: ", usuario)
     //return usuario;*/
   }
-  //función para actualizar canción
-  //necesita parámetros: objeto canción, url, referencia en FireStorage
+  //función para actualizar perfil
+  //necesita parámetros: objeto usuario, url, referencia en FireStorage
   updateUser(object: any, url: any, path: any, id: any){
-    
     return this.firestore.collection("users")
-    //crea segun la id registrada en direauthentication
+    //referencia al id del usuario
     .doc(id)
-      //actualización de los siguientes campos de la canción
+      //actualización de los siguientes campos 
       .update({
         name: object.name,
         imageURL : url,
         image_reference: path
     })
-    
-
   }
   updateUserProcess(object: any, _file: any,isChanged:boolean, id:any){
     //función para obtener url de la canción actualizada
   //necesita parámetros: objeto canciones, archivo, nombre de colección, boolean, id
-  
     //verifica si hubo cambio de archivo canción
     if(isChanged){
       //especifica la ruta del usuario
@@ -171,7 +166,6 @@ export class AuthService {
     else{
       this.updateUser(object, object.imageURL, object.image_reference, id)
     }
-  
   }
   //VERIFICACIÓN DE ROL
   rolVerification(rol: string){

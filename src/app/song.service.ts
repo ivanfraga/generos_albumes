@@ -78,8 +78,6 @@ export class SongService {
          author: localStorage.getItem("nameUser"), 
          authorId: localStorage.getItem("idUser"),
          image_reference: filePath });
-    
-    
   }
   //función para agregar la imagen y luego crear el objeto en FireStorage
   
@@ -155,7 +153,6 @@ export class SongService {
   //función para crear un álbum 
   //necesita parámetros: objeto género, url, referencia en FireStorage
   albumCreate(album: Album, urlImg:any, filePath: any) {
-
     const id = this.angularFirestore.createId();//crea un ID
     localStorage.setItem("imageURL", urlImg);
     //crea un documento con los campos especificados
@@ -267,9 +264,7 @@ export class SongService {
         songURL: urlSong,
         song_reference: filePath,
         authorId: localStorage.getItem("idUser")
-
-      })
-      
+      })  
   }
 
   
@@ -300,8 +295,6 @@ export class SongService {
         songURL: urlSong,
         song_reference: filePath
     })
-    
-
   }
   //función para eliminar canción
   //necesita parámetro: objeto canción
@@ -406,7 +399,7 @@ export class SongService {
   }
   getGenres(collection: string){
     return this.angularFirestore
-    //Búsqueda de canciones que pertenezcan al álbum
+    //Búsqueda de géneros que pertenezcan al artista
     .collection(collection, ref => ref.where('authorId', '==', localStorage.getItem("idUser")))
     .snapshotChanges();
   }

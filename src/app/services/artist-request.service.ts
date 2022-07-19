@@ -31,7 +31,6 @@ export class ArtistRequestService {
     au.update({
       rol: artist.rol= "artist"
       })
-
   }
   noArtistRol(artist: Artist){
     console.log("el rol a actualizar es: ")

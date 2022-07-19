@@ -22,7 +22,6 @@ export class SongShowAllComponent implements OnInit {
   public id=this.activeRoute.snapshot.paramMap.get('id');
   ngOnInit(): void {
     localStorage.setItem("recarga", "true");
-    console.log(this.global.print());
     this.songService.getUserAllSongs().subscribe((res) =>{
       this.Song = res.map((e) =>{
         return {

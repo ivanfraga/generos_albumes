@@ -28,8 +28,8 @@ export class PlaylistService {
 
   public userID=localStorage.getItem("idUser");//seria el usuario que inicia sesión
 
-  //función para crear un género 
-  //necesita parámetros: objeto género, url, referencia en FireStorage
+  //función para crear una playlist 
+  //necesita parámetros: objeto playlist, url, referencia en FireStorage
    playlistCreate(playlist: Playlist) {
     const id = this.angularFirestore.createId();//crea un ID
     playlist.id= id;
