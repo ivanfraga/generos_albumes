@@ -16,6 +16,9 @@ export class ShowPlaylistSongsComponent implements OnInit {
   playlistSongs: Song[];  
   //Objeto playlist
   playlist: any;
+  //busqueda y paginación
+  public page: number = 0;
+  public search: string = '';
   public id=this.activeRoute.snapshot.paramMap.get('id');
   constructor(
     private playlistService: PlaylistService,
@@ -54,6 +57,19 @@ export class ShowPlaylistSongsComponent implements OnInit {
   //eliminar canción de la playlist
   deleteSong(id: string){
     this.playlistService.deletePlaylistSong(id);
+  }
+  nextPage() {
+    this.page += 5;
+  }
+
+  prevPage() {
+    if ( this.page > 0 )
+      this.page -= 5;
+  }
+
+  searching( search: string ) {
+    this.page = 0;
+    this.search = search;
   }
 
 }

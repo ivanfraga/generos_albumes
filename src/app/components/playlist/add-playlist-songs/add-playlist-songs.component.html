@@ -5,18 +5,22 @@
     </div>
 </div>
 <button (click)="showAllSongs()" class="btn btn-secondary button" type="button">Inicio</button>
-<input
-  #identificador    
-  type="text"
-  placeholder="Buscar canciones"          
-  autocomplete="off"    
-/>
-<button  
-  class="btn btn-primary button"
-  type="button"  
-  (click)="setSearch(identificador.value)"
->
-Buscar Canción
+<input type="text"
+        class="form-control mb-2"
+        placeholder="Buscar canciones"
+        #txtSearch
+        (keyup)="searching( txtSearch.value )" />
+
+
+<button class="btn btn-outline-secondary mb-2"
+        (click)="prevPage()">
+    Anteriores
+</button>
+&nbsp;
+<button class="btn btn-outline-secondary mb-2"
+        (click)="nextPage()"
+        [disabled]="(Song | filtroCanciones:page:search).length === 0">
+    Siguientes
 </button>
 <button (click)="onSubmit()" class="btn btn-primary button" type="button">Finalizar</button>
 <table class="table table-responsive table-hover table-striped">
@@ -31,7 +35,7 @@ Buscar Canción
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let song of Song">
+        <tr *ngFor="let song of Song | filtroCanciones:page:search">
             <td><img [src]="song.imageURL" alt="" width = 100 height = 100></td>
             <td>{{song.author}}</td>
             <td>{{song.song_name}}</td>

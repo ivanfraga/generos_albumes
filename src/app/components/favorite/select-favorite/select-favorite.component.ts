@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute,Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Song } from 'src/app/song';//importar clase de canción
 import { SongService } from 'src/app/song.service';//importar servicio
 
@@ -11,8 +11,10 @@ import { SongService } from 'src/app/song.service';//importar servicio
 export class SelectFavoriteComponent implements OnInit {
   //array que contendrá las canciones
   Song: Song[];
+  //busqueda y paginación de canciones
+  public page: number = 0;
+  public search: string = '';
   constructor(
-    private activeRoute: ActivatedRoute,
     private songService: SongService,
     public router: Router
   ) { }
@@ -41,5 +43,19 @@ export class SelectFavoriteComponent implements OnInit {
   }
   profile(){
     this.router.navigate(['/userProfile',this.id])
+  }
+
+  nextPage() {
+    this.page += 5;
+  }
+
+  prevPage() {
+    if ( this.page > 0 )
+      this.page -= 5;
+  }
+
+  searching( search: string ) {
+    this.page = 0;
+    this.search = search;
   }
 }

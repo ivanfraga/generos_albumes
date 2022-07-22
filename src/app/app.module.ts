@@ -65,6 +65,7 @@ import { UserProfileEditDocComponent } from './components/user/user-profile-edit
 import { NoArtistComponent } from './components/user/no-artist/no-artist.component';
 import {MatIconModule} from '@angular/material/icon'
 import { RolDeniedComponent } from './components/user/rol-denied/rol-denied.component';
+import { FiltroCancionesPipe } from './components/pipes/filtro-canciones.pipe';
 
 @NgModule({
   declarations: [
@@ -123,6 +124,7 @@ import { RolDeniedComponent } from './components/user/rol-denied/rol-denied.comp
     UserProfileEditDocComponent,
     NoArtistComponent,
     RolDeniedComponent,
+    FiltroCancionesPipe,
     
   ],
   imports: [

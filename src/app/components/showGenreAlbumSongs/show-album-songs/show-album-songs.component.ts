@@ -11,6 +11,9 @@ import { SongService } from 'src/app/song.service';//importar servicio
 export class ShowAlbumSongsComponent implements OnInit {
   //variable donde se almacena la lsita de canciones
   Song: Song[];
+  //busqueda y paginación
+  public page: number = 0;
+  public search: string = '';
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -42,6 +45,20 @@ export class ShowAlbumSongsComponent implements OnInit {
   }
   favoritos(){
     this.router.navigate(['/showFavorites', this.id]);
+  }
+
+  nextPage() {
+    this.page += 5;
+  }
+
+  prevPage() {
+    if ( this.page > 0 )
+      this.page -= 5;
+  }
+
+  searching( search: string ) {
+    this.page = 0;
+    this.search = search;
   }
 
 }

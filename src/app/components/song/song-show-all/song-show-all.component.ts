@@ -12,6 +12,8 @@ import { SongService } from 'src/app/song.service';
 export class SongShowAllComponent implements OnInit {
 
   Song: Song[];
+  public page: number = 0;
+  public search: string = '';
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -41,5 +43,19 @@ export class SongShowAllComponent implements OnInit {
 
   redirect(){
     this.router.navigate(['/showGenre', this.id])
+  }
+
+  nextPage() {
+    this.page += 5;
+  }
+
+  prevPage() {
+    if ( this.page > 0 )
+      this.page -= 5;
+  }
+
+  searching( search: string ) {
+    this.page = 0;
+    this.search = search;
   }
 }

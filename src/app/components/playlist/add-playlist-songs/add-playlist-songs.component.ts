@@ -20,7 +20,9 @@ export class AddPlaylistSongsComponent implements OnInit {
   //array para agregar los id de las canciones agregadas
   public songList: string[] = [];
   public id = localStorage.getItem("idUser");
-
+  //busqueda y paginación
+  public page: number = 0;
+  public search: string = '';
   constructor(
     public playlistService: PlaylistService,
     public router: Router
@@ -93,6 +95,20 @@ export class AddPlaylistSongsComponent implements OnInit {
     this.isSearch= false;
     //recargar el método inicializador
     this.router.navigate(['/selectFavorites', this.id]);
+  }
+
+  nextPage() {
+    this.page += 5;
+  }
+
+  prevPage() {
+    if ( this.page > 0 )
+      this.page -= 5;
+  }
+
+  searching( search: string ) {
+    this.page = 0;
+    this.search = search;
   }
 
 }

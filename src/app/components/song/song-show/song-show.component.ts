@@ -14,6 +14,8 @@ import { SongService } from 'src/app/song.service';
 export class SongShowComponent implements OnInit {
   //colección para guardar canciones
   Song: Song[];
+  public page: number = 0;
+  public search: string = '';
 
   constructor(
     private auth: AuthService,
@@ -56,6 +58,19 @@ export class SongShowComponent implements OnInit {
   //no necesita parámetros
   showAllSongs(){
     this.router.navigate(['/showAllSong', this.id])
+  }
+  nextPage() {
+    this.page += 5;
+  }
+
+  prevPage() {
+    if ( this.page > 0 )
+      this.page -= 5;
+  }
+
+  searching( search: string ) {
+    this.page = 0;
+    this.search = search;
   }
 
 

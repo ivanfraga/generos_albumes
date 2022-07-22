@@ -39,7 +39,7 @@ export class AuthService {
   //login method
   //Método para Acceder al sistema
   //Necesita parámetro: objeto User
-  login(user: User) {
+  login(user: any) {
     //método de firebase para acceder al sistema mediante el correo y contraseña
     return this.fireauth.signInWithEmailAndPassword(user.mail,user.password);
     

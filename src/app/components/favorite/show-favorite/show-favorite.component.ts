@@ -13,6 +13,9 @@ export class ShowFavoriteComponent implements OnInit {
   //variables generales
   //array de canciones que va a obtener a partir de los IDs registrados
   Song: Song[];
+  //busqueda y paginación
+  public page: number = 0;
+  public search: string = '';
   //dirección de favoritos
   path= "/favorite/"+ this.id + "/songs";
   //nombre de la colección de canciones
@@ -78,6 +81,19 @@ export class ShowFavoriteComponent implements OnInit {
 
   playlist(){
     this.router.navigate(['/showPlaylist', this.id]);
+  }
+  nextPage() {
+    this.page += 5;
+  }
+
+  prevPage() {
+    if ( this.page > 0 )
+      this.page -= 5;
+  }
+
+  searching( search: string ) {
+    this.page = 0;
+    this.search = search;
   }
 
 }
