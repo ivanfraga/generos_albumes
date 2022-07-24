@@ -66,6 +66,8 @@ import { NoArtistComponent } from './components/user/no-artist/no-artist.compone
 import {MatIconModule} from '@angular/material/icon'
 import { RolDeniedComponent } from './components/user/rol-denied/rol-denied.component';
 import { FiltroCancionesPipe } from './components/pipes/filtro-canciones.pipe';
+import { FiltroGenerosPipe } from './components/pipes/filtro-generos.pipe';
+import { FiltroAlbumesPipe } from './components/pipes/filtro-albumes.pipe';
 
 @NgModule({
   declarations: [
@@ -125,6 +127,8 @@ import { FiltroCancionesPipe } from './components/pipes/filtro-canciones.pipe';
     NoArtistComponent,
     RolDeniedComponent,
     FiltroCancionesPipe,
+    FiltroGenerosPipe,
+    FiltroAlbumesPipe,
     
   ],
   imports: [

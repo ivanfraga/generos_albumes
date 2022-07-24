@@ -11,7 +11,10 @@ import { SongService } from 'src/app/song.service';
 export class ShowGenreComponent implements OnInit {
 
   Genre: Genre[];//variable array de tipo Género
-
+  //busqueda y paginación
+  public page: number = 0;
+  public search: string = '';
+  
   constructor(
     private activeRoute: ActivatedRoute,
     private songService: SongService,//variable que hace referencia al servicio
@@ -47,6 +50,19 @@ export class ShowGenreComponent implements OnInit {
   canciones(){
     //const id = this.activeRoute.snapshot.paramMap.get('id');
     this.router.navigate(['/selectFavorites', this.id]);
+  }
+  nextPage() {
+    this.page += 5;
+  }
+
+  prevPage() {
+    if ( this.page > 0 )
+      this.page -= 5;
+  }
+
+  searching( search: string ) {
+    this.page = 0;
+    this.search = search;
   }
 
 }

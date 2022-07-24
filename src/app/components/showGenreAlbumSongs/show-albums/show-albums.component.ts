@@ -11,6 +11,10 @@ import { SongService } from 'src/app/song.service';
 export class ShowAlbumsComponent implements OnInit {
 
   Album: Album[];//variable array de tipo Album
+    //busqueda y paginación
+    public page: number = 0;
+    public search: string = '';
+  
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -45,5 +49,19 @@ export class ShowAlbumsComponent implements OnInit {
   //método para redireccionar a crear álbum
   redirect(){
     this.router.navigate(['/showGenres', this.id]);
+  }
+
+  nextPage() {
+    this.page += 5;
+  }
+
+  prevPage() {
+    if ( this.page > 0 )
+      this.page -= 5;
+  }
+
+  searching( search: string ) {
+    this.page = 0;
+    this.search = search;
   }
 }

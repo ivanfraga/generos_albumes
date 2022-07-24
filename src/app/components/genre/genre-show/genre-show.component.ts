@@ -12,7 +12,9 @@ import { SongService } from 'src/app/song.service';
 export class GenreShowComponent implements OnInit {
   
   Genre: Genre[];//variable array de tipo Género
-  
+  //busqueda y paginación
+  public page: number = 0;
+  public search: string = '';
   
   constructor(
     private auth: AuthService,
@@ -52,5 +54,20 @@ export class GenreShowComponent implements OnInit {
 
   profile(){
     this.router.navigate(['/userProfile', this.id]);
+  }
+
+  nextPage() {
+    this.page += 5;
+  }
+
+  prevPage() {
+    if ( this.page > 0 )
+      this.page -= 5;
+  }
+
+  searching( search: string ) {
+    this.page = 0;
+    this.search = search;
+    console.log("la busqueda es : ", search)
   }
 }

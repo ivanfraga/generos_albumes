@@ -4,6 +4,23 @@
 <div class="d-grid gap-2 button">
     <button (click)="redirect()" class="btn btn-primary button" type="button">Géneros</button>
 </div>
+<input type="text"
+        class="form-control mb-2"
+        placeholder="Buscar géneros musicales"
+        #txtSearch
+        (keyup)="searching( txtSearch.value )" />
+
+
+<button class="btn btn-outline-secondary mb-2"
+        (click)="prevPage()">
+    Anteriores
+</button>
+&nbsp;
+<button class="btn btn-outline-secondary mb-2"
+        (click)="nextPage()"
+        [disabled]="(Album | filtroAlbumes:page:search).length === 0">
+    Siguientes
+</button>
 <table class="table table-hover table-striped">
     <thead class="bg-dark text-white">
         <tr>
@@ -15,7 +32,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let album of Album">
+        <tr *ngFor="let album of Album | filtroAlbumes:page:search">
             <td><img [src]="album.imageURL" alt="" width = 100 height = 100></td>
             <td>{{album.name}}</td>
             <td>{{album.year}}</td>
