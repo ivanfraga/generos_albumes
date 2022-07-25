@@ -58,6 +58,7 @@ export class AuthService {
   //Función para crear usuario en firestore
   //Necesita parámetros: objeto usuario, dirección de la colección
   createUser(user: User, path: string){
+    console.log("datos usuario: ", user)
     //ubica segun la dirección en la colección correspondiente
     this.firestore.collection(path)
     //crea segun la id registrada en direauthentication
@@ -96,7 +97,8 @@ export class AuthService {
     //método de firebase para reestablecer contraseña mediante correo
     this.fireauth.sendPasswordResetEmail(email).then(() => {
       //redireccionar al dashboard
-      this.router.navigate(['/login']);
+      alert("Revisa tu correo");
+      
     }, err => {
       console.log("error: ", err)
       alert('Something went wrong');

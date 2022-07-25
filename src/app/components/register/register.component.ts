@@ -34,8 +34,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     //borrar el almacenamiento interno
-    localStorage.clear();
-    localStorage.setItem("recarga", "true");
+
+    //localStorage.clear();
+    //localStorage.setItem("recarga", "true");
   }
     //Método para Registrar
   async register(){
@@ -43,6 +44,7 @@ export class RegisterComponent implements OnInit {
     //referencia al método del servicio para Registrar
     //verificación de algun error
     const res = await this.auth.register(this.userForm.value).catch(error =>{
+      console.log("los datos del usuario son. ", this.userForm);
       alert("Registro incompleto")
       console.log('error', error);
     })
@@ -58,7 +60,8 @@ export class RegisterComponent implements OnInit {
       console.log("datos usuario", this.userForm.value)
       //creario usuario en Firestore
       this.auth.createUser(this.userForm.value, path);
-      await this.auth.getObject(id, path).subscribe( res =>{
+      
+      this.auth.getObject(id, path).subscribe( res =>{
         //asignación del usuario
          this.user = res;
          console.log("usuario creado: ", this.user);
@@ -66,18 +69,34 @@ export class RegisterComponent implements OnInit {
          localStorage.setItem("idUser", this.user.id);
          localStorage.setItem("rolUser", this.user.rol);
          localStorage.setItem("nameUser", this.user.name);
-         //verificación de rol
-         if(this.user.rol == "no artist"){
-          this.router.navigate(['/noArtist'])
-        }
-        else{
-          this.router.navigate(['/userProfile', localStorage.getItem("idUser")])
-        }
+         this.myAsyncFunction();
+         
+         
+        
       })
       //redireccionar a la vista principal
 
     }
 
+  }
+
+  async delay(n: number){
+    return new Promise(function(resolve){
+        setTimeout(resolve,n*1000);
+    });
+  }
+  async  myAsyncFunction(){
+    //Do what you want here 
+    console.log("por fa espera")
+
+    await this.delay(2);
+
+    if(this.user.rol == "no artist"){
+      this.router.navigate(['/noArtist'])
+    }
+    else{
+      this.router.navigate(['/userProfile', localStorage.getItem("idUser")])
+    }
   }
   artista(){
     this.userForm.patchValue({rol: "no artist"});

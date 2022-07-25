@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 //Importa Servicio
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -11,7 +12,7 @@ export class ForgotpasswordComponent implements OnInit {
   //variable correo
   email:string= '';
 
-  constructor(private auth : AuthService) { }
+  constructor(private auth : AuthService, public router: Router) { }
 
   ngOnInit(): void {
     localStorage.setItem("recarga", "true");
@@ -20,8 +21,22 @@ export class ForgotpasswordComponent implements OnInit {
   forgotPassword(){
     //referencia al método del servicio para reestablecer contraseña
     this.auth.forgotPassword(this.email);
+    this.myAsyncFunction();
     //reestablecer correo
     this.email= '';
+  }
+  async delay(n: number){
+    return new Promise(function(resolve){
+        setTimeout(resolve,n*1000);
+    });
+  }
+  async  myAsyncFunction(){
+    //Do what you want here 
+    console.log("Revisa tu correo")
+
+    await this.delay(2);
+
+    this.router.navigate(['/login']);
   }
 
 }
