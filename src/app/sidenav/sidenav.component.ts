@@ -41,7 +41,7 @@ interface SideNavToggle {
 export class SidenavComponent implements OnInit {
 
   step = -1;
-
+  inicio = 0;
   
   setStep(index: number) {
     this.step = index;
@@ -72,6 +72,7 @@ export class SidenavComponent implements OnInit {
 
   ngOnInit(): void {
       this.screenWidth = window.innerWidth;
+      this.open();
   }
 
   toggleCollapse(): void {
@@ -82,5 +83,13 @@ export class SidenavComponent implements OnInit {
   closeSidenav(): void {
     this.collapsed = false;
     this.onToggleSideNav.emit({collapsed: this.collapsed, screenWidth: this.screenWidth});
+  }
+
+  open(){
+    if(this.inicio == 0){
+      this.inicio=1;
+      this.toggleCollapse();
+    }
+    //console.log("numero: ", this.inicio)
   }
 }

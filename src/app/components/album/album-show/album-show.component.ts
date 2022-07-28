@@ -37,6 +37,10 @@ export class AlbumShowComponent implements OnInit {
     });
   }
 
+  documentation(){
+    this.router.navigate(['/showAlbumDoc']);
+  }
+
   //método que obtiene los datos del album, cuando se selecciona uno
   //pasa como parámetro un album
   getAlbumData(album){

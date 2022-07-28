@@ -16,9 +16,9 @@
                     </span>
                 </summary>
                 <div *ngFor="let met of drag.metodos">
-                    <a class="sidenav-nav-link" [routerLink]="[met.link]" routerLinkActive="active"
+                    <a class="sidenav-nav-sublink" [routerLink]="[met.link]" routerLinkActive="active"
                         [routerLinkActiveOptions]="{exact: true}">
-                        <span class="sidenav-link-text" @fadeInOut *ngIf="collapsed">
+                        <span class="sidenav-sublink-text" @fadeInOut *ngIf="collapsed">
                             {{met.metodo}}
                         </span>                    
                     </a>

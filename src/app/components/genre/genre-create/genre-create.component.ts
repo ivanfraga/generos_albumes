@@ -62,6 +62,9 @@ export class GenreCreateComponent implements OnInit {
     
 
   }
+  documentation(){
+    this.router.navigate(['/createGenreDoc']);
+  }
   onSubmit(){
     localStorage.setItem("recarga", "true");
     this.auth.rolVerification("artist");

@@ -38,6 +38,9 @@ export class SongShowComponent implements OnInit {
       });
     });
   }
+  documentation(){
+    this.router.navigate(['/showSongDoc']);
+  }
   //función para eliminar canción
   //necesita parámetro: objeto canción
   deleteSong(song){

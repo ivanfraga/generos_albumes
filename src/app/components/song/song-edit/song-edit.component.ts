@@ -80,6 +80,10 @@ export class SongEditComponent implements OnInit {
     this.isChanged = false;
     this.file.nativeElement.value = "";
   }
+  documentation(){
+    this.router.navigate(['/updateSongDoc']);
+  }
+
   //función para transformar la canción subida a url local
   onFilesAdded(target: any) {
     this.isChanged = true;
@@ -98,6 +102,6 @@ export class SongEditComponent implements OnInit {
     this.file.nativeElement.click();
   }
   redirect(){
-    this.router.navigate(['/showAlbum']);
+    this.router.navigate(['/showSong', this.id]);
   }
 }

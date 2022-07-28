@@ -70,4 +70,7 @@ export class GenreShowComponent implements OnInit {
     this.search = search;
     console.log("la busqueda es : ", search)
   }
+  documentation(){
+    this.router.navigate(['/showGenreDoc']);
+  }
 }

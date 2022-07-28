@@ -114,6 +114,33 @@
 
             
         }
+        .sidenav-nav-sublink {
+            display: flex;
+            align-items: center;
+            height: 3rem;
+            color: #f3f3f3;
+            text-decoration: none;
+            border-radius: 0.625rem;
+            transition: all .3s ease;
+            margin-bottom: 0.625rem;
+
+           
+
+            .sidenav-sublink-icon {
+                font-size: 20px;
+                width: 5rem;
+                min-width: 2rem;
+                
+                text-align: center;
+            }
+
+            .sidenav-sublink-text {
+                margin-left: 1.5rem;
+                width: 100%; 
+            }
+
+            
+        }
     }
 
     .sidenav-nav-item:hover {

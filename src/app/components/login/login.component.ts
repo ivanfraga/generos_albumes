@@ -76,6 +76,9 @@ export class LoginComponent implements OnInit {
         })
       }
   }
+  documentation(){
+    this.router.navigate(['/loginDoc']);
+  }
 
   emptyFields(field: string){
     if (this.userForm.get(field)?.hasError('required')) {

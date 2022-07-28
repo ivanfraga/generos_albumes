@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-doc',
@@ -7,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginDocComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(public router:Router) { }
   ngOnInit(): void {
     localStorage.setItem("recarga", "true");
+  }
+  implementation(){
+    
+    this.router.navigate(['/login']);
+    
   }
 
 }

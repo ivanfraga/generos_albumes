@@ -38,6 +38,9 @@ export class ShowPlaylistSongsComponent implements OnInit {
     })
 
   }
+  documentation(){
+    this.router.navigate(['/showPlaylistSongsDoc']);
+  }
 
   getSongs(){
     //obtiene canciones por medio de la lista de Ids de la playlist

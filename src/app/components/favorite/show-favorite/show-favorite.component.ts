@@ -50,6 +50,10 @@ export class ShowFavoriteComponent implements OnInit {
     })
    
   }
+
+  documentation(){
+    this.router.navigate(['/showFavoritesDoc']);
+  }
   //método que obtiene la lista de IDs de Favoritos y carga canciones según los IDs
   mostrar(){
     

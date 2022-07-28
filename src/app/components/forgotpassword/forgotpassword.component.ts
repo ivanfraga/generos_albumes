@@ -38,5 +38,8 @@ export class ForgotpasswordComponent implements OnInit {
 
     this.router.navigate(['/login']);
   }
+  documentation(){
+    this.router.navigate(['/forgotPasswordDoc']);
+  }
 
 }

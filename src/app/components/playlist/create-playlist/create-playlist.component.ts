@@ -52,6 +52,9 @@ export class CreatePlaylistComponent implements OnInit {
     this.router.navigate(['/addPlaylistSongs']);
     
   }
+  documentation(){
+    this.router.navigate(['/createPlaylistDoc']);
+  }
   //redirige a la lista de géneros
 
   redirect(){

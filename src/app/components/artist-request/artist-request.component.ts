@@ -41,6 +41,9 @@ export class ArtistRequestComponent implements OnInit {
     
     
   }
+  documentation(){
+    this.router.navigate(['/artistRequestDoc']);
+  }
 
   getArtist(){
     //obtiene los artistas

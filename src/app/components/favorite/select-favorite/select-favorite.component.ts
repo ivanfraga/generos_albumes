@@ -31,6 +31,9 @@ export class SelectFavoriteComponent implements OnInit {
       });
     });
   }
+  documentation(){
+    this.router.navigate(['/selectFavoritesDoc']);
+  }
   //método agrega canciones a la lista de favoritos
   addToFavorite(song){
     //referencia al método en el servicio que agrega

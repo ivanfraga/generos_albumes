@@ -1,3 +1,6 @@
+<div class="d-grid gap-2 button">
+    <button (click)="documentation()" class="btn btn-info button" type="button">Documentación</button>
+</div>
 <div class="card card_title">
     <div class="card-head"><h2>Editar perfil de usuario</h2></div>
     <div class="card-body">
@@ -5,7 +8,7 @@
     </div>
 </div><form [formGroup]="userEditForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="mb-3">
-        <label class="form-label">Nombre de la canción</label>
+        <label class="form-label">Nombre de usuario</label>
         <input formControlName="name" type="text" class="form-control" required>
         <label class="error"  *ngIf="emptyName" >{{emptyFields("name")}}</label>
     </div>

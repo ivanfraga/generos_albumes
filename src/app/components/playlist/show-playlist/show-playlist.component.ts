@@ -32,6 +32,9 @@ export class ShowPlaylistComponent implements OnInit {
       });
     });
   }
+  documentation(){
+    this.router.navigate(['/showPlaylistDoc']);
+  }
   //redireccionar a crear playlist
   redirect(){
     this.router.navigate(['/createPlaylist', this.id])

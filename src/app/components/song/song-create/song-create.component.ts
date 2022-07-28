@@ -76,6 +76,10 @@ export class SongCreateComponent implements OnInit {
       reader.readAsDataURL(this._file);
     }
   }
+
+  documentation(){
+    this.router.navigate(['/createSongDoc']);
+  }
   addFiles() {
     this.file.nativeElement.click();
   }

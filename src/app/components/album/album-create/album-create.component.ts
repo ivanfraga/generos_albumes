@@ -78,6 +78,10 @@ export class AlbumCreateComponent implements OnInit {
     this.router.navigate(['/showAlbum', this.id]);
   }
 
+  documentation(){
+    this.router.navigate(['/createAlbumDoc']);
+  }
+
   emptyFields(field: string){
     if (this.albumForm.get(field)?.hasError('required')) {
       return 'El campo es obligatorio';

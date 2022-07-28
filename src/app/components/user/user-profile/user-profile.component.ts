@@ -67,6 +67,9 @@ export class UserProfileComponent implements OnInit {
      }
     })
   }
+  documentation(){
+    this.ruta.navigate(['/userProfileDoc']);
+  }
   //función para redireccionar segun el rol
   showGenre(){
     switch(this.usuario.rol) { 

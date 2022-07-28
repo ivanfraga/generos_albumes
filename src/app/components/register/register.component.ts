@@ -38,6 +38,9 @@ export class RegisterComponent implements OnInit {
     //localStorage.clear();
     //localStorage.setItem("recarga", "true");
   }
+  documentation(){
+    this.router.navigate(['/registerDoc']);
+  }
     //Método para Registrar
   async register(){
     

@@ -1,3 +1,6 @@
+<div class="d-grid gap-2 button">
+    <button (click)="documentation()" class="btn btn-info button" type="button">Documentación</button>
+</div>
 <h2>Actualiza la canción</h2>
 <form [formGroup]="songEditForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="mb-3">
@@ -18,7 +21,7 @@
         <audio [src]="url" formControlName="songURL" controls></audio>
     </div>
     <button (click)="redirect()" class="btn btn-primary button" type="button">
-        Lista de albumes</button>
+        Lista de canciones</button>
     <button [disabled]="!songEditForm.valid" type="submit" class="btn btn-primary button" >
         Save</button>
 </form>

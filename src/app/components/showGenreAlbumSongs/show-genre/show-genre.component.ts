@@ -65,4 +65,8 @@ export class ShowGenreComponent implements OnInit {
     this.search = search;
   }
 
+  documentation(){
+    this.router.navigate(['/showGenresDoc']);
+  }
+
 }

@@ -110,5 +110,8 @@ export class AddPlaylistSongsComponent implements OnInit {
     this.page = 0;
     this.search = search;
   }
+  documentation(){
+    this.router.navigate(['/addPlaylistSongsDoc']);
+  }
 
 }

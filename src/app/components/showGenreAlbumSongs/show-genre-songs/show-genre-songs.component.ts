@@ -59,4 +59,8 @@ export class ShowGenreSongsComponent implements OnInit {
     this.search = search;
   }
 
+  documentation(){
+    this.router.navigate(['/showGenreSongsDoc']);
+  }
+
 }

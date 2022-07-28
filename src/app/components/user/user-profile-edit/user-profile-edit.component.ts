@@ -64,6 +64,9 @@ export class UserProfileEditComponent implements OnInit {
     this.isChanged = false;
     this.file.nativeElement.value = "";
   }
+  documentation(){
+    this.router.navigate(['/userEditDoc']);
+  }
   //función para transformar la imagen subida a url local
   onFilesAdded(target: any) {
     this.isChanged = true;
