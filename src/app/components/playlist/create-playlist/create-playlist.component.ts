@@ -49,7 +49,7 @@ export class CreatePlaylistComponent implements OnInit {
     //función del servicio para crear playlist
     this.playlistService.playlistCreate(this.playlistForm.value);
     //redirige a la lista de canciones
-    this.router.navigate(['/addPlaylistSongs']);
+    this.router.navigate(['/addPlaylistSongs',localStorage.getItem("idUser")]);
     
   }
   documentation(){
