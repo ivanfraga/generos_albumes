@@ -88,9 +88,9 @@ export const drago = [
         huName: "Registro",
         metodos :[
             {link: "register",
-            metodo: "> Registrar a travez de Formulario"},
+            metodo: "- Registrar a travez de Formulario"},
             {link: "registerDoc",
-            metodo: "> Documentación Registrar"},
+            metodo: "- Documentación Registrar"},
         ]
     },
     {
@@ -98,13 +98,13 @@ export const drago = [
         huName: "Iniciar sesión y recuperar contraseña.",
         metodos :[
             {link: "login",
-            metodo: "> Iniciar Sesión"},
+            metodo: "- Iniciar Sesión"},
             {link: "loginDoc",
-            metodo: "> Documentación Iniciar Sesión"},
+            metodo: "- Documentación Iniciar Sesión"},
             {link: "forgotPassword",
-            metodo: "> Restablecer Contraseña"},
+            metodo: "- Restablecer Contraseña"},
             {link: "forgotPasswordDoc",
-            metodo: "> Documentación Restablecer Contraseña"},
+            metodo: "- Documentación Restablecer Contraseña"},
         ]
     },
     {
@@ -112,14 +112,14 @@ export const drago = [
         huName: "Perfil de usuario",
         metodos :[
             {link: "userProfile/"+localStorage.getItem("idUser"),
-            metodo: "> Perfil",
+            metodo: "- Perfil",
             },
             {link: "userProfileDoc",
-            metodo: "> Documentación Perfil"},
+            metodo: "- Documentación Perfil"},
             {link: "userEdit/"+localStorage.getItem("idUser"),
-            metodo: "> Editar Perfil"},
+            metodo: "- Editar Perfil"},
             {link: "userEditDoc",
-            metodo: "> Documentación Editar Perfil"},
+            metodo: "- Documentación Editar Perfil"},
         ]
     },
     {
@@ -127,9 +127,9 @@ export const drago = [
         huName: "Solicitudes de artistas",
         metodos :[
             {link: "artistRequest/"+localStorage.getItem("idUser"),
-            metodo: "> Gestionar Solicitudes de Artistas"},
+            metodo: "- Gestionar Solicitudes de Artistas"},
             {link: "artistRequestDoc",
-            metodo: "> Documentación Gestionar Solicitudes de Artistas"},
+            metodo: "- Documentación Gestionar Solicitudes de Artistas"},
             
         ]
     },
@@ -139,13 +139,13 @@ export const drago = [
         huName: "Géneros - Artista",
         metodos :[
             {link: "showGenre/"+localStorage.getItem("idUser"),
-            metodo: "> Visualizar Géneros"},
+            metodo: "- Visualizar Géneros"},
             {link: "showGenreDoc",
-            metodo: "> Documentación Visualizar Géneros"},
+            metodo: "- Documentación Visualizar Géneros"},
             {link: "createGenre/"+localStorage.getItem("idUser"),
-            metodo: "> Crear Género"},
+            metodo: "- Crear Género"},
             {link: "createGenreDoc",
-            metodo: "> Documentación Crear Género"},
+            metodo: "- Documentación Crear Género"},
         ]
     },
     {
@@ -153,13 +153,13 @@ export const drago = [
         huName: "Álbumes - Artista",
         metodos :[
             {link: "showAlbum/"+localStorage.getItem("idUser"),
-            metodo: "> Visualizar Álbumes"},
+            metodo: "- Visualizar Álbumes"},
             {link: "showAlbumDoc",
-            metodo: "> Documentación Visualizar Álbumes"},
+            metodo: "- Documentación Visualizar Álbumes"},
             {link: "createAlbum/"+localStorage.getItem("idUser"),
-            metodo: "> Crear Álbum"},
+            metodo: "- Crear Álbum"},
             {link: "createAlbumDoc",
-            metodo: "> Documentación Crear Álbum"},
+            metodo: "- Documentación Crear Álbum"},
         ]
     },
     {
@@ -167,17 +167,17 @@ export const drago = [
         huName: "Canciones - Artista",
         metodos :[
             {link: "showSong/"+localStorage.getItem("idUser"),
-            metodo: "> Visualizar Canciones del Álbum"},
+            metodo: "- Visualizar Canciones del Álbum"},
             {link: "showSongDoc",
-            metodo: "> Documentación Visualizar Canciones del Álbum"},
+            metodo: "- Documentación Visualizar Canciones del Álbum"},
             {link: "createSong/"+localStorage.getItem("idUser"),
-            metodo: "> Crear Canción"},
+            metodo: "- Crear Canción"},
             {link: "createSongDoc",
-            metodo: "> Documentación Crear Canción"},
+            metodo: "- Documentación Crear Canción"},
             {link: "updateSong/"+localStorage.getItem("idUser"),
-            metodo: "> Actualizar Canción"},
+            metodo: "- Actualizar Canción"},
             {link: "updateSongDoc",
-            metodo: "> Documentación Actualizar Canción"},
+            metodo: "- Documentación Actualizar Canción"},
         ]
     },
     {
@@ -185,9 +185,9 @@ export const drago = [
         huName: "Canciones - Ciudadano",
         metodos :[
             {link: "selectFavorites/"+localStorage.getItem("idUser"),
-            metodo: "> Visulizar Canciones"},
+            metodo: "- Visulizar Canciones"},
             {link: "selectFavoritesDoc",
-            metodo: "> Documentación Visulizar Canciones"},
+            metodo: "- Documentación Visulizar Canciones"},
             
         ]
     },
@@ -196,13 +196,13 @@ export const drago = [
         huName: "Favoritos",
         metodos :[
             {link: "selectFavorites/"+localStorage.getItem("idUser"),
-            metodo: "> Seleccionar Favoritos"},
+            metodo: "- Seleccionar Favoritos"},
             {link: "selectFavoritesDoc",
-            metodo: "> Documentación Seleccionar Favoritos"},
+            metodo: "- Documentación Seleccionar Favoritos"},
             {link: "showFavorites/"+localStorage.getItem("idUser"),
-            metodo: "> Visualizar Favoritos"},
+            metodo: "- Visualizar Favoritos"},
             {link: "showFavoritesDoc",
-            metodo: "> Documentación Visualizar Favoritos"},
+            metodo: "- Documentación Visualizar Favoritos"},
         ]
     },
     {
@@ -210,13 +210,13 @@ export const drago = [
         huName: "Géneros - Ciudadano",
         metodos :[
             {link: "showGenres/"+localStorage.getItem("idUser"),
-            metodo: "> Visualizar Géneros"},
+            metodo: "- Visualizar Géneros"},
             {link: "showGenresDoc",
-            metodo: "> Documentación Visualizar Géneros"},
+            metodo: "- Documentación Visualizar Géneros"},
             {link: "showGenreSongs/"+localStorage.getItem("idUser"),
-            metodo: "> Canciones de Géneros"},
+            metodo: "- Canciones de Géneros"},
             {link: "showGenreSongsDoc",
-            metodo: "> Documentación Canciones de Géneros"},
+            metodo: "- Documentación Canciones de Géneros"},
         ]
     },
     {
@@ -224,13 +224,13 @@ export const drago = [
         huName: "Álbumes - Ciudadano",
         metodos :[
             {link: "showAlbums/"+localStorage.getItem("idUser"),
-            metodo: "> Visualizar Álbumes"},
+            metodo: "- Visualizar Álbumes"},
             {link: "showAlbumsDoc",
-            metodo: "> Documentación Visualizar Álbumes"},
+            metodo: "- Documentación Visualizar Álbumes"},
             {link: "showAlbumSongs/"+localStorage.getItem("idUser"),
-            metodo: "> Canciones de Álbumes"},
+            metodo: "- Canciones de Álbumes"},
             {link: "showAlbumSongsDoc",
-            metodo: "> Documentación Canciones de Álbumes"},
+            metodo: "- Documentación Canciones de Álbumes"},
         ]
     },
     {
@@ -238,13 +238,13 @@ export const drago = [
         huName: "Playlist",
         metodos :[
             {link: "showPlaylist/"+localStorage.getItem("idUser"),
-            metodo: "> Visualizar Playlist"},
+            metodo: "- Visualizar Playlist"},
             {link: "showPlaylistDoc",
-            metodo: "> Documentación Visualizar Playlist"},
+            metodo: "- Documentación Visualizar Playlist"},
             {link: "createPlaylist/"+localStorage.getItem("idUser"),
-            metodo: "> Crear o seleccionar Playlist"},
+            metodo: "- Crear o seleccionar Playlist"},
             {link: "createPlaylistDoc",
-            metodo: "> Documentación Crear o seleccionar Playlist"},
+            metodo: "- Documentación Crear o seleccionar Playlist"},
             
         ]
     },
@@ -253,13 +253,13 @@ export const drago = [
         huName: "Canciones Playlist",
         metodos :[
             {link: "addPlaylistSongs/"+localStorage.getItem("idUser"),
-            metodo: "> Añadir Canciones al Playlist"},
+            metodo: "- Añadir Canciones al Playlist"},
             {link: "addPlaylistSongsDoc",
-            metodo: "> Documentación Añadir Canciones al Playlist"},
+            metodo: "- Documentación Añadir Canciones al Playlist"},
             {link: "showPlaylistSongs/"+localStorage.getItem("idUser"),
-            metodo: "> Visualizar Canciones Playlist"},
+            metodo: "- Visualizar Canciones Playlist"},
             {link: "showPlaylistSongsDoc",
-            metodo: "> Documentación Visualizar Canciones Playlist"},
+            metodo: "- Documentación Visualizar Canciones Playlist"},
         ]
     },
 ]
