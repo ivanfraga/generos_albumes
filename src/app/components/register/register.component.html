@@ -27,12 +27,12 @@
     <div class="mb-3">
       <label class="form-label">Fecha de nacimiento</label>
       <input  formControlName="birthdate" type="date" class="form-control" required>
-      <label class="error"  *ngIf="emptybirthdate" >{{emptyFields("birthdate")}}</label>
+      <label class="error"  *ngIf="emptybirthdate" >{{wrongDate("birthdate")}}</label>
     </div>
     <div class="mb-3">
       <label class="form-label" >Seleccionar un rol</label>
-      <button (click)="artista()" class="btn btn-secondary button" type="button">Artista</button>
-      <button (click)="ciudadano()" class="btn btn-secondary button" type="button">Ciudadano</button>
+      <button (click)="artista()" class="btn btn-outline-secondary button" type="button">Artista</button>
+      <button (click)="ciudadano()" class="btn btn-outline-secondary button" type="button">Ciudadano</button>
     </div>
     <button (click)="redirect()" class="btn btn-primary button" type="button">Login</button>
     

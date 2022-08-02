@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SongService } from 'src/app/song.service'; //Servicio en donde estan los métodos genéricos
-import { FormBuilder, FormGroup } from '@angular/forms'; //Formulario reactivo
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'; //Formulario reactivo
 import { Router,ActivatedRoute } from '@angular/router';
 import { ViewChild } from "@angular/core";
 
@@ -31,7 +31,7 @@ export class AlbumCreateComponent implements OnInit {
       genre_name:[''],
       name: [''],
       author: [''],
-      year:[''],
+      year:['', [Validators.required, validations.validarfechas]],
       image_reference: [''],
       imageURL: [''],
       id: null
@@ -89,6 +89,13 @@ export class AlbumCreateComponent implements OnInit {
    
     return this.albumForm.get(field)? 'Formato incorrecto' : '';
   }
+  wrongYear(field: string){
+    if (this.albumForm.get(field)?.hasError('required')) {
+      return 'El campo es obligatorio';
+    }
+   
+    return this.albumForm.get(field)? 'Año superior al actual' : '';
+  }
 
   get emptyName(){
     return this.albumForm.get('name')?.invalid && this.albumForm.get('name')?.touched
@@ -97,4 +104,15 @@ export class AlbumCreateComponent implements OnInit {
     return this.albumForm.get('year')?.invalid && this.albumForm.get('year')?.touched
   }
 
+}
+
+class validations{
+  public static validarfechas(element: FormControl){
+    let invalidDate : boolean= false;
+    let validation = element.value;
+    let aux:Date = new Date(validation);
+    let selectdate: Date = new Date(aux.getUTCFullYear());
+    invalidDate = (selectdate> new Date(new Date().getFullYear()));
+    return invalidDate ? {fechainvalida:true}:null;
+  }
 }

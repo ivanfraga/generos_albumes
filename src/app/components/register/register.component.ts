@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
     //esecificación de los campos de usuario
     this.userForm= this.formBuilder.group({
       name: [''],
-      birthdate: [''],
+      birthdate: ['', [Validators.required, validations.validarfechas]],
       mail: [''],
       password: new FormControl(this.password, [ Validators.required, Validators.minLength(8), Validators.pattern("^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{8,100}$") ]),
       rol: [''],
@@ -119,6 +119,13 @@ export class RegisterComponent implements OnInit {
    
     return this.userForm.get(field)? 'Formato incorrecto' : '';
   }
+  wrongDate(field: string){
+    if (this.userForm.get(field)?.hasError('required')) {
+      return 'El campo es obligatorio';
+    }
+   
+    return this.userForm.get(field)? 'Fecha de nacimiento fuera de los limites de 15 a 60' : '';
+  }
   emptypassword(field: string){
     if (this.userForm.get(field)?.hasError('required')) {
       return 'El campo es obligatorio';
@@ -147,4 +154,15 @@ export class RegisterComponent implements OnInit {
   
   
 
+}
+//validar fechas
+class validations{
+  public static validarfechas(element: FormControl){
+    let invalidDate : boolean= false;
+    let validation = element.value;
+    let aux:Date = new Date(validation);
+    let selectdate: Date = new Date(aux.getUTCFullYear(), aux.getUTCMonth(), aux.getUTCDate());
+    invalidDate = (selectdate> new Date(new Date().getFullYear()-15, new Date().getMonth(), new Date().getDate()+1)) || (selectdate< new Date(new Date().getFullYear()-60, new Date().getMonth(), new Date().getDate()+1));
+    return invalidDate ? {fechainvalida:true}:null;
+  }
 }

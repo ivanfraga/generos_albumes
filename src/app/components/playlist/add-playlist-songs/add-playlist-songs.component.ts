@@ -90,11 +90,11 @@ export class AddPlaylistSongsComponent implements OnInit {
   }
   //función para volver a mostrar todas las canciones
   //no necesita parámetros
-  showAllSongs(){
+  redirect(){
     //cambio de estado de la búsqueda
     this.isSearch= false;
     //recargar el método inicializador
-    this.router.navigate(['/selectFavorites', this.id]);
+    this.router.navigate(['/showPlaylist', this.id]);
   }
 
   nextPage() {

@@ -17,8 +17,8 @@
     </div>
     <div class="mb-3">
         <label class="form-label">Año</label>
-        <input formControlName="year" type="number" class="form-control" required>
-        <label class="error"  *ngIf="emptyYear" >{{emptyFields("year")}}</label>
+        <input formControlName="year" type="number" class="form-control" required max="2022">
+        <label class="error"  *ngIf="emptyYear" >{{wrongYear("year")}}</label>
     </div>
     
     <div class="add">
