@@ -117,18 +117,7 @@ export class AuthService {
   }
   getuserProperties(){
     console.log("nombre user: ", this.name)
-    /*
-    let usuario: User;
-    usuario.birthdate= this.birthdate;
-    usuario.id= this.id;
-    usuario.mail= this.mail;
-    usuario.name= this.name;
-    usuario.password= this.password;
-    usuario.rol= this.rol;
-    usuario.imageURL= this.imageURL;
-    usuario.image_reference= this.image_reference;
-    console.log("valores obtenidos: ", usuario)
-    //return usuario;*/
+    
   }
   //función para actualizar perfil
   //necesita parámetros: objeto usuario, url, referencia en FireStorage
