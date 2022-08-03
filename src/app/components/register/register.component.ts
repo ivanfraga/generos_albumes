@@ -21,11 +21,11 @@ export class RegisterComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router, public formBuilder: FormBuilder,) {
     //esecificación de los campos de usuario
     this.userForm= this.formBuilder.group({
-      name: [''],
+      name: ['', Validators.required],
       birthdate: ['', [Validators.required, validations.validarfechas]],
-      mail: [''],
+      mail: ['', Validators.required],
       password: new FormControl(this.password, [ Validators.required, Validators.minLength(8), Validators.pattern("^(?=.*[0-9])[a-zA-Z0-9!@#$%^&*]{8,100}$") ]),
-      rol: [''],
+      rol: ['', Validators.required],
       imageURL: [''],
       image_reference: [''],
       id: null
@@ -124,7 +124,7 @@ export class RegisterComponent implements OnInit {
       return 'El campo es obligatorio';
     }
    
-    return this.userForm.get(field)? 'Fecha de nacimiento fuera de los limites de 15 a 60' : '';
+    return this.userForm.get(field)? 'Debes ser mayor de 15 años' : '';
   }
   emptypassword(field: string){
     if (this.userForm.get(field)?.hasError('required')) {

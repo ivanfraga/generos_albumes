@@ -7,7 +7,10 @@
         En este apartado se puede crear o seleccionar una playlist creada previamente para agregar canciones a esta.  
     </div>
 </div>
-<button (click)="redirect()" class="btn btn-primary button" type="button">Playlist</button>
+<div class="d-grid gap-2 button">
+    <button (click)="redirect()" class="btn btn-primary button" type="button">Playlist</button>
+</div>
+
 <form [formGroup]="playlistForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="mb-3">
         <label class="form-label">Nombre de la nueva Playlist</label>
