@@ -1,4 +1,5 @@
-# TRABAJO FINAL PREVIA LA OBTENCIÓN DEL TÍTULO PROFESIONAL  
+# TESIS 💻
+TRABAJO FINAL PREVIA LA OBTENCIÓN DEL TÍTULO PROFESIONAL  
 
 ## Desarrollo de un Backend Informativo sobre Música Nacional Ecuatoriana 💻  
 Hecho por: Iván Fraga 👦  
